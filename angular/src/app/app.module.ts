@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { ZodiacHomeComponent } from './zodiac/'
+import { ZodiacHomeComponent } from './zodiac-home/zodiac-home.component'
 @NgModule({
   declarations: [
     AppComponent,
