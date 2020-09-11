@@ -10,9 +10,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavComponent } from './components/nav/nav.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { ZodiacComponent } from './components/zodiac/zodiac.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ZodiacHomeComponent } from './zodiac-home/zodiac-home.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     NavComponent,
     LoginComponent,
     SignupComponent,
-    ZodiacComponent,
     DashboardComponent,
     ProfileComponent
+    ZodiacHomeComponent
   ],
   imports: [
     BrowserModule,
