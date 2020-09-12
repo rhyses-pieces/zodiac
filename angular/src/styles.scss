@@ -1,6 +1,12 @@
+// variables
+@import 'variables';
+
+// styling
 h1, h2, h3, h4, h5, h6 {
-    font-family: fantasy;
+  font-family: 'Bellota', serif;
+  color: $indigo;
 }
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+

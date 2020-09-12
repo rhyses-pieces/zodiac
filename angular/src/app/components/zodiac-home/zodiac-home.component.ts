@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Zodiac } from '../models/zodiac';
-import {ZodiacService } from '../services/zodiac.service';
+import { Zodiac } from '../../models/zodiac';
+import {ZodiacService } from '../../services/zodiac.service';
 
 @Component({
   selector: 'app-zodiac-home',

@@ -1,31 +1,55 @@
-<form method="post">
-    <div class="form-group">
-        <label for="username">Username: </label>
-        <input class="form-control" type="text" name="username" id="username">
-    </div>
-    <div class="form-group">
-        <label for="password">Password: </label>
-        <input class="form-control" type="password" name="password" id="password">
-    </div>
-    <div class="form-group">
-        <label for="fname">First Name:</label>
-        <input class="form-control" type="text" name="fname" id="fname">
-    </div>
-    <div class="form-group">
-        <label for="lname">Last Name: </label>
-        <input class="form-control" type="text" name="lname" id="lname">
-    </div>
-    <div class="form-group">
-        <label for="gender">Gender: </label>
-        <select class="form-control" name="gender" id="gender">
-            <option value="1">Female</option>
-            <option value="2">Male</option>
-            <option value="3">Other</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="dob">Date of Birth: </label>
-        <input class="form-control" type="text" name="dob" id="dob" ngbDatePicker [(ngModel)]="dob">
-    </div>
-    <button class="btn btn-primary" type="submit">Register</button>
-</form>
+<main class="container">
+    <section class="row">
+        <div class="col">
+            <h3 class="h3">Register an account</h3>
+            <article class="p-4">
+                <form method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="username">Username: </label>
+                            <input class="form-control" type="text" name="username" id="username">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="password">Password: </label>
+                            <input class="form-control" type="password" name="password" id="password">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label for="fname">First Name:</label>
+                            <input class="form-control" type="text" name="fname" id="fname">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="lname">Last Name: </label>
+                            <input class="form-control" type="text" name="lname" id="lname">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="gender">Gender: </label>
+                            <select class="form-control" name="gender" id="gender">
+                                <option value="1">Female</option>
+                                <option value="2">Male</option>
+                                <option value="3">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth: </label>
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dob" [(ngModel)]="date"
+                                ngbDatepicker #d="ngbDatepicker" [minDate]="{year: 1950, month: 1, day: 1}"
+                                [maxDate]="{year: 2002, month: 12, day: 31}" [placement]="placement"
+                                aria-describedby="dateHelp">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-info far fa-calendar-alt" (click)="d.toggle()"
+                                    type="button"></button>
+                            </div>
+                        </div>
+                        <small id="dateHelp" class="form-text text-muted">You must be 18 years or older to create an
+                            account.</small>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Register</button>
+                </form>
+            </article>
+        </div>
+    </section>
+</main>
