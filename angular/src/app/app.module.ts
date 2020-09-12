@@ -13,8 +13,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HoroscopeComponent } from './components/horoscope/horoscope.component';
-import { ZodiacHomeComponent } from './zodiac-home/zodiac-home.component';
-import { FollowingComponent } from './following/following.component';
+import { ZodiacHomeComponent } from './components/zodiac-home/zodiac-home.component';
+import { FollowingComponent } from './components/following/following.component';
 
 @NgModule({
   declarations: [
