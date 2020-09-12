@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
-import { User } from '../models/user';
-
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-following',
@@ -11,9 +9,8 @@ import { User } from '../models/user';
 })
 export class FollowingComponent implements OnInit {
 
-  constructor(private userService:UserService) {
+  constructor(private userService:UserService) { }
 
-   }
   user: User[];
 
   ngOnInit(): void {
