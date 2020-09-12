@@ -13,6 +13,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ZodiacHomeComponent } from './zodiac-home/zodiac-home.component';
+import { FollowingComponent } from './following/following.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { ZodiacHomeComponent } from './zodiac-home/zodiac-home.component';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    ProfileComponent
-    ZodiacHomeComponent
+    ProfileComponent,
+    ZodiacHomeComponent,
+    FollowingComponent
   ],
   imports: [
     BrowserModule,
