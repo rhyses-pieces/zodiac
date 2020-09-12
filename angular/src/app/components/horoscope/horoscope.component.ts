@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HoroscopeService } from '../../services/horoscope.service';
 
 @Component({
   selector: 'app-horoscope',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HoroscopeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private horoService: HoroscopeService) { }
 
   ngOnInit(): void {
   }
