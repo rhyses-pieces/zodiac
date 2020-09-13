@@ -12,7 +12,9 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { ZodiacHomeComponent } from './zodiac-home/zodiac-home.component';
+import { HoroscopeComponent } from './components/horoscope/horoscope.component';
+import { ZodiacHomeComponent } from './components/zodiac-home/zodiac-home.component';
+import { FollowingComponent } from './components/following/following.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ZodiacHomeComponent } from './zodiac-home/zodiac-home.component';
     SignupComponent,
     DashboardComponent,
     ProfileComponent,
-    ZodiacHomeComponent
+    ZodiacHomeComponent,
+    HoroscopeComponent,
+    FollowingComponent
   ],
   imports: [
     BrowserModule,
