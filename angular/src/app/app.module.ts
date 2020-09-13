@@ -21,7 +21,7 @@ import { ZodiacHomeComponent } from './zodiac-home/zodiac-home.component';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
     ZodiacHomeComponent
   ],
   imports: [
