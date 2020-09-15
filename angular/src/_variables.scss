@@ -2,6 +2,7 @@ $indigo: #5b3f57;
 $purple: #86778C;
 $beige: #bfa39a;
 $lavender: #BCA4BF;
+$light: #f6f6f7;
 
 $primary: $purple;
 $info: $indigo;
@@ -10,5 +11,4 @@ $warning: #db8e2a;
 $danger: #f44336;
 
 $font-family-sans-serif: 'Inria Sans', Verdana, sans-serif;
-$link-color: $indigo;
-$body-bg: lighten($lavender, 15%);
+$body-bg: $indigo;

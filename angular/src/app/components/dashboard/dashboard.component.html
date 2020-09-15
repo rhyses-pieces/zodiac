@@ -1,6 +1,18 @@
-<main class="container">
+<main class="container-fluid">
     <section class="row">
-        <input class="form-control" type="search" name="findall" id="findall">
-        <app-profile></app-profile>
+        <div class="col-md-8 order-md-1 order-sm-2">
+            <section class="row">
+                <div class="col-md-6">
+                    <app-profile></app-profile>
+                </div>
+                <div class="col-md-6">
+                    <app-profile></app-profile>
+                </div>
+            </section>
+        </div>
+        <nav class="col order-md-2 order-sm-1">
+            <h2 class="h2">Navigation</h2>
+            <app-horoscope></app-horoscope>
+        </nav>
     </section>
 </main>
