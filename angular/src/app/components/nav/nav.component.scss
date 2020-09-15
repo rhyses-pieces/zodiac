@@ -1,0 +1,9 @@
+@import '../../../_variables';
+
+.nav-link {
+    color: $lavender;
+}
+
+.nav-link:hover {
+    color: darken($lavender, 15%);
+}

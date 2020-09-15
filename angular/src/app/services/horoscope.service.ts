@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { Horoscope } from "../models/horoscope";
 import { User } from '../models/user';
-import { Zodiac } from '../models/zodiac';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +11,10 @@ import { Zodiac } from '../models/zodiac';
 export class HoroscopeService {
 
   private baseUrl: string;
-  private sunsign: Zodiac;
+  private sunsign: User["getZodiac"];
 
   constructor(private http: HttpClient) {
     this.baseUrl = "http://horoscope-api.herokuapp.com/";
-    this.sunsign = User.zodiac;
   }
 
   getHoroscope(): Observable<Horoscope> {
