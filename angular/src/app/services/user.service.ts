@@ -12,7 +12,7 @@ export class UserService {
   private base_url:string;
 
   constructor(private http:HttpClient) {
-    this.base_url = "http://localhost:8080/zodiac/";
+    this.base_url = "http://localhost:8080/Zodiac/";
   }
 
   getUser():Observable<User[]>{
