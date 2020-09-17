@@ -1,1 +1,13 @@
 <p>following works!</p>
+<main class="container">
+    <section class="row">
+        <div *ngFor="let u of user" class="col-md-4">
+            <article class="p-4">
+                <h2 class="h2">{{u.userid}}</h2>
+                <p><span class="badge badge-info">{{ u.firstName }}</span></p>
+              
+
+            </article>
+        </div>
+    </section>
+</main>

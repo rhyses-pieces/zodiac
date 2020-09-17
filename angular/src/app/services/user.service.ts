@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { User } from '../models/user'
 
@@ -15,7 +15,18 @@ export class UserService {
   }
 
   getUser():Observable<User[]>{
-    return this.http.get(`${this.base_url}/user`) as Observable<User[]>;
+
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Origin': '*',
+    }
+    const requestOptions = {               
+      headers: new HttpHeaders(headerDict), 
+    };
+
+    return this.http.get(`${this.base_url}/user`, requestOptions) as Observable<User[]>;
   };
 
 }
