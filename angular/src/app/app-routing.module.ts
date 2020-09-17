@@ -6,7 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ZodiacHomeComponent } from './zodiac-home/zodiac-home.component';
 import { FollowingComponent} from './following/following.component';
-
+import { MoreInfoComponent } from './more-info/more-info.component'
 const routes: Routes = [
   {
     path: '',
@@ -22,7 +22,11 @@ const routes: Routes = [
   },
   {
     path: 'zodiac',
-    component: ZodiacHomeComponent
+    component: ZodiacHomeComponent,
+    children: [{
+      path: ':name',
+      component: MoreInfoComponent
+    }]
   },
   {
     path: 'profile',
