@@ -33,7 +33,4 @@ export class User {
         this.gender = gender;
     }
     
-    getZodiac(): string {
-        return this.zodiac;
-    }
 }
