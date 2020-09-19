@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         this.user = response;
         sessionStorage.setItem('user', JSON.stringify(this.user));
         sessionStorage.setItem('loggedin', 'true');
+        console.log(sessionStorage);
         this.router.navigate(['/dashboard']);
       }, error => {
         console.log("what happened... it didn't work!");
