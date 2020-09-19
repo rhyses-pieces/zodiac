@@ -15,6 +15,7 @@ export class YourZodiacComponent implements OnInit {
   bday: string;
   bdayMonth: string;
   name: string;
+  bdayDay: string;
 
   visibility:boolean = true;
 
@@ -22,46 +23,49 @@ export class YourZodiacComponent implements OnInit {
   ngOnInit(): void {
     this.bday =  new Date(JSON.parse(sessionStorage.getItem('user')).dateOfBirth).toUTCString();
     this.bdayMonth = this.bday.split(' ')[2];
+    this.bdayDay = this.bday.split(' ')[1];
+
     "new Date(dateofbirth).toUTCString" 
     // this.bday = 'Sept';
     console.log(this.bdayMonth);
     // console.log(this.bdayMonth=='Sep');
     
-    if (this.bdayMonth=='Mar') {
+    if (this.bdayMonth==='Mar' && parseInt(this.bdayDay)>20) {
+      //aires or pisces
       this.name = 'aires';
     }
-    if (this.bdayMonth=='Apr') {
+    if (this.bdayMonth=='Apr' && parseInt(this.bdayDay)>19) {
       this.name = 'taurus';
     }
-    if (this.bdayMonth=='May') {
+    if (this.bdayMonth=='May' && parseInt(this.bdayDay)>20) {
       this.name = 'gemini';
     }
-    if (this.bdayMonth=='Jun') {
+    if (this.bdayMonth=='Jun' && parseInt(this.bdayDay)>20) {
       this.name = 'cancer';
     }
-    if (this.bdayMonth=='Jul') {
+    if (this.bdayMonth=='Jul' && parseInt(this.bdayDay)>22) {
       this.name = 'leo';
     }
-    if (this.bdayMonth=='Aug') {
+    if (this.bdayMonth=='Aug' && parseInt(this.bdayDay)>22) {
       this.name = 'virgo';
     }
-    if (this.bdayMonth=='Sep') {
+    if (this.bdayMonth=='Sep' && parseInt(this.bdayDay)>22) {
       this.name = 'libra';
     }
 
-    if (this.bdayMonth=='Oct') {
+    if (this.bdayMonth=='Oct' && parseInt(this.bdayDay)>22) {
       this.name = 'scorpio';
     }
-    if (this.bdayMonth=='Nov') {
+    if (this.bdayMonth=='Nov' && parseInt(this.bdayDay)>22) {
       this.name = 'sagittarius';
     }
-    if (this.bdayMonth=='Dec') {
+    if (this.bdayMonth=='Dec' && parseInt(this.bdayDay)>21) {
       this.name = 'capricorn';
     }
-    if (this.bdayMonth=='Jan') {
+    if (this.bdayMonth=='Jan' && parseInt(this.bdayDay)>19) {
       this.name = 'aquarius';
     }
-    if (this.bdayMonth=='Feb') {
+    if (this.bdayMonth=='Feb' && parseInt(this.bdayDay)>21) {
       this.name = 'pisces';
     }
 
