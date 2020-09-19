@@ -22,11 +22,11 @@ export class FollowingComponent implements OnInit {
   // usernames:string[] = [];
   // firstNames:string[]= [];
   // lastNames:string[] =[];
-  zodiacs: Zodiac[];
-  bdays: string[];
-  bdayMonths: string[];
-  names: string[];
-  bdayDays: string[];
+  zodiacs: Zodiac[]=[];
+  bdays: string[]=[];
+  bdayMonths: string[]=[];
+  names: string[]=[];
+  bdayDays: string[]=[];
 
 
 
@@ -141,40 +141,26 @@ export class FollowingComponent implements OnInit {
             }
           }
         }
-      })
-      console.log(this.names);
-    }
-        
-      
-  }
-
-    // this.zodiacser.getMoreInfo(this.name).subscribe(
-    //   (data) => {
-    //     console.log(this.name);
-    //     this.zodiac = data;
-    //     console.log(this.zodiac);
-    //     console.log(this.zodiac[0].element);
-    //   }, () => {
-    //     console.log(this.name);
-    //     console.log('uhh did not work!')
-    //   }
-    // )
-    //   }, () => {
-    //     console.log('did not work!')
-    //   }    
-    // )
-    
-  
-
-
-    
-    
-
-    // console.log(JSON.parse(sessionStorage.getItem('user')));
-
-    
-  
- 
-  // ngOnInit(): void {
-    
-
+        console.log(this.names);
+        this.names.forEach(name => {
+          
+       
+          this.zodiacser.getMoreInfo(name).subscribe(
+            (data) => {
+              console.log(name);
+              this.zodiacs.push(data);
+              console.log(this.zodiacs);
+              // console.log(zodiac[0].element);
+            }, () => {
+              console.log(name);
+              console.log('uhh did not work!')
+            }
+          )
+            }, () => {
+              console.log('did not work!')
+            }    
+          )
+          })
+        };
+      }
+   
