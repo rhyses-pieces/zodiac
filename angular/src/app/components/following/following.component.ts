@@ -11,17 +11,33 @@ export class FollowingComponent implements OnInit {
 
   constructor(private userService:UserService) { }
 
-  user: User[];
+  users: User[];
+  id: number;
+  // ngOnInit(): void {
+  //   this.userService.getUsers().subscribe(
+  //     (data) => {
+  //       this.user = data;
+  //       console.log(this.user);
+  //     }, () => {
+  //       console.log('did not work!')
+  //     }
+  //   )
+  // }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(
+    console.log(JSON.parse(sessionStorage.getItem('user')));
+    this.id = (JSON.parse(sessionStorage.getItem('user')).userid);
+
+
+    this.userService.getFollowing(this.id).subscribe(
       (data) => {
-        this.user = data;
-        console.log(this.user);
+        this.users = data;
+        console.log(this.users);
       }, () => {
         console.log('did not work!')
       }
     )
   }
+  
 
 }

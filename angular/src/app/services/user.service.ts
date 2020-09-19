@@ -22,6 +22,11 @@ export class UserService {
 
   };
 
+  getFollowing(id:number):Observable<User[]>{
+      return this.http.get(`${this.base_url}/followee/${id}`) as Observable<User[]>;
+
+  }
+
   // getUser(id:number):Observable<User>{
   //   // return this.http.get(`http://localhost:8080/Zodiac/user`) as Observable<User[]>;
   //     return this.http.get(`http://ec2-3-133-144-188.us-east-2.compute.amazonaws.com:8085/Zodiac/user/${id}`) as Observable<User>;
