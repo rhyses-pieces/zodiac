@@ -18,7 +18,7 @@ export class UserService {
 
   getUsers():Observable<User[]>{
     // return this.http.get(`http://localhost:8080/Zodiac/user`) as Observable<User[]>;
-      return this.http.get(`http://ec2-3-133-144-188.us-east-2.compute.amazonaws.com:8085/Zodiac/user`) as Observable<User[]>;
+      return this.http.get(`${this.base_url}/user`) as Observable<User[]>;
 
   };
 
@@ -30,15 +30,15 @@ export class UserService {
 
   login(user: User): Observable<User> {
     console.log(JSON.stringify(user));
-    return this.http.post(`http://ec2-3-133-144-188.us-east-2.compute.amazonaws.com:8085/Zodiac/login`, user) as Observable<User>;
+    return this.http.post(`${this.base_url}/login`, user) as Observable<User>;
   }
 
   register(user: User): Observable<User> {
-    return this.http.post(`http://ec2-3-133-144-188.us-east-2.compute.amazonaws.com:8085/Zodiac/user`, user) as Observable<User>;
+    return this.http.post(`${this.base_url}/user`, user) as Observable<User>;
   }
 
   update(user: User): Observable<User> {
-    return this.http.put(`http://ec2-3-133-144-188.us-east-2.compute.amazonaws.com:8085/Zodiac/user`, user) as Observable<User>;
+    return this.http.put(`${this.base_url}/user`, user) as Observable<User>;
   }
 
 }
