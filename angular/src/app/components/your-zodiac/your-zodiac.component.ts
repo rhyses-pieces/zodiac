@@ -11,6 +11,9 @@ export class YourZodiacComponent implements OnInit {
 
   constructor(private zodiacser:ZodiacService) { }
 
+  username:string;
+  firstName:string;
+  lastName:string;
   zodiac: Zodiac;
   bday: string;
   bdayMonth: string;
@@ -24,6 +27,9 @@ export class YourZodiacComponent implements OnInit {
     this.bday =  new Date(JSON.parse(sessionStorage.getItem('user')).dateOfBirth).toUTCString();
     this.bdayMonth = this.bday.split(' ')[2];
     this.bdayDay = this.bday.split(' ')[1];
+    this.username = (JSON.parse(sessionStorage.getItem('user')).username);
+    this.firstName = (JSON.parse(sessionStorage.getItem('user')).firstName);
+    this.lastName = (JSON.parse(sessionStorage.getItem('user')).lastName);
 
     "new Date(dateofbirth).toUTCString" 
     // this.bday = 'Sept';
