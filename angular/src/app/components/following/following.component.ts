@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { ZodiacService } from '../../services/zodiac.service';
-
 import { User } from '../../models/user';
 import { Zodiac } from '../../models/zodiac';
-
 
 @Component({
   selector: 'app-following',
@@ -36,7 +34,7 @@ export class FollowingComponent implements OnInit {
     this.userService.getFollowing(this.id).subscribe(
       (data) => {
         this.users = data;
-        console.log(this.users);
+        console.log(this.users[0]);
         this.users.forEach(element => {
           // console.log('elem '+element.dateOfBirth);
           this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
@@ -52,9 +50,8 @@ export class FollowingComponent implements OnInit {
           // console.log('arrays : '+this.bdays)
           // console.log('arrays1 : '+this.firstNames)
 
-        });
-        for (let i=0; i<this.bdays.length; i++) {
-          console.log('i '+i);
+       
+        for (let i=0; i<this.users.length; i++) {
           if (this.bdayMonths[i]==='Mar') {
             if (parseInt(this.bdayDays[i])>20) {
               this.names.push('aires');
@@ -104,7 +101,7 @@ export class FollowingComponent implements OnInit {
               this.names.push('virgo');
             }
           }
-
+          console.log(this.names);
           if (this.bdayMonths[i]=='Oct') {
             if (parseInt(this.bdayDays[i])>22) {
               this.names.push('scorpio');
@@ -149,7 +146,7 @@ export class FollowingComponent implements OnInit {
             (data) => {
               console.log(name);
               this.zodiacs.push(data);
-              console.log(this.zodiacs);
+              console.log('zodiac '+this.zodiacs[0][0].name);
               // console.log(zodiac[0].element);
             }, () => {
               console.log(name);
@@ -158,8 +155,13 @@ export class FollowingComponent implements OnInit {
           )
             }, () => {
               console.log('did not work!')
-            }    
-          )
+            }
+            
+            
+            
+            
+            )
+          });
           })
         };
       }

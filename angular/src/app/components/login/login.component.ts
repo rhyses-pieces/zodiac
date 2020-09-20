@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       password: this.password,
       first_name: '',
       last_name: '',
-      date_of_birth: '',
+      dateOfBirth: '',
       zodiac: '',
       description: '',
       gender: 0

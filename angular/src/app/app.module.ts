@@ -18,6 +18,7 @@ import { FollowingComponent } from './components/following/following.component';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { YourZodiacComponent } from './components/your-zodiac/your-zodiac.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
