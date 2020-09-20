@@ -23,7 +23,7 @@ export class UserService {
   };
 
   getFollowing(id:number):Observable<User[]>{
-      return this.http.get(`${this.base_url}/followee/${id}`) as Observable<User[]>;
+      return this.http.get(`${this.base_url}/follower/${id}`) as Observable<User[]>;
   }
 
   
@@ -44,6 +44,10 @@ export class UserService {
 
   update(user: User): Observable<User> {
     return this.http.put(`${this.base_url}/user`, user) as Observable<User>;
+  }
+
+  addFollowing(id: number): Observable<User> {
+    return this.http.put(`${this.base_url}/follower/add/${(JSON.parse(sessionStorage.getItem('user')).userid)}`, {"id": id}) as Observable<User>;
   }
 
 }

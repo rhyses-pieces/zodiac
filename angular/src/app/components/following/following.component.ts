@@ -101,7 +101,7 @@ export class FollowingComponent implements OnInit {
               this.names.push('virgo');
             }
           }
-          console.log(this.names);
+          // console.log(this.names);
           if (this.bdayMonths[i]=='Oct') {
             if (parseInt(this.bdayDays[i])>22) {
               this.names.push('scorpio');
@@ -138,15 +138,15 @@ export class FollowingComponent implements OnInit {
             }
           }
         }
-        console.log(this.names);
+        // console.log(this.names);
         this.names.forEach(name => {
           
        
           this.zodiacser.getMoreInfo(name).subscribe(
             (data) => {
-              console.log(name);
+              // console.log(name);
               this.zodiacs.push(data);
-              console.log('zodiac '+this.zodiacs[0][0].name);
+              // console.log('zodiac '+this.zodiacs[0][0].name);
               // console.log(zodiac[0].element);
             }, () => {
               console.log(name);

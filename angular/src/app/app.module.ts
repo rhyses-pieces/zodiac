@@ -18,7 +18,8 @@ import { FollowingComponent } from './components/following/following.component';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { YourZodiacComponent } from './components/your-zodiac/your-zodiac.component';
 import { LogoutComponent } from './components/logout/logout.component';
-import { NestedZodiacComponent } from './components/nested-zodiac/nested-zodiac.component'; 
+import { NestedZodiacComponent } from './components/nested-zodiac/nested-zodiac.component';
+import { UsersComponent } from './components/users/users.component'; 
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NestedZodiacComponent } from './components/nested-zodiac/nested-zodiac.
     MoreInfoComponent,
     YourZodiacComponent,
     LogoutComponent,
-    NestedZodiacComponent
+    NestedZodiacComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

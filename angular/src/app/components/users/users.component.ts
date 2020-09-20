@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { ZodiacService } from '../../services/zodiac.service';
-import { User } from '../../models/user';
 import { Zodiac } from '../../models/zodiac';
+import {ZodiacService } from '../../services/zodiac.service';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-nested-zodiac',
-  templateUrl: './nested-zodiac.component.html',
-  styleUrls: ['./nested-zodiac.component.scss']
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.scss']
 })
-export class NestedZodiacComponent implements OnInit {
+export class UsersComponent implements OnInit {
 
-  constructor( private zodiacser:ZodiacService, private userService:UserService) { }
+  constructor(private userService:UserService, private zodiacser:ZodiacService) { }
 
   users: User[];
   id: number;
 
+  user: User;
 
   // usernames:string[] = [];
   // firstNames:string[]= [];
@@ -31,7 +32,7 @@ export class NestedZodiacComponent implements OnInit {
   ngOnInit(): void {
     this.id = (JSON.parse(sessionStorage.getItem('user')).userid);
 
-    this.userService.getFollowing(this.id).subscribe(
+    this.userService.getUsers().subscribe(
       (data) => {
         this.users = data;
         console.log(this.users[0]);
@@ -157,6 +158,20 @@ export class NestedZodiacComponent implements OnInit {
           });
           })
         };
+
+
+  follow(id:number) {
+    console.log('follow pressed');
+    this.userService.addFollowing(id).subscribe(
+
+      (response: User) => {
+        this.user = response;
+        // this.router.navigate(['/dashboard']);
+      }, (error) => {
+        console.log(error+" what happened... it did NOT work!");
       }
+    );
 
+  }
 
+}
