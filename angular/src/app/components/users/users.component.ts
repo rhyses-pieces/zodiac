@@ -36,7 +36,7 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (data) => {
         this.users = data;
-        this.users = this.users.filter(user => user.userid !==this.id);
+        // this.users = this.users.filter(user => user.userid !==this.id);
         // console.log(this.users[0]);
         this.users.forEach(element => {
           // console.log(element);
@@ -156,11 +156,7 @@ export class UsersComponent implements OnInit {
           )
             }, () => {
               console.log('did not work!')
-            }
-            
-            
-            
-            
+            } 
             )
           });
           })
