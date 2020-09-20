@@ -63,166 +63,167 @@ export class ZodiacService {
 
   };
 
-  getUserZodiacInfo(id: number): Observable<Zodiac> {
+  // getUserZodiacInfo(id: number) {
 
-    const headerDict = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Origin': '*',
-    }
-    const requestOptions = {               
-      headers: new HttpHeaders(headerDict), 
-    };
+  //   const headerDict = {
+  //     'Content-Type': 'application/json',
+  //     'Accept': 'application/json',
+  //     'Access-Control-Allow-Headers': 'Content-Type',
+  //     'Access-Control-Allow-Origin': '*',
+  //   }
+  //   const requestOptions = {               
+  //     headers: new HttpHeaders(headerDict), 
+  //   };
 
-    console.log(id);
-    this.getUser(id).subscribe(
-      (response: User) => {
-        this.user = response;
-        console.log(this.user);
-        console.log(new Date(this.user.dateOfBirth).toUTCString());
-        this.bday =  new Date(this.user.dateOfBirth).toUTCString();
-        this.bdayMonth = this.bday.split(' ')[2];
-        this.bdayDay = this.bday.split(' ')[1];
-        this.username = (this.user).username;
-        this.firstName = (this.user).firstName;
-        this.lastName = (this.user).lastName;
+  //   console.log(id);
+  //   this.getUser(id).subscribe(
+  //     (response: User) => {
+  //       this.user = response;
+  //       console.log(this.user);
+  //       console.log(new Date(this.user.dateOfBirth).toUTCString());
+  //       this.bday =  new Date(this.user.dateOfBirth).toUTCString();
+  //       this.bdayMonth = this.bday.split(' ')[2];
+  //       this.bdayDay = this.bday.split(' ')[1];
+  //       this.username = (this.user).username;
+  //       this.firstName = (this.user).firstName;
+  //       this.lastName = (this.user).lastName;
         
-        "new Date(dateofbirth).toUTCString" 
-        // this.bday = 'Sept';
-        console.log(this.bdayMonth);
-        console.log(this.bdayDay);
+  //       "new Date(dateofbirth).toUTCString" 
+  //       // this.bday = 'Sept';
+  //       console.log(this.bdayMonth);
+  //       console.log(this.bdayDay);
         
-        // console.log(this.bdayMonth=='Sep');
+  //       // console.log(this.bdayMonth=='Sep');
         
-        if (this.bdayMonth==='Mar') {
-          //aires or pisces
-      if (parseInt(this.bdayDay)>20) {
-        this.name = 'aires';
+  //       if (this.bdayMonth==='Mar') {
+  //         //aires or pisces
+  //     if (parseInt(this.bdayDay)>20) {
+  //       this.name = 'aires';
 
-      } else {
-        this.name = 'pisces';
+  //     } else {
+  //       this.name = 'pisces';
 
-      }
-    }
-    if (this.bdayMonth=='Apr') {
-      if (parseInt(this.bdayDay)>19) {
-        this.name = 'taurus';
+  //     }
+  //   }
+  //   if (this.bdayMonth=='Apr') {
+  //     if (parseInt(this.bdayDay)>19) {
+  //       this.name = 'taurus';
 
-      } else {
-        this.name = 'aires';
+  //     } else {
+  //       this.name = 'aires';
 
-      }
-    }
-    if (this.bdayMonth=='May') {
-      if (parseInt(this.bdayDay)>20) {
-        this.name = 'gemini';
+  //     }
+  //   }
+  //   if (this.bdayMonth=='May') {
+  //     if (parseInt(this.bdayDay)>20) {
+  //       this.name = 'gemini';
 
-      } else {
-        this.name = 'taurus';
+  //     } else {
+  //       this.name = 'taurus';
 
-      }
-    }
-    if (this.bdayMonth=='Jun') {
-      if (parseInt(this.bdayDay)>20) {
-        this.name = 'cancer';
-
-
-      } else {
-        this.name = 'gemini';
-
-      }
-    }
-    if (this.bdayMonth=='Jul') {
-      if (parseInt(this.bdayDay)>22) {
-        this.name = 'leo';
-
-      } else {
-        this.name = 'cancer';
-        console.log(this.name);
+  //     }
+  //   }
+  //   if (this.bdayMonth=='Jun') {
+  //     if (parseInt(this.bdayDay)>20) {
+  //       this.name = 'cancer';
 
 
-      }
-    }
-    if (this.bdayMonth=='Aug') {
-      if (parseInt(this.bdayDay)>22) {
-        this.name = 'virgo';
-        console.log(this.name);
+  //     } else {
+  //       this.name = 'gemini';
 
-      } else {
+  //     }
+  //   }
+  //   if (this.bdayMonth=='Jul') {
+  //     if (parseInt(this.bdayDay)>22) {
+  //       this.name = 'leo';
 
-        this.name = 'leo';
+  //     } else {
+  //       this.name = 'cancer';
+  //       console.log(this.name);
 
-      }
-    }
-    if (this.bdayMonth=='Sep') {
-      if (parseInt(this.bdayDay)>22) {
-        this.name = 'libra';
 
-      } else {
-        this.name = 'virgo';
-        console.log(this.name);
+  //     }
+  //   }
+  //   if (this.bdayMonth=='Aug') {
+  //     if (parseInt(this.bdayDay)>22) {
+  //       this.name = 'virgo';
+  //       console.log(this.name);
 
-      }
-    }
+  //     } else {
+
+  //       this.name = 'leo';
+
+  //     }
+  //   }
+  //   if (this.bdayMonth=='Sep') {
+  //     if (parseInt(this.bdayDay)>22) {
+  //       this.name = 'libra';
+
+  //     } else {
+  //       this.name = 'virgo';
+  //       console.log(this.name);
+
+  //     }
+  //   }
     
-    if (this.bdayMonth=='Oct') {
-      if (parseInt(this.bdayDay)>22) {
-        this.name = 'scorpio';
+  //   if (this.bdayMonth=='Oct') {
+  //     if (parseInt(this.bdayDay)>22) {
+  //       this.name = 'scorpio';
 
-      } else {
-        this.name = 'libra';
+  //     } else {
+  //       this.name = 'libra';
 
-      }
-    }
-    if (this.bdayMonth=='Nov') {
-      if (parseInt(this.bdayDay)>22) {
-        this.name = 'sagittarius';
+  //     }
+  //   }
+  //   if (this.bdayMonth=='Nov') {
+  //     if (parseInt(this.bdayDay)>22) {
+  //       this.name = 'sagittarius';
 
-      } else {
-        this.name = 'scorpio';
+  //     } else {
+  //       this.name = 'scorpio';
 
-      }
-    }
-    if (this.bdayMonth=='Dec') {
-      if (parseInt(this.bdayDay)>21) {
-        this.name = 'capricorn';
+  //     }
+  //   }
+  //   if (this.bdayMonth=='Dec') {
+  //     if (parseInt(this.bdayDay)>21) {
+  //       this.name = 'capricorn';
 
-      } else {
-        this.name = 'sagittarius';
+  //     } else {
+  //       this.name = 'sagittarius';
 
-      }
-    }
-    if (this.bdayMonth=='Jan') {
-      if (parseInt(this.bdayDay)>19) {
-        this.name = 'aquarius';
+  //     }
+  //   }
+  //   if (this.bdayMonth=='Jan') {
+  //     if (parseInt(this.bdayDay)>19) {
+  //       this.name = 'aquarius';
 
-      } else {
-        this.name = 'capricorn';
+  //     } else {
+  //       this.name = 'capricorn';
 
-      }
-    }
-    if (this.bdayMonth=='Feb') { 
-      if (parseInt(this.bdayDay)>21) {
-        this.name = 'pisces';
+  //     }
+  //   }
+  //   if (this.bdayMonth=='Feb') { 
+  //     if (parseInt(this.bdayDay)>21) {
+  //       this.name = 'pisces';
 
-      } else {
-        this.name = 'aquarius';
+  //     } else {
+  //       this.name = 'aquarius';
 
-      }
-    }
-    console.log(this.name);
-    this.getMoreInfo(this.name).subscribe(
-      (response: Zodiac) => {
-        console.log(response);
-        this.zodiac = response;
-      }
-    );
-      
-  return this.http.get(`http://zodiacal.herokuapp.com/${this.name}`, requestOptions) as Observable<Zodiac>;
+  //     }
+  //   }
+    
+  //   // return this.http.get(`http://zodiacal.herokuapp.com/${this.name}`, requestOptions) as Observable<Zodiac>;
     
     
-  }
-    )
-  }
+  //   console.log(this.name);
+  //   this.getMoreInfo(this.name).subscribe(
+  //     (response: Zodiac) => {
+  //       console.log(response);
+  //       this.zodiac = response;
+  //       return this.zodiac;
+  //     }
+  //   );
+  // }
+  //   )
+  // }
   }
