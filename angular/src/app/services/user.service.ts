@@ -22,15 +22,20 @@ export class UserService {
 
   };
 
-  // getUser(id:number):Observable<User>{
-  //   // return this.http.get(`http://localhost:8080/Zodiac/user`) as Observable<User[]>;
-  //     return this.http.get(`http://ec2-3-133-144-188.us-east-2.compute.amazonaws.com:8085/Zodiac/user/${id}`) as Observable<User>;
+  getFollowing(id:number):Observable<User[]>{
+      return this.http.get(`${this.base_url}/followee/${id}`) as Observable<User[]>;
+  }
 
-  // };
+  
 
   login(user: User): Observable<User> {
     console.log(JSON.stringify(user));
     return this.http.post(`${this.base_url}/login`, user) as Observable<User>;
+  }
+
+  logout(user: User) {
+    console.log(JSON.stringify(user));
+    return this.http.get(`${this.base_url}/login/logout`);
   }
 
   register(user: User): Observable<User> {

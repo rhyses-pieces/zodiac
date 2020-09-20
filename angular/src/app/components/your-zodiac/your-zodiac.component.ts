@@ -137,8 +137,8 @@ export class YourZodiacComponent implements OnInit {
         console.log('uhh did not work!')
       }
     )
-    
   }
+  
   toggleVis() {
     this.visibility =!this.visibility;
   }

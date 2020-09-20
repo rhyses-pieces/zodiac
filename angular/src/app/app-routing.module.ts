@@ -25,12 +25,12 @@ const routes: Routes = [
   {
     path: 'zodiac',
     component: ZodiacHomeComponent,
-    children: [
-      {
-      path: ':name',
-      component: MoreInfoComponent
-      }
-    ]
+    // children: [
+    //   {
+    //   path: ':name',
+    //   component: MoreInfoComponent
+    //   }
+    // ]
   },
   {
     path: 'profile',

@@ -17,6 +17,8 @@ import { ZodiacHomeComponent } from './components/zodiac-home/zodiac-home.compon
 import { FollowingComponent } from './components/following/following.component';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { YourZodiacComponent } from './components/your-zodiac/your-zodiac.component';
+import { LogoutComponent } from './components/logout/logout.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { YourZodiacComponent } from './components/your-zodiac/your-zodiac.compon
     HoroscopeComponent,
     FollowingComponent,
     MoreInfoComponent,
-    YourZodiacComponent
+    YourZodiacComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -5,10 +5,11 @@ export class User {
     password: string;
     first_name:string;
     last_name:string;
-    date_of_birth:string;
+    dateOfBirth:string;
     zodiac: string;
     description: string;
     gender:number;
+    // dateOfBirth:string;
     //picture:number[];
 
     constructor(
@@ -17,7 +18,7 @@ export class User {
         password: string,
         first_name:string,
         last_name:string,
-        date_of_birth:string,
+        dateOfBirth:string,
         zodiac: string,
         description: string,
         gender:number
@@ -27,7 +28,7 @@ export class User {
         this.password = password;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.date_of_birth = date_of_birth;
+        this.dateOfBirth = dateOfBirth;
         this.zodiac = zodiac;
         this.description = description;
         this.gender = gender;
