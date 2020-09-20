@@ -1,4 +1,4 @@
-<article  *ngFor="let u of users" class="profile p-4">
+<article  *ngFor="let u of users"  class="profile p-4">
     <img class="float-left mr-4 rounded" src="https://placekitten.com/g/250/250" alt="placeholder">
     <h3 class="h3">{{u.firstName}} {{u.lastName}}</h3>
     <button class="btn btn-danger" type="submit" (click)="follow(u.userid)">Follow User <i class="far fa-heart"></i></button>
@@ -6,4 +6,3 @@
     <app-nested-zodiac></app-nested-zodiac>
       <div class="clearfix"></div>
 </article>
-<!--  -->

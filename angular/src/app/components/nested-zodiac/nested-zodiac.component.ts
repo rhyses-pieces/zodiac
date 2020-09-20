@@ -34,7 +34,7 @@ export class NestedZodiacComponent implements OnInit {
     this.userService.getFollowing(this.id).subscribe(
       (data) => {
         this.users = data;
-        console.log(this.users[0]);
+        // console.log(this.users[0]);
         this.users.forEach(element => {
           // console.log('elem '+element.dateOfBirth);
           this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());

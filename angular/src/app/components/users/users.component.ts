@@ -32,19 +32,26 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.id = (JSON.parse(sessionStorage.getItem('user')).userid);
 
+
     this.userService.getUsers().subscribe(
       (data) => {
         this.users = data;
-        console.log(this.users[0]);
+        this.users = this.users.filter(user => user.userid !==this.id);
+        // console.log(this.users[0]);
         this.users.forEach(element => {
-          // console.log('elem '+element.dateOfBirth);
-          this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
-          // Fri, 18 Sep 2020 18:47:53 GMT
-          this.bdays.forEach(element => {
-            this.bdayMonths.push(element.split(' ')[2]);
-            this.bdayDays.push(element.split(' ')[1]);
-          });
-       
+          // console.log(element);
+          // console.log(this.id);
+          // console.log(element.userid!==this.id);
+
+            // console.log('elem '+element.dateOfBirth);
+            this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
+            // Fri, 18 Sep 2020 18:47:53 GMT
+            this.bdays.forEach(element => {
+              this.bdayMonths.push(element.split(' ')[2]);
+              this.bdayDays.push(element.split(' ')[1]);
+            });
+            
+          
         for (let i=0; i<this.users.length; i++) {
           if (this.bdayMonths[i]==='Mar') {
             if (parseInt(this.bdayDays[i])>20) {
