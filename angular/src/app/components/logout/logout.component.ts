@@ -23,11 +23,10 @@ export class LogoutComponent implements OnInit {
         sessionStorage.setItem('user', '');
         sessionStorage.setItem('loggedin', 'false');
         console.log(sessionStorage);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       }, error => {
         console.log("what happened... it didn't work!");
         console.log(error);
-
       }
     );
   }
