@@ -18,7 +18,7 @@ import { FollowingComponent } from './components/following/following.component';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { YourZodiacComponent } from './components/your-zodiac/your-zodiac.component';
 import { LogoutComponent } from './components/logout/logout.component';
-
+import { NestedZodiacComponent } from './components/nested-zodiac/nested-zodiac.component'; 
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     FollowingComponent,
     MoreInfoComponent,
     YourZodiacComponent,
-    LogoutComponent
+    LogoutComponent,
+    NestedZodiacComponent
   ],
   imports: [
     BrowserModule,
