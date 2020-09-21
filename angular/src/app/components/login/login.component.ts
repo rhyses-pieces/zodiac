@@ -27,13 +27,13 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.user = {
-      id: 0,
+      userid: 0,
       username: this.username,
       password: this.password,
       first_name: '',
       last_name: '',
       dateOfBirth: '',
-      zodiac: '',
+      // zodiac: '',
       description: '',
       gender: 0
     }
