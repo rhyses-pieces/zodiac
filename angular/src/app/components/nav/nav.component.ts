@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  hide = false;
+
   constructor() { }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('loggedin') == 'true') {
+      this.hide = true;
+    }
   }
 
 }
