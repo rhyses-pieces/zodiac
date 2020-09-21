@@ -139,25 +139,31 @@ export class FollowingComponent implements OnInit {
           }
         }
         console.log(this.names);
-        this.names.forEach(name => {
-          
+
+        // this.names.forEach(name => {
+          // this.users.forEach(user => {
+
+       for (let i=0; i<this.users.length; i++) {
+
        
-          this.zodiacser.getMoreInfo(name).subscribe(
+          this.zodiacser.getMoreInfo(this.names[i]).subscribe(
             (data) => {
-              console.log(name);
-              this.zodiacs.push(data);
-              console.log('zodiac '+this.zodiacs[0][0].name);
+              console.log(this.names[i]);
+              this.users[i]['zodiac'] = data;
+              console.log(this.users[i]);
+              // this.zodiacs.push(data);
+              // console.log('zodiac '+this.zodiacs[0][0].name);
               // console.log(zodiac[0].element);
             }, () => {
-              console.log(name);
+              console.log(this.names[i]);
               console.log('uhh did not work!')
             }
           )
-            }, () => {
-              console.log('did not work!')
+
             }    
-          )
+          // )
+          
           })
         };
+      
       }
-   

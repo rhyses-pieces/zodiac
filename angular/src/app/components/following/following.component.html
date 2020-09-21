@@ -2,11 +2,9 @@
     <img class="float-left mr-4 rounded" src="https://placekitten.com/g/250/250" alt="placeholder">
     <h3 class="h3">{{u.firstName}} {{u.lastName}}</h3>
     <h3 class="h3">{{u.userid}}</h3>
-    <article  *ngFor="let z of zodiacs" class="profile p-4">
-        <img class="float-left mr-4 rounded" src="https://placekitten.com/g/250/250" alt="placeholder">
-        <h3 class="h3">{{z.name}} </h3>
-       
-    </article>
+    <h3 class="h3">{{u.zodiac.name}}</h3>
+
+    
    
 </article>
 
