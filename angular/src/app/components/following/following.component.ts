@@ -36,25 +36,17 @@ export class FollowingComponent implements OnInit {
         this.users = data;
         console.log(this.users);
         this.users.forEach(element => {
-          // console.log('elem '+element.dateOfBirth);
           this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
-          // Fri, 18 Sep 2020 18:47:53 GMT
-          this.bdays.forEach(element => {
-            this.bdayMonths.push(element.split(' ')[2]);
-            this.bdayDays.push(element.split(' ')[1]);
-          });
+          
           console.log(this.bdayMonths);
           console.log(this.bdayDays);
-          
-          // this.usernames.push(element.username);
-          // this.firstNames.push(element.firstName);
-          // this.lastNames.push(element.lastName);
-          // console.log('arrays : '+this.bdays)
-          // console.log('arrays1 : '+this.firstNames)
-
+        });
+        this.bdays.forEach(element => {
+            this.bdayMonths.push(element.split(' ')[2]);
+            this.bdayDays.push(element.split(' ')[1]);  
         });
        
-        for (let i=0; i<this.bdays.length; i++) {
+        for (let i=0; i<this.bdayMonths.length; i++) {
           if (this.bdayMonths[i]==='Mar') {
             if (parseInt(this.bdayDays[i])>20) {
               this.names.push('aires');
