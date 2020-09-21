@@ -37,7 +37,6 @@ export class UsersComponent implements OnInit {
       (data) => {
         this.users = data;
         this.users = this.users.filter(user => user.userid !==this.id);
-        // console.log(this.users[0]);
         this.users.forEach(element => {
           // console.log(element);
           // console.log(this.id);
@@ -46,6 +45,7 @@ export class UsersComponent implements OnInit {
             // console.log('elem '+element.dateOfBirth);
             this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
             // Fri, 18 Sep 2020 18:47:53 GMT
+          });
             this.bdays.forEach(element => {
               this.bdayMonths.push(element.split(' ')[2]);
               this.bdayDays.push(element.split(' ')[1]);
@@ -157,8 +157,12 @@ export class UsersComponent implements OnInit {
           // }
            
         };
-      });
+      
+
+
     }
+
+
     )
   }
 
