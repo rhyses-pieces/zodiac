@@ -3,8 +3,8 @@ export class User {
     id: number;
     username:string;
     password: string;
-    first_name:string;
-    last_name:string;
+    firstName:string;
+    lastName:string;
     dateOfBirth:string;
     zodiac: string;
     description: string;
@@ -16,8 +16,8 @@ export class User {
         id: number,
         username:string,
         password: string,
-        first_name:string,
-        last_name:string,
+        firstName:string,
+        lastName:string,
         dateOfBirth:string,
         zodiac: string,
         description: string,
@@ -26,8 +26,8 @@ export class User {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.zodiac = zodiac;
         this.description = description;

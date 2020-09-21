@@ -6,28 +6,28 @@
                 <form method="post">
                     <div class="form-group">
                         <label for="username">Username: </label>
-                        <input class="form-control" type="text" name="username" id="username" aria-describedby="userHelp">
+                        <input class="form-control" type="text" name="username" [(ngModel)]="username" id="username" aria-describedby="userHelp">
                         <small id="userHelp" class="form-text text-muted">Username must be unique.</small>
                     </div>
                     <div class="form-group">
                         <label for="password">Password: </label>
-                        <input class="form-control" type="password" name="password" id="password" aria-describedby="passHelp">
+                        <input class="form-control" type="password" name="password" [(ngModel)]="password" id="password" aria-describedby="passHelp">
                         <small id="passHelp" class="form-text text-muted">Password is case sensitive.</small>
                     </div>
                     <div class="form-row">
                         <div class="form-group col">
                             <label for="fname">First Name:</label>
-                            <input class="form-control" type="text" name="fname" id="fname">
+                            <input class="form-control" type="text" name="fname" [(ngModel)]="firstName" id="fname">
                         </div>
                         <div class="form-group col">
                             <label for="lname">Last Name: </label>
-                            <input class="form-control" type="text" name="lname" id="lname">
+                            <input class="form-control" type="text" name="lname" [(ngModel)]="lastName" id="lname">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label for="gender">Gender: </label>
-                            <select class="form-control" name="gender" id="gender">
+                            <select class="form-control" name="gender" [(ngModel)]="gender" id="gender">
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
                                 <option value="3">Other</option>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary btn-lg" type="submit">Register</button>
+                        <button class="btn btn-primary btn-lg" type="submit" (click)="register()">Register</button>
                     </div>
                 </form>
             </article>

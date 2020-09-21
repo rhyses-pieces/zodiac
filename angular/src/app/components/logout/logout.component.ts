@@ -15,21 +15,13 @@ export class LogoutComponent implements OnInit {
   user: User;
 
   logout() {
-    this.user = JSON.parse(sessionStorage.getItem('user'));
+    // this.user = JSON.parse(sessionStorage.getItem('user'));
 
-    this.userser.logout(this.user).subscribe(
-      (response: User) => {
-        this.user = response;
         sessionStorage.setItem('user', '');
         sessionStorage.setItem('loggedin', 'false');
         console.log(sessionStorage);
-        this.router.navigate(['/home']);
-      }, error => {
-        console.log("what happened... it didn't work!");
-        console.log(error);
+        this.router.navigate(['']);
 
-      }
-    );
   }
 
 

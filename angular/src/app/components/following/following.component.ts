@@ -15,8 +15,6 @@ export class FollowingComponent implements OnInit {
 
   users: User[];
   id: number;
-
-
   // usernames:string[] = [];
   // firstNames:string[]= [];
   // lastNames:string[] =[];
@@ -37,7 +35,7 @@ export class FollowingComponent implements OnInit {
         console.log(this.users[0]);
         this.users.forEach(element => {
           // console.log('elem '+element.dateOfBirth);
-          this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
+          //this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
           // Fri, 18 Sep 2020 18:47:53 GMT
           this.bdays.forEach(element => {
             this.bdayMonths.push(element.split(' ')[2]);

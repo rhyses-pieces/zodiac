@@ -30,9 +30,7 @@ export class YourZodiacComponent implements OnInit {
     this.username = (JSON.parse(sessionStorage.getItem('user')).username);
     this.firstName = (JSON.parse(sessionStorage.getItem('user')).firstName);
     this.lastName = (JSON.parse(sessionStorage.getItem('user')).lastName);
-
-    "new Date(dateofbirth).toUTCString" 
-    // this.bday = 'Sept';
+    
     console.log(this.bdayMonth);
     console.log(this.bdayDay);
 

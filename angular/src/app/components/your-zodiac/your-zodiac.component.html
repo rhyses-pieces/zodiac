@@ -4,6 +4,7 @@
     <p>Sun sign: {{ zodiac[0].name}} </p>
     <p>Sun dates: {{ zodiac[0].sun_dates[0]}} to {{ zodiac[0].sun_dates[1]}} </p>
     <button class="btn btn-danger">Follow User <i class="far fa-heart"></i></button>
+    <button class="btn btn-primary">Edit Profile</button>
     <div class="clearfix"></div>
 </article>
 <main class="container-fluid">
@@ -11,10 +12,6 @@
         <div class="col-md-8 order-md-1 order-sm-2">
             <section class="row">
                 <div class="col-md-8">
-                    <!-- <p><span class="badge badge-info"></span></p>
-
-                    <p><span class="badge badge-info">Sun dates: {{ zodiac[0].sun_dates[0]}} to {{ zodiac[0].sun_dates[1]}}</span></p> -->
-
                 <button (click)="toggleVis()">Click to Show/Hide More Zodiac Info</button>
                 <div class="col-md-6" [hidden]="visibility">
                     <p><span class="badge badge-info">Element: {{ zodiac[0].element }}</span></p>
@@ -33,11 +30,8 @@
                     <p><span class="badge badge-info">Mental traits: {{ zodiac[0].mental_traits }}</span></p>
                     <p><span class="badge badge-info">Physical traits: {{ zodiac[0].physical_traits }}</span></p>
                     <p><span class="badge badge-info">Cardinality: {{ zodiac[0].cardinality }}</span></p>
-    
                 </div> 
 
-
-                <!-- <p><b>Body parts:</b> {{zodiac.body_parts}}</p> -->
                 </div>
                 <div class="col-md-6">
                     
