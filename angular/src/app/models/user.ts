@@ -6,7 +6,7 @@ export class User {
     first_name:string;
     last_name:string;
     dateOfBirth:string;
-    zodiac: string;
+    // zodiac: string;
     description: string;
     gender:number;
     // dateOfBirth:string;
@@ -19,7 +19,7 @@ export class User {
         first_name:string,
         last_name:string,
         dateOfBirth:string,
-        zodiac: string,
+        // zodiac: string,
         description: string,
         gender:number
     ) {
@@ -29,7 +29,7 @@ export class User {
         this.first_name = first_name;
         this.last_name = last_name;
         this.dateOfBirth = dateOfBirth;
-        this.zodiac = zodiac;
+        // this.zodiac = zodiac;
         this.description = description;
         this.gender = gender;
     }
