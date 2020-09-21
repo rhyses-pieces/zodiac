@@ -140,13 +140,13 @@ export class UsersComponent implements OnInit {
           }
         }
         // console.log(this.names);
-        this.names.forEach(name => {
-          
-       
-          this.zodiacser.getMoreInfo(name).subscribe(
+        // this.names.forEach(name => {
+        for (let i=0; i<this.users.length; i++) {
+          this.zodiacser.getMoreInfo(this.names[i]).subscribe(
             (data) => {
               // console.log(name);
-              this.zodiacs.push(data);
+              // this.zodiacs.push(data);
+              this.users[i]['zodiac'] = data;
               // console.log('zodiac '+this.zodiacs[0][0].name);
               // console.log(zodiac[0].element);
             }, () => {
@@ -154,13 +154,13 @@ export class UsersComponent implements OnInit {
               console.log('uhh did not work!')
             }
           )
-            }, () => {
-              console.log('did not work!')
-            } 
-            )
-          });
-          })
+          // }
+           
         };
+      });
+    }
+    )
+  }
 
 
   follow(id:number) {

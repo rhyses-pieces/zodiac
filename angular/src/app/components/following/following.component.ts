@@ -37,12 +37,14 @@ export class FollowingComponent implements OnInit {
         console.log(this.users);
         this.users.forEach(element => {
           // console.log('elem '+element.dateOfBirth);
-          // this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
+          this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
           // Fri, 18 Sep 2020 18:47:53 GMT
           this.bdays.forEach(element => {
             this.bdayMonths.push(element.split(' ')[2]);
             this.bdayDays.push(element.split(' ')[1]);
           });
+          console.log(this.bdayMonths);
+          console.log(this.bdayDays);
           
           // this.usernames.push(element.username);
           // this.firstNames.push(element.firstName);
@@ -51,6 +53,7 @@ export class FollowingComponent implements OnInit {
           // console.log('arrays1 : '+this.firstNames)
 
         });
+       
         for (let i=0; i<this.bdays.length; i++) {
           if (this.bdayMonths[i]==='Mar') {
             if (parseInt(this.bdayDays[i])>20) {
@@ -90,6 +93,7 @@ export class FollowingComponent implements OnInit {
           if (this.bdayMonths[i]=='Aug') {
             if (parseInt(this.bdayDays[i])>22) {
               this.names.push('virgo');
+            console.log('names'+this.names)
             } else {
               this.names.push('leo');
             }
@@ -138,7 +142,7 @@ export class FollowingComponent implements OnInit {
             }
           }
         }
-        console.log(this.names);
+        console.log("/////////////////////////names"+this.names);
 
         // this.names.forEach(name => {
           // this.users.forEach(user => {
@@ -149,6 +153,7 @@ export class FollowingComponent implements OnInit {
           this.zodiacser.getMoreInfo(this.names[i]).subscribe(
             (data) => {
               console.log(this.names[i]);
+              console.log(data);
               this.users[i]['zodiac'] = data;
               console.log(this.users[i]);
               // this.zodiacs.push(data);

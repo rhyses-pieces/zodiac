@@ -130,5 +130,5 @@ export class HoroscopeComponent implements OnInit {
       }
     )
 
-
+  }
 }
