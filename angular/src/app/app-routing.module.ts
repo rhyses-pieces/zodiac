@@ -5,9 +5,9 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ZodiacHomeComponent } from './components/zodiac-home/zodiac-home.component';
-import { FollowingComponent} from './components/following/following.component';
+// import { FollowingComponent} from './components/following/following.component';
 import { HoroscopeComponent } from './components/horoscope/horoscope.component';
-import { MoreInfoComponent } from './more-info/more-info.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   {
@@ -37,8 +37,8 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'user',
-    component: FollowingComponent
+    path: 'users',
+    component: UsersComponent
   },
   {
     path: 'horoscope',

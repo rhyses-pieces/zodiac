@@ -16,8 +16,6 @@ export class DashboardComponent implements OnInit {
     this.username = (JSON.parse(sessionStorage.getItem('user')).username);
     this.bday = (JSON.parse(sessionStorage.getItem('user')).dateOfBirth);
     console.log(this.bday);
-
-
   }
 
 }

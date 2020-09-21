@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http'
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,7 +17,8 @@ import { FollowingComponent } from './components/following/following.component';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { YourZodiacComponent } from './components/your-zodiac/your-zodiac.component';
 import { LogoutComponent } from './components/logout/logout.component';
-
+import { NestedZodiacComponent } from './components/nested-zodiac/nested-zodiac.component';
+import { UsersComponent } from './components/users/users.component'; 
 
 @NgModule({
   declarations: [
@@ -33,7 +33,9 @@ import { LogoutComponent } from './components/logout/logout.component';
     FollowingComponent,
     MoreInfoComponent,
     YourZodiacComponent,
-    LogoutComponent
+    LogoutComponent,
+    NestedZodiacComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

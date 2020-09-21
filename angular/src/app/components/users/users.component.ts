@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { ZodiacService } from '../../services/zodiac.service';
-import { User } from '../../models/user';
 import { Zodiac } from '../../models/zodiac';
+import {ZodiacService } from '../../services/zodiac.service';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-following',
-  templateUrl: './following.component.html',
-  styleUrls: ['./following.component.scss']
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.scss']
 })
-export class FollowingComponent implements OnInit {
+export class UsersComponent implements OnInit {
 
   constructor(private userService:UserService, private zodiacser:ZodiacService) { }
 
   users: User[];
   id: number;
 
+  user: User;
 
   // usernames:string[] = [];
   // firstNames:string[]= [];
@@ -31,30 +32,27 @@ export class FollowingComponent implements OnInit {
   ngOnInit(): void {
     this.id = (JSON.parse(sessionStorage.getItem('user')).userid);
 
-    this.userService.getFollowing(this.id).subscribe(
+
+    this.userService.getUsers().subscribe(
       (data) => {
         this.users = data;
-        console.log(this.users);
+        this.users = this.users.filter(user => user.userid !==this.id);
+        // console.log(this.users[0]);
         this.users.forEach(element => {
-          // console.log('elem '+element.dateOfBirth);
-          this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
-          // Fri, 18 Sep 2020 18:47:53 GMT
-          this.bdays.forEach(element => {
-            this.bdayMonths.push(element.split(' ')[2]);
-            this.bdayDays.push(element.split(' ')[1]);
-          });
-          console.log(this.bdayMonths);
-          console.log(this.bdayDays);
-          
-          // this.usernames.push(element.username);
-          // this.firstNames.push(element.firstName);
-          // this.lastNames.push(element.lastName);
-          // console.log('arrays : '+this.bdays)
-          // console.log('arrays1 : '+this.firstNames)
+          // console.log(element);
+          // console.log(this.id);
+          // console.log(element.userid!==this.id);
 
-        });
-       
-        for (let i=0; i<this.bdays.length; i++) {
+            // console.log('elem '+element.dateOfBirth);
+            this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
+            // Fri, 18 Sep 2020 18:47:53 GMT
+            this.bdays.forEach(element => {
+              this.bdayMonths.push(element.split(' ')[2]);
+              this.bdayDays.push(element.split(' ')[1]);
+            });
+            
+          
+        for (let i=0; i<this.users.length; i++) {
           if (this.bdayMonths[i]==='Mar') {
             if (parseInt(this.bdayDays[i])>20) {
               this.names.push('aires');
@@ -93,7 +91,6 @@ export class FollowingComponent implements OnInit {
           if (this.bdayMonths[i]=='Aug') {
             if (parseInt(this.bdayDays[i])>22) {
               this.names.push('virgo');
-            console.log('names'+this.names)
             } else {
               this.names.push('leo');
             }
@@ -105,7 +102,7 @@ export class FollowingComponent implements OnInit {
               this.names.push('virgo');
             }
           }
-
+          // console.log(this.names);
           if (this.bdayMonths[i]=='Oct') {
             if (parseInt(this.bdayDays[i])>22) {
               this.names.push('scorpio');
@@ -142,33 +139,42 @@ export class FollowingComponent implements OnInit {
             }
           }
         }
-        console.log("/////////////////////////names"+this.names);
-
+        // console.log(this.names);
         // this.names.forEach(name => {
-          // this.users.forEach(user => {
-
-       for (let i=0; i<this.users.length; i++) {
-
-       
+        for (let i=0; i<this.users.length; i++) {
           this.zodiacser.getMoreInfo(this.names[i]).subscribe(
             (data) => {
-              console.log(this.names[i]);
-              console.log(data);
-              this.users[i]['zodiac'] = data;
-              console.log(this.users[i]);
+              // console.log(name);
               // this.zodiacs.push(data);
+              this.users[i]['zodiac'] = data;
               // console.log('zodiac '+this.zodiacs[0][0].name);
               // console.log(zodiac[0].element);
             }, () => {
-              console.log(this.names[i]);
+              console.log(name);
               console.log('uhh did not work!')
             }
           )
-
-            }    
-          // )
-          
-          })
+          // }
+           
         };
-      
+      });
+    }
+    )
+  }
+
+
+  follow(id:number) {
+    console.log('follow pressed');
+    this.userService.addFollowing(id).subscribe(
+
+      (response: User) => {
+        this.user = response;
+        // this.router.navigate(['/dashboard']);
+      }, (error) => {
+        console.log(error+" what happened... it did NOT work!");
       }
+    );
+
+  }
+
+}
