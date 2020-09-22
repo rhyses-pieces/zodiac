@@ -15,7 +15,8 @@ export class UsersComponent implements OnInit {
 
   users: User[];
   id: number;
-
+  filteredUsers: User[]=[];
+  followees: User[];
   user: User;
 
   // usernames:string[] = [];
@@ -37,7 +38,6 @@ export class UsersComponent implements OnInit {
       (data) => {
         this.users = data;
         this.users = this.users.filter(user => user.userid !==this.id);
-        // console.log(this.users[0]);
         this.users.forEach(element => {
           // console.log(element);
           // console.log(this.id);
@@ -46,13 +46,49 @@ export class UsersComponent implements OnInit {
             // console.log('elem '+element.dateOfBirth);
             this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
             // Fri, 18 Sep 2020 18:47:53 GMT
+          });
             this.bdays.forEach(element => {
               this.bdayMonths.push(element.split(' ')[2]);
               this.bdayDays.push(element.split(' ')[1]);
             });
+
+          this.userService.getFollowing(this.id).subscribe(
+            (data) => {
+              console.log(data)
+              this.followees = data;
             
+          console.log(this.followees[0].userid)
+          console.log(this.users)
+          // for (let i=0; i<this.users.length; i++) {
+            // if 
+          //   console.log(i);
+          //   if (!!this.followees[i]) {
+
+          //     if (this.followees[i].userid!==this.users[i].userid) {
+          //       this.filteredUsers.push(this.users[i])
+          //     }
+          //   }
+          // }
+          function comparer(otherArray){
+            return function(current){
+              return otherArray.filter(function(other){
+                return other.userid == current.userid; 
+              }).length == 0;
+            }
+          }
           
-        for (let i=0; i<this.users.length; i++) {
+          let onlyInA = this.users.filter(comparer(this.followees));
+          let onlyInB = this.followees.filter(comparer(this.users));
+          
+          this.filteredUsers = onlyInA.concat(onlyInB);
+          
+
+          // this.filteredUsers = this.users.filter(x => !this.followees.includes(x.userid));
+
+          console.log(this.filteredUsers)
+       
+
+        for (let i=0; i<this.filteredUsers.length; i++) {
           if (this.bdayMonths[i]==='Mar') {
             if (parseInt(this.bdayDays[i])>20) {
               this.names.push('aires');
@@ -139,14 +175,16 @@ export class UsersComponent implements OnInit {
             }
           }
         }
-        // console.log(this.names);
+      } 
+        )
+        console.log(this.filteredUsers);
         // this.names.forEach(name => {
-        for (let i=0; i<this.users.length; i++) {
+        for (let i=0; i<this.filteredUsers.length; i++) {
           this.zodiacser.getMoreInfo(this.names[i]).subscribe(
             (data) => {
               // console.log(name);
               // this.zodiacs.push(data);
-              this.users[i]['zodiac'] = data;
+              this.filteredUsers[i]['zodiac'] = data;
               // console.log('zodiac '+this.zodiacs[0][0].name);
               // console.log(zodiac[0].element);
             }, () => {
@@ -157,8 +195,12 @@ export class UsersComponent implements OnInit {
           // }
            
         };
-      });
+      
+
+
     }
+
+
     )
   }
 
