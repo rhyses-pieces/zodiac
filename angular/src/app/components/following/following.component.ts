@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { ZodiacService } from '../../services/zodiac.service';
 import { User } from '../../models/user';
 import { Zodiac } from '../../models/zodiac';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-following',
@@ -11,11 +12,14 @@ import { Zodiac } from '../../models/zodiac';
 })
 export class FollowingComponent implements OnInit {
 
-  constructor(private userService:UserService, private zodiacser:ZodiacService) { }
+  constructor(private userService:UserService, 
+    private zodiacser:ZodiacService,
+    private router: Router,
+    ) { }
 
   users: User[];
   id: number;
-
+  user: User;
 
   // usernames:string[] = [];
   // firstNames:string[]= [];
@@ -162,5 +166,21 @@ export class FollowingComponent implements OnInit {
           
           })
         };
+
+        unfollow(id:number) {
+          console.log('follow pressed');
+          this.userService.removeFollowing(id).subscribe(
       
-      }
+            (response: User) => {
+              this.user = response;
+              this.router.navigate(['/users']);
+            }, (error) => {
+              console.log(error+" what happened... it did NOT work!");
+            }
+          );
+      
+        }
+      
+      
+      
+}

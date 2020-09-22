@@ -50,4 +50,8 @@ export class UserService {
     return this.http.put(`${this.base_url}/follower/add/${(JSON.parse(sessionStorage.getItem('user')).userid)}`, {"id": id}) as Observable<User>;
   }
 
+  removeFollowing(id: number): Observable<User> {
+    return this.http.put(`${this.base_url}/follower/remove/${(JSON.parse(sessionStorage.getItem('user')).userid)}`, {"id": id}) as Observable<User>;
+  }
+
 }
