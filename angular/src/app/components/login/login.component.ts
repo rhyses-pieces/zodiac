@@ -21,13 +21,11 @@ export class LoginComponent implements OnInit {
   password: string;
   loading: false;
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   login() {
     this.user = {
-      id: 0,
+      userid: 0,
       username: this.username,
       password: this.password,
       firstName: '',

@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
   placement = 'top';
 
   user: User;
-  id: number;
+  userid: number;
   username: string;
   password: string;
   firstName:string;
@@ -26,15 +26,13 @@ export class SignupComponent implements OnInit {
   constructor(
     private calendar: NgbCalendar,
     private registerService: UserService,
-    private router: Router,
-    private route: ActivatedRoute) {}
+    private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   register() {
     this.user = {
-      id: this.id,
+      userid: this.userid,
       username: this.username,
       password: this.password,
       firstName: this.firstName,

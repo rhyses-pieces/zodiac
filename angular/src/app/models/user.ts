@@ -1,6 +1,6 @@
 export class User {
     //String username, int password, String firstName, String lastName, Date dateOfBirth, String description,int gender, byte[] picture
-    id: number;
+    userid: number;
     username:string;
     password: string;
     firstName:string;
@@ -9,11 +9,10 @@ export class User {
     zodiac: string;
     description: string;
     gender:number;
-    // dateOfBirth:string;
     //picture:number[];
 
     constructor(
-        id: number,
+        userid: number,
         username:string,
         password: string,
         firstName:string,
@@ -23,7 +22,7 @@ export class User {
         description: string,
         gender:number
     ) {
-        this.id = id;
+        this.userid = userid;
         this.username = username;
         this.password = password;
         this.firstName = firstName;

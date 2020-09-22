@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Zodiac } from '../../models/zodiac';
-import {ZodiacService } from '../../services/zodiac.service';
+import { ZodiacService } from '../../services/zodiac.service';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-your-zodiac',
@@ -11,9 +13,6 @@ export class YourZodiacComponent implements OnInit {
 
   constructor(private zodiacser:ZodiacService) { }
 
-  username:string;
-  firstName:string;
-  lastName:string;
   zodiac: Zodiac;
   bday: string;
   bdayMonth: string;
@@ -22,6 +21,20 @@ export class YourZodiacComponent implements OnInit {
 
   visibility:boolean = true;
 
+  user: User;
+  id: number;
+  username: string;
+  password: string;
+  firstName:string;
+  lastName:string;
+  date:string;
+  zodiacs:string;
+  description:string;
+  gender:string;
+
+  toggleVis() {
+    this.visibility =!this.visibility;
+  }
 
   ngOnInit(): void {
     this.bday =  new Date(JSON.parse(sessionStorage.getItem('user')).dateOfBirth).toUTCString();
@@ -30,14 +43,8 @@ export class YourZodiacComponent implements OnInit {
     this.username = (JSON.parse(sessionStorage.getItem('user')).username);
     this.firstName = (JSON.parse(sessionStorage.getItem('user')).firstName);
     this.lastName = (JSON.parse(sessionStorage.getItem('user')).lastName);
-    
-    console.log(this.bdayMonth);
-    console.log(this.bdayDay);
 
-    // console.log(this.bdayMonth=='Sep');
-    
     if (this.bdayMonth==='Mar') {
-      //aires or pisces
       if (parseInt(this.bdayDay)>20) {
         this.name = 'aires';
       } else {
@@ -122,23 +129,14 @@ export class YourZodiacComponent implements OnInit {
         this.name = 'aquarius';
       }
     }
-    console.log(this.name);
 
     this.zodiacser.getMoreInfo(this.name).subscribe(
       (data) => {
-        console.log(this.name);
         this.zodiac = data;
-        console.log(this.zodiac);
-        console.log(this.zodiac[0].element);
       }, () => {
-        console.log(this.name);
         console.log('uhh did not work!')
       }
     )
-  }
-  
-  toggleVis() {
-    this.visibility =!this.visibility;
   }
 
 }
