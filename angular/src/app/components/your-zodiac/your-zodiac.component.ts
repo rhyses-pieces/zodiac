@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Zodiac } from '../../models/zodiac';
 import { ZodiacService } from '../../services/zodiac.service';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,7 +12,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class YourZodiacComponent implements OnInit {
 
-  constructor(private zodiacser:ZodiacService) { }
+  constructor(private zodiacUser:ZodiacService, private router: Router) { }
+
+  ses:string;
 
   zodiac: Zodiac;
   bday: string;
@@ -25,7 +28,7 @@ export class YourZodiacComponent implements OnInit {
   id: number;
   username: string;
   password: string;
-  firstName:string;
+  firstName:string = "Jane Dane";
   lastName:string;
   date:string;
   zodiacs:string;
@@ -37,12 +40,17 @@ export class YourZodiacComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.bday =  new Date(JSON.parse(sessionStorage.getItem('user')).dateOfBirth).toUTCString();
+    this.ses = localStorage.getItem("loggedin");
+    if(this.ses=='false'){
+      console.log(`Session is false`);
+      this.router.navigate(['']);
+    }
+    this.bday = new Date(JSON.parse(localStorage.getItem('user')).dateOfBirth).toUTCString();
     this.bdayMonth = this.bday.split(' ')[2];
     this.bdayDay = this.bday.split(' ')[1];
-    this.username = (JSON.parse(sessionStorage.getItem('user')).username);
-    this.firstName = (JSON.parse(sessionStorage.getItem('user')).firstName);
-    this.lastName = (JSON.parse(sessionStorage.getItem('user')).lastName);
+    this.username = (JSON.parse(localStorage.getItem('user')).username);
+    this.firstName = (JSON.parse(localStorage.getItem('user')).firstName);
+    this.lastName = (JSON.parse(localStorage.getItem('user')).lastName);
 
     if (this.bdayMonth==='Mar') {
       if (parseInt(this.bdayDay)>20) {
@@ -130,7 +138,7 @@ export class YourZodiacComponent implements OnInit {
       }
     }
 
-    this.zodiacser.getMoreInfo(this.name).subscribe(
+    this.zodiacUser.getMoreInfo(this.name).subscribe(
       (data) => {
         this.zodiac = data;
       }, () => {

@@ -18,14 +18,11 @@ export class ZodiacHomeComponent implements OnInit {
   ngOnInit(): void {
     this.ses = sessionStorage.getItem("loggedin");
     if(this.ses=='false'){
-      console.log(`Session is false`);
       this.router.navigate(['']);
     }else{
-      console.log(`Session is true`);
       this.zodiacser.getZodiac().subscribe(
         (data) => {
           this.zodiacs = data;
-          console.log(this.zodiacs);
         }, () => {
           console.log('did not work!')
         }

@@ -25,7 +25,6 @@ export class UserService {
   }
 
   login(user: User): Observable<User> {
-    console.log(JSON.stringify(user));
     return this.http.post(`${this.base_url}/login`, user) as Observable<User>;
   }
 

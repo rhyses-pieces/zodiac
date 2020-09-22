@@ -15,16 +15,11 @@ export class LogoutComponent implements OnInit {
   user: User;
 
   logout() {
-    // this.user = JSON.parse(sessionStorage.getItem('user'));
-
-        sessionStorage.setItem('user', '');
-        sessionStorage.setItem('loggedin', 'false');
-        console.log(sessionStorage);
+        localStorage.setItem('user', '');
+        localStorage.setItem('loggedin', 'false');
         this.router.navigate(['']);
 
   }
-
-
 
   ngOnInit(): void {
   }

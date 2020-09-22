@@ -1,5 +1,13 @@
 @import '../../../_variables';
-
+main{
+    background-image: url('../images/galaxy.jpg');
+    background-size: cover;
+    background-position-y: center;
+    min-height: 100vh;
+    z-index: 0; display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .h2 {
     color: $light;
 }

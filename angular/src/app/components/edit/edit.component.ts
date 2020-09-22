@@ -9,42 +9,55 @@ import { Router} from '@angular/router';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
-
-  user: User = (JSON.parse(sessionStorage.getItem('user')));
+  placement = 'top';
+  user: User = (JSON.parse(localStorage.getItem('user')));
   zodiacs:string;
   username: string = this.user.username;
+  firstName: string =  this.user.firstName;
+  lastName: string = this.user.lastName;
+  dob: string = new Date(this.user.dateOfBirth).toUTCString();
+  gender:number = this.user.gender;
 
   new_password:string;
   rep_password:string;
 
   constructor(private editService:UserService, private router: Router) { }
 
-  ngOnInit(): void { console.log(this.user);}
+  type ='password';
+  pass = 'fas fa-eye text-white';
 
+  ngOnInit(): void {}
 
+  show(){
+    if(this.type==='password'){
+      this.type = 'text';
+      this.pass = 'fas fa-eye-slash text-white';
+    } else{
+      this.type = 'password';
+      this.pass = 'fas fa-eye text-white';
+    }
+  }
 
    edit() {
      if(this.new_password === this.rep_password){
       this.user = {
-      userid: this.user.userid,
-      username: this.username,
-      password: this.new_password,
-      firstName: this.user.firstName,
-      lastName: this.user.lastName,
-      dateOfBirth: this.user.dateOfBirth,
-      zodiac: this.zodiacs,
-      description: this.user.description,
-      gender: this.user.gender
-    }
-
-    this.editService.update(this.user).subscribe(
-      (response: User) => {
-        this.user = response;
-        this.router.navigate(['/profile']);
-      }, error => {
-        console.log("what happened... it didn't work!");   
+        userid: this.user.userid,
+        username: this.username,
+        password: this.new_password,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        dateOfBirth: this.dob,
+        zodiac: this.zodiacs,
+        description: this.user.description,
+        gender: this.gender
       }
-    );
-  } else{console.log(`new password doesn't work`)}
+
+      this.editService.update(this.user).subscribe(
+        (response: User) => {
+          this.user = response;
+          this.router.navigate(['/profile']);
+        }, error => {console.log("what happened... it didn't work!")}
+      );
+    } else{console.log(`new password doesn't work`)}
   }
 }

@@ -23,6 +23,9 @@ export class SignupComponent implements OnInit {
   description:string;
   gender:string;
 
+  type ='password';
+  pass = 'fas fa-eye text-white';
+
   constructor(
     private calendar: NgbCalendar,
     private registerService: UserService,
@@ -30,6 +33,16 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  show(){
+    if(this.type==='password'){
+      this.type = 'text';
+      this.pass = 'fas fa-eye-slash text-white';
+    } else{
+      this.type = 'password';
+      this.pass = 'fas fa-eye text-white';
+    }
+  }
+  
   register() {
     this.user = {
       userid: this.userid,
@@ -46,8 +59,8 @@ export class SignupComponent implements OnInit {
     this.registerService.register(this.user).subscribe(
       (response: User) => {
         this.user = response;
-        sessionStorage.setItem('user', JSON.stringify(this.user));
-        sessionStorage.setItem('loggedin', 'true');
+        localStorage.setItem('user', JSON.stringify(this.user));
+        localStorage.setItem('loggedin', 'true');
         console.log(sessionStorage);
         this.router.navigate(['/dashboard']);
       }, error => {

@@ -2,9 +2,16 @@
 @import 'variables';
 
 // styling
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Oswald:wght@700&display=swap');
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Bellota', serif;
-  color: $indigo;
+  font-family: 'Abril Fatface', cursive;
+  color: whitesmoke;
+}
+
+p{
+  font-family: 'Oswald', sans-serif;
+  color: whitesmoke;
 }
 
 article {
@@ -19,4 +26,3 @@ p:last-child {
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
-
