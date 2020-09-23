@@ -53,8 +53,6 @@ export class ZodiacHomeComponent implements OnInit {
   }
   zodiacDetails(event:MouseEvent){
     let zodiacTarget = (event.target as HTMLElement).firstChild.textContent;
-    console.log(zodiacTarget);
-
     this.zodiacImage = `assets/images/${zodiacTarget}.png`;
     this.zodiacUser.getMoreInfo(zodiacTarget).subscribe(
     (data) => {

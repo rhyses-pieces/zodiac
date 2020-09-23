@@ -1,30 +1,31 @@
 <app-nav></app-nav>
 <main> <!--event.toElement.innerText  event.target.children[0].innerText-->
     <section class="row container-fluid py-5">
-        <div class="p-3 w-25" *ngFor="let z of zodiacs"  data-toggle="modal" data-target="#zodiacModal" (click)="zodiacDetails($event)">
+        <div class="p-3 w-25" *ngFor="let z of zodiacs">
             <article class="cards" id="zodiacName">
-            <h1>{{z.name}}</h1>
+            <h1 id="zodiacTitle">{{z.name}}</h1>
             <p><span class="badge badge-info">{{ z.element }}</span></p>
-            <p><b>Dates:</b> {{z.sun_dates[0]}} - {{z.sun_dates[1]}}</p>
+            <p id="zodiacDate">Dates: {{z.sun_dates[0]}} - {{z.sun_dates[1]}}</p>
             <ul class="text-white">
                 <li *ngFor="let i of z.compatibility">
                     {{ i }}
                 </li>
-            </ul></article>
+            </ul>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#zModal" (click)="zodiacDetails($event)">{{z.name}}</button>
+        </article>
         </div>
-        <div class="modal fade" id="zodiacModal" tabindex="-1" aria-labelledby="zodiacLabel" aria-hidden="true">
+        <div class="modal fade" id="zModal" tabindex="-1" aria-labelledby="zodiacLabel" aria-hidden="true">
             <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-dark">
-                <h5 class="modal-title" id="zodiacLabel">{{name}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="modal-content zodiacModal">
+                <div class="modal-header text-center">
+                <h1 class="modal-title" id="zodiacLabel">{{name}}  - <span id="symbol"> {{symbol}}</span></h1>
+                <button type="button" class="close modalClose" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                </div>
+            </div>
                 <div class="modal-body">
                      <img [src]="zodiacImage" alt="zodiac image" width="100%">
-        <h2>{{name}}</h2>
-        <p>{{symbol}}</p>
+                     <h5>Element</h5>
         <p>{{element}}</p>
         <h5>Cardinality</h5>
         <p>{{cardinality}}</p>

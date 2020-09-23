@@ -19,11 +19,25 @@ section {
   width: 85%;
 }
 
-.cards {
+#symbol {
+  font-family: "Oswald", sans-serif;
+  font-size: 32px;
+  color: lightgray;
+  background: none;
+}
+
+.modalClose span {
+  background: none;
+  color: whitesmoke;
+  font-size: 36px;
+  float: right;
+}
+
+.cards, .zodiacModal {
   border: 1px solid;
   border-radius: 6px;
   padding: 3em;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.9);
   -webkit-box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
           box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
   -webkit-box-sizing: border-box;

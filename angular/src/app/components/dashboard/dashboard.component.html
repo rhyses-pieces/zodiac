@@ -1,14 +1,24 @@
 <app-nav></app-nav>
 <main>
-<article  *ngFor="let u of users" class="profile p-4">
-    <img class="float-left mr-4 rounded" src="https://placekitten.com/g/250/250" alt="placeholder">
-    <h3 class="h3">{{u.firstName}} {{u.lastName}}</h3>
-      <div class="clearfix"></div>
+   <article *ngFor="let u of following" class="profile p-4 container w-100">
+  <img class="float-left mr-4 rounded" src="https://placekitten.com/g/250/250" alt="placeholder">
+  <h3 class="h3">{{u.firstName}} {{u.lastName}}</h3>
 
-      <div *ngFor="let zodiac of zodiacs" class="col-md-8 order-md-1 order-sm-2">
-        <p >Sun sign: {{ zodiac[0].name}} </p>
-        <p >Sun dates: {{ zodiac[0].sun_dates[0]}} to {{ zodiac[0].sun_dates[1]}} </p>
-        <button class="btn btn-danger">Follow User <i class="far fa-heart"></i></button>
-    </div>
+  <h3 class="h3">{{u.zodiac[0].name}}</h3>
+  <h3 class="h6"> Compatibility {{u.zodiac[0].compatibility}}</h3> 
+  <button class="btn btn-primary" type="submit" (click)="unfollow(u.userid)">Unfollow </button> 
 </article>
+
+<h2>Browse</h2>
+<article class="text-white" *ngFor="let m of month">{{m}}</article>
+<article *ngFor="let f of followBy" class="profile p-4 container w-100">
+  <img class="float-left mr-4 rounded" src="https://placekitten.com/g/250/250" alt="placeholder">
+  <h3 class="h3">{{f.firstName}} {{f.lastName}}</h3>
+  
+<!--
+  <h3 class="h3">{{u.zodiac[0].name}}</h3>
+  <h3 class="h6"> Compatibility {{u.zodiac[0].compatibility}}</h3> -->
+  <!-- <button class="btn btn-primary" type="submit" (click)="unfollow(u.userid)">Follow </button> -->
+</article>
+
 </main>

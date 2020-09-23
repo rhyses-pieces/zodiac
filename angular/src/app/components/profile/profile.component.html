@@ -11,7 +11,12 @@
             <a routerLink="edit"><button class="btn">Edit Profile</button></a>
             <div class="clearfix"></div>
         </article>
+        <article id="horoscope" class="p-4">
+            <h3 class="h3">Today's Date: {{ horo.date }}</h3>
+            <p>{{ horo.horoscope }}</p>
+        </article>
     </div>
+
 <aside>
     <div id="zodiacInfo">
         <img [src]="zodiacImage" alt="zodiac image" width="100%">
