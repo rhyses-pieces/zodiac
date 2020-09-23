@@ -1,0 +1,19 @@
+main {
+  background-color: #44008B;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nav-link {
+  color: whitesmoke;
+  padding: 1em 2em;
+}
+
+.nav-link:hover {
+  background-color: #1f003f;
+}
+/*# sourceMappingURL=nav.component.css.map */

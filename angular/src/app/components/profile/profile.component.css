@@ -1,0 +1,109 @@
+main {
+  background-image: url("../images/galaxy.jpg");
+  background-color: black;
+  background-size: cover;
+  background-position-y: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+#zodiacInfo, #profile {
+  max-width: 750px;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 3em;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#zodiacInfo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  width: 25%;
+}
+
+#profile {
+  margin: 0;
+  padding: 2em;
+}
+
+#profile h1 {
+  text-align: center;
+  color: white;
+}
+
+#profile .text-box {
+  margin: 0;
+  overflow: hidden;
+  padding: 0.5em 0;
+  position: relative;
+  width: 100%;
+}
+
+#profile .text-box input {
+  padding-bottom: 0.5em;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: white;
+  border-bottom: 2px solid #44008B;
+  width: 100%;
+  margin: 6px 0;
+}
+
+#profile .text-box input:valid ~ label, #profile .text-box input:focus ~ label {
+  top: -20px;
+  left: 0;
+  color: #44008B;
+  font-size: 10px;
+}
+
+#profile .text-box label {
+  padding-top: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  pointer-events: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  font-family: 'Oswald', sans-serif;
+}
+
+#profile button {
+  background-color: #44008B;
+  border: none;
+  border-radius: 3em;
+  color: white;
+  padding: 0.5em;
+  margin: 1em 0;
+  width: 100%;
+}
+
+#profile button:hover {
+  background-color: #310164;
+}
+
+#profile p {
+  padding-top: 1em;
+  margin: 0;
+  text-align: center;
+  color: white;
+}
+
+#profile p a {
+  color: #44008B;
+}
+
+.profile img {
+  width: 150px;
+  height: auto;
+}
+/*# sourceMappingURL=profile.component.css.map */

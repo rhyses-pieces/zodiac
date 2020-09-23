@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 
-
 import { Zodiac } from '../models/zodiac'
 
 @Injectable({
@@ -12,11 +11,7 @@ export class ZodiacService {
 
   private base_url:string;
  
-  constructor(
-    private http:HttpClient,
-    ) {
-    this.base_url = "http://zodiacal.herokuapp.com/api";
-  }
+  constructor(private http:HttpClient) {this.base_url = "http://zodiacal.herokuapp.com/api";}
 
   getZodiac(): Observable<Zodiac[]> {
    

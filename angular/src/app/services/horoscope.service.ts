@@ -13,11 +13,9 @@ export class HoroscopeService {
   private baseUrl: string;
   private sunsign: User["zodiac"];
 
-  constructor(private http: HttpClient) {
-    this.baseUrl = "http://horoscope-api.herokuapp.com/";
-  }
+  constructor(private http: HttpClient) {this.baseUrl = "http://horoscope-api.herokuapp.com/";}
 
-  getHoroscope(): Observable<Horoscope> {
+  getHoroscope(sunsign): Observable<Horoscope> {
     const headerDict = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -29,6 +27,6 @@ export class HoroscopeService {
       headers: new HttpHeaders(headerDict),
     };
     
-    return this.http.get(`${this.baseUrl}/horoscope/today/${this.sunsign}`, requestOptions) as Observable<Horoscope>;
+    return this.http.get(`${this.baseUrl}/horoscope/today/${sunsign}`, requestOptions) as Observable<Horoscope>;
   }
 }

@@ -6,8 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ZodiacHomeComponent } from './components/zodiac-home/zodiac-home.component';
 import { FollowingComponent} from './components/following/following.component';
-import { HoroscopeComponent } from './components/horoscope/horoscope.component';
-import { MoreInfoComponent } from './more-info/more-info.component';
+import { EditComponent } from './components/edit/edit.component';
 
 const routes: Routes = [
   {
@@ -24,13 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'zodiac',
-    component: ZodiacHomeComponent,
-    // children: [
-    //   {
-    //   path: ':name',
-    //   component: MoreInfoComponent
-    //   }
-    // ]
+    component: ZodiacHomeComponent
   },
   {
     path: 'profile',
@@ -41,8 +34,8 @@ const routes: Routes = [
     component: FollowingComponent
   },
   {
-    path: 'horoscope',
-    component: HoroscopeComponent
+    path: 'profile/edit',
+    component: EditComponent
   }
 ];
 

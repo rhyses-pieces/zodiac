@@ -1,0 +1,44 @@
+@import '../../../_variables';
+main{
+    background-image: url('../images/galaxy.jpg');
+    background-size: cover;
+    background-position-y: center;
+    z-index: 0; display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+section{
+    width: 85%;
+   
+}
+#symbol{
+    font-family: $font2;
+    font-size: 32px;
+    color: lightgray;
+    background: none;
+}
+.modalClose{
+    span{
+        background: none;
+        color: whitesmoke;
+        font-size: 36px;
+        float: right;
+    }
+    
+}
+.cards, .zodiacModal{
+    border: 1px solid;
+    border-radius: 6px;
+    padding:3em 2.5em;
+    background: rgba(0,0,0,0.9);
+    box-shadow: 0 15px 25px rgba(0,0,0, 0.2);
+    box-sizing: border-box;
+}
+
+h2{
+    font-family: $font2;
+}
+span{
+    background-color: $color1;
+}

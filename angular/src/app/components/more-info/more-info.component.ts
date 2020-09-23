@@ -25,11 +25,6 @@ export class MoreInfoComponent implements OnInit {
         console.log('did not work in more info!')
       }
     )
-
-      // this.route.queryParams.subscribe(params => {
-      //   this.name = params['name'];
-      // });
-    
   }
 
 }
