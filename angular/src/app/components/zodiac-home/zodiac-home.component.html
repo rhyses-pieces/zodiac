@@ -2,8 +2,8 @@
 <main> <!--event.toElement.innerText  event.target.children[0].innerText-->
     <section class="row container-fluid py-5">
         <div class="p-3 w-25" *ngFor="let z of zodiacs"  data-toggle="modal" data-target="#zodiacModal" (click)="zodiacDetails($event)">
-            <article class="cards">
-            <h1 #zodiacName>{{z.name}}</h1>
+            <article class="cards" id="zodiacName">
+            <h1>{{z.name}}</h1>
             <p><span class="badge badge-info">{{ z.element }}</span></p>
             <p><b>Dates:</b> {{z.sun_dates[0]}} - {{z.sun_dates[1]}}</p>
             <ul class="text-white">
@@ -25,14 +25,13 @@
                      <img [src]="zodiacImage" alt="zodiac image" width="100%">
         <h2>{{name}}</h2>
         <p>{{symbol}}</p>
-        <p>{{sun_dates[0]}} - {{sun_dates[1]}}</p>
         <p>{{element}}</p>
         <h5>Cardinality</h5>
         <p>{{cardinality}}</p>
         <h5>Compatibility</h5>
         <p>{{compatibility}}</p>
         <h5>Ruling Planet</h5>
-        <p>{{.ruling_planet}}</p>
+        <p>{{ruling_planet}}</p>
         <h5>How to spot a {{name}}</h5>
         <p>{{how_to_spot}}</p>
         <h5>Secret Wish</h5>

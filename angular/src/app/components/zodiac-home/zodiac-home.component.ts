@@ -12,10 +12,10 @@ export class ZodiacHomeComponent implements OnInit {
 
   constructor(private zodiacUser:ZodiacService, private router: Router) {}
 
+  ses:string;
+
   zodiacs: Zodiac[];
   zodiac:Zodiac;
-  zName:string;
-  ses:string;
   zodiacImage:any;
 
   name:string;
@@ -36,7 +36,6 @@ export class ZodiacHomeComponent implements OnInit {
   mental_traits:string;
   physical_traits:string;
   famous_people:string;
-  
 
   ngOnInit(): void {
     this.ses = sessionStorage.getItem("loggedin");
@@ -52,10 +51,12 @@ export class ZodiacHomeComponent implements OnInit {
       );
     }
   }
+  zodiacDetails(event:MouseEvent){
+    let zodiacTarget = (event.target as HTMLElement).firstChild.textContent;
+    console.log(zodiacTarget);
 
-  zodiacDetails(event:Event){
-    this.zName = event.target.children[0].innerText;
-    this.zodiacUser.getMoreInfo(this.zName).subscribe(
+    this.zodiacImage = `assets/images/${zodiacTarget}.png`;
+    this.zodiacUser.getMoreInfo(zodiacTarget).subscribe(
     (data) => {
       this.zodiac = data;
       this.name= this.zodiac[0].name;
@@ -76,11 +77,10 @@ export class ZodiacHomeComponent implements OnInit {
         this.mental_traits = this.zodiac[0].mental_traits; 
         this.physical_traits = this.zodiac[0].physical_traits; 
         this.famous_people = this.zodiac[0].famous_people; 
-      this.zodiacImage = `assets/images/${this.zName}.png`
+      
     }, () => {
       console.log('uhh did not work!')
     }
-  )
-
-}
+  )  
+  }
 }
