@@ -1,3 +1,4 @@
+<app-nav></app-nav>
 <main>
     <div class="col" id="edit">
         <h3 class="h3 text-center">Edit Account</h3>
@@ -37,16 +38,18 @@
                 <label for="username">Username: </label>
             </div>
             <div class="form-group text-box">
-                <input type="password" [(ngModel)]="new_password" name="new_password" minlength="5"> <i [class]="pass" (click)="show()"></i>
+                <input [type]="type" [(ngModel)]="new_password" name="new_password" minlength="5"> <i [class]="pass" (click)="new_show()"></i>
                 <label for="password">New Password: </label>
             </div>
             <div class="form-group text-box">
-                <input type="password" [(ngModel)]="rep_password" name="rep_password" minlength="5"><i [class]="pass" (click)="show()"></i>
+                <input [type]="type2" [(ngModel)]="rep_password" name="rep_password" minlength="5"><i [class]="pass2" (click)="rep_show()"></i>
                 <label for="password">Repeat Password </label>
             </div>
-            <div class="form-group text-box">
-                <button class="btn btn-primary btn-lg" type="submit" (click)="edit()">Edit</button>
-                <a routerLink="/profile"><button class="btn btn-primary btn-lg" type="submit">Cancel</button></a>
+            <div class="row d-flex flex-row justify-content-around">
+                <div class="w-25">
+                <button class="btn btn-primary btn-lg w-100" type="submit" (click)="edit()">Edit</button></div>
+                <div class="w-25">
+                <a routerLink="/profile"><button class="btn btn-primary btn-lg w-100" type="submit">Cancel</button></a></div>
             </div>
         </form>
     </div>

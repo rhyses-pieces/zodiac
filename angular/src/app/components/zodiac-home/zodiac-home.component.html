@@ -1,8 +1,9 @@
-<main>
+<app-nav></app-nav>
+<main> <!--event.toElement.innerText  event.target.children[0].innerText-->
     <section class="row container-fluid py-5">
-        <div class="p-3 w-25" *ngFor="let z of zodiacs">
+        <div class="p-3 w-25" *ngFor="let z of zodiacs"  data-toggle="modal" data-target="#zodiacModal" (click)="zodiacDetails($event)">
             <article class="cards">
-            <h1>{{z.name}}</h1>
+            <h1 #zodiacName>{{z.name}}</h1>
             <p><span class="badge badge-info">{{ z.element }}</span></p>
             <p><b>Dates:</b> {{z.sun_dates[0]}} - {{z.sun_dates[1]}}</p>
             <ul class="text-white">
@@ -11,5 +12,54 @@
                 </li>
             </ul></article>
         </div>
+        <div class="modal fade" id="zodiacModal" tabindex="-1" aria-labelledby="zodiacLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                <h5 class="modal-title" id="zodiacLabel">{{name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                     <img [src]="zodiacImage" alt="zodiac image" width="100%">
+        <h2>{{name}}</h2>
+        <p>{{symbol}}</p>
+        <p>{{sun_dates[0]}} - {{sun_dates[1]}}</p>
+        <p>{{element}}</p>
+        <h5>Cardinality</h5>
+        <p>{{cardinality}}</p>
+        <h5>Compatibility</h5>
+        <p>{{compatibility}}</p>
+        <h5>Ruling Planet</h5>
+        <p>{{.ruling_planet}}</p>
+        <h5>How to spot a {{name}}</h5>
+        <p>{{how_to_spot}}</p>
+        <h5>Secret Wish</h5>
+        <p>{{secret_wish}}</p>
+        <h5>Bad Traits</h5>
+        <p>{{bad_traits}}</p>
+        <h5>Good Traits</h5>
+        <p>{{good_traits}}</p>
+        <h5>Favorites</h5>
+        <p>{{favorites}}</p>
+        <h5>Keywords</h5>
+        <p>{{keywords}}</p>
+        <h5>Vibe</h5>
+        <p>{{vibe}}</p>
+        <h5>Body Parts</h5>
+        <p>{{body_parts}}</p>
+        <h5>Mental Traits</h5>
+        <p>{{mental_traits}}</p>
+        <h5>Physical Traits</h5>
+        <p>{{physical_traits}}</p>
+        <h5>Famous People</h5>
+        <p>{{famous_people}}</p>
+                </div>
+            </div>
+            </div>
+        </div>
     </section>
+
+    
 </main>

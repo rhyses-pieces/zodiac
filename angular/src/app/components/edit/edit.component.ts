@@ -26,15 +26,28 @@ export class EditComponent implements OnInit {
   type ='password';
   pass = 'fas fa-eye text-white';
 
+  type2 ='password';
+  pass2 = 'fas fa-eye text-white';
+
   ngOnInit(): void {}
 
-  show(){
+  new_show(){
     if(this.type==='password'){
       this.type = 'text';
       this.pass = 'fas fa-eye-slash text-white';
     } else{
       this.type = 'password';
       this.pass = 'fas fa-eye text-white';
+    }
+  }
+
+  rep_show(){
+    if(this.type2==='password'){
+      this.type2 = 'text';
+      this.pass2 = 'fas fa-eye-slash text-white';
+    } else{
+      this.type2 = 'password';
+      this.pass2 = 'fas fa-eye text-white';
     }
   }
 

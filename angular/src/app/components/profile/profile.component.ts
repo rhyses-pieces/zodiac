@@ -16,9 +16,9 @@ export class ProfileComponent implements OnInit {
   ses:string;
 
   zodiac: Zodiac = (JSON.parse(localStorage.getItem('zodiac')));
-  sun_dates0 = this.zodiac.sun_dates[0];
-  sun_dates1 = this.zodiac.sun_dates[1];
-
+  profileImage:any = "assets/images/JaneDoe.png";
+  zodiacImage:any = `assets/images/${this.zodiac.name}.png`;
+  profileAlt = "Profile Image";
   visibility:boolean = true;
 
   user: User = (JSON.parse(localStorage.getItem('user')));
