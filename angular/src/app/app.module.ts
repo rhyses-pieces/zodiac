@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http'
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +12,6 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ZodiacHomeComponent } from './components/zodiac-home/zodiac-home.component';
-import { FollowingComponent } from './components/following/following.component';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { EditComponent } from './components/edit/edit.component';
 
@@ -27,7 +25,6 @@ import { EditComponent } from './components/edit/edit.component';
     DashboardComponent,
     ProfileComponent,
     ZodiacHomeComponent,
-    FollowingComponent,
     MoreInfoComponent,
     EditComponent
   ],

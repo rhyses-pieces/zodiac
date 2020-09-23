@@ -5,7 +5,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ZodiacHomeComponent } from './components/zodiac-home/zodiac-home.component';
-import { FollowingComponent} from './components/following/following.component';
+import { UsersComponent} from './components/users/users.component';
 import { EditComponent } from './components/edit/edit.component';
 
 const routes: Routes = [
@@ -30,8 +30,8 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'user',
-    component: FollowingComponent
+    path: 'users',
+    component: UsersComponent
   },
   {
     path: 'profile/edit',

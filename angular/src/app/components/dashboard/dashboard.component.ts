@@ -31,33 +31,34 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.id = (JSON.parse(localStorage.getItem('user')).userid);
 
-    this.userService.getFollowBy(this.id).subscribe(
-      (data)=>{
-        this.followBy = data;
+    // this.userService.getFollowBy(this.id).subscribe(
+    //   (data)=>{
+    //     this.followBy = data;
 
-        for(let f of this.followBy){
-          this.month.push(new Date(JSON.parse(f.dateOfBirth)).getMonth()+1);
-          this.date.push(new Date(JSON.parse(f.dateOfBirth)).getDate());
-        }
+    //     for(let f of this.followBy){
+    //       this.month.push(new Date(JSON.parse(f.dateOfBirth)).getMonth()+1);
+    //       this.date.push(new Date(JSON.parse(f.dateOfBirth)).getDate());
+    //     }
 
-        console.log(this.user.month);console.log(this.user.date);
-            // for(let n of this.names){
-            //   if (m == 1 && d >=20 || m == 2 && d <=18) {n = 'Aquarius';}
-            //   if (m == 2 && d >=19 || m == 3 && d <=20){n = 'Pisces';}
-            //   if (m == 3 && d >=21 || m == 4 && d <=19){n = 'Aries';}
-            //   if (m == 4 && d >=20 || m == 5 && d <=20){n = 'Taurus';}
-            //   if (m == 5 && d >=21 || m == 6 && d <=21){n = 'Gemini';}
-            //   if (m == 6 && d >=22 || m == 7 && d <=22){n = 'Cancer';}
-            //   if (m == 7 && d >=23 || m == 8 && d <=22) {n = 'Leo';}
-            //   if (m == 8 && d >=23 || m == 9 && d <=22) {n = 'Virgo';}
-            //   if (m == 9 && d >=23 || m == 10 && d <=22){n = 'Libra';}
-            //   if (m == 10 && d >=23 || m == 11 && d <=21){n = 'Scorpio';}
-            //   if (m == 11 && d >=22 || m == 12 && d <=21){n = 'Sagittarius';}
-            //   if (m == 12 && d >=22 || m == 1 && d <=19){n = 'Capricorn';}
+    //     console.log(this.user.month);console.log(this.user.date);
+    //     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    //         // for(let n of this.names){
+    //         //   if (m == 1 && d >=20 || m == 2 && d <=18) {n = 'Aquarius';}
+    //         //   if (m == 2 && d >=19 || m == 3 && d <=20){n = 'Pisces';}
+    //         //   if (m == 3 && d >=21 || m == 4 && d <=19){n = 'Aries';}
+    //         //   if (m == 4 && d >=20 || m == 5 && d <=20){n = 'Taurus';}
+    //         //   if (m == 5 && d >=21 || m == 6 && d <=21){n = 'Gemini';}
+    //         //   if (m == 6 && d >=22 || m == 7 && d <=22){n = 'Cancer';}
+    //         //   if (m == 7 && d >=23 || m == 8 && d <=22) {n = 'Leo';}
+    //         //   if (m == 8 && d >=23 || m == 9 && d <=22) {n = 'Virgo';}
+    //         //   if (m == 9 && d >=23 || m == 10 && d <=22){n = 'Libra';}
+    //         //   if (m == 10 && d >=23 || m == 11 && d <=21){n = 'Scorpio';}
+    //         //   if (m == 11 && d >=22 || m == 12 && d <=21){n = 'Sagittarius';}
+    //         //   if (m == 12 && d >=22 || m == 1 && d <=19){n = 'Capricorn';}
              
-            // }
-    }
-    )
+    //         // }
+    // }
+    // )
     this.userService.getFollowing(this.id).subscribe(
       (data) => {
         this.following = data;

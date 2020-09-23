@@ -11,7 +11,7 @@ import { User } from '../models/user';
 export class HoroscopeService {
 
   private baseUrl: string;
-  private sunsign: User["zodiac"];
+  // private sunsign: User["zodiac"];
 
   constructor(private http: HttpClient) {this.baseUrl = "http://horoscope-api.herokuapp.com/";}
 
