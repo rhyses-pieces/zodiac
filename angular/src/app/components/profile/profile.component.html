@@ -31,14 +31,14 @@
                     <h2>Followed By</h2>
                     <span class="tip" *ngFor="let f of followBy; index as i">
                         <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
-                        <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png" alt="placeholder" width="100px">
+                        <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png" alt="assets/images/profile_picture.png" width="100px">
                     </span>
                 </div>
                 <div class="users">
                     <h2>Following</h2>
                     <span class="tip" *ngFor="let f of following; index as i">
                         <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
-                        <img class="rounded-circle"  src="assets/images/image-{{f.userid}}.png" alt="placeholder" width="100px">
+                        <img class="rounded-circle"  src="assets/images/image-{{f.userid}}.png" alt="assets/images/profile_picture.png" width="100px">
                     </span>
                 </div>
             </div>

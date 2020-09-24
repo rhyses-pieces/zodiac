@@ -13,9 +13,9 @@ main{
     padding-top: 3em;
 }
 #title{
-    position: relative;
+    position: absolute;
     font-size: 120px;
-    top: -150px;
+    top: 50px;
     text-shadow: 3px 3px 15px #b95acc;
   }
 #login{
@@ -95,7 +95,7 @@ main{
         color: white;
 
         a{
-            color:$color2;
+            color:#989799;
         }
     }
 

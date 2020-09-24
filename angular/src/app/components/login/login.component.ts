@@ -30,17 +30,17 @@ export class LoginComponent implements OnInit {
   date: number;
 
   type ='password';
-  pass = 'fas fa-eye text-white';
+  pass = 'fas fa-eye-slash text-white';
 
   ngOnInit(): void {}
 
   show(){
     if(this.type==='password'){
       this.type = 'text';
-      this.pass = 'fas fa-eye-slash text-white';
+      this.pass = 'fas fa-eye text-white';
     } else{
       this.type = 'password';
-      this.pass = 'fas fa-eye text-white';
+      this.pass = 'fas fa-eye-slash text-white';
     }
   };
   

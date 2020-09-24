@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
   gender:string;
 
   type ='password';
-  pass = 'fas fa-eye text-white';
+  pass = 'fas fa-eye-slash text-white';
 
   constructor(
     private calendar: NgbCalendar,
@@ -36,10 +36,10 @@ export class SignupComponent implements OnInit {
   show(){
     if(this.type==='password'){
       this.type = 'text';
-      this.pass = 'fas fa-eye-slash text-white';
+      this.pass = 'fas fa-eye text-white';
     } else{
       this.type = 'password';
-      this.pass = 'fas fa-eye text-white';
+      this.pass = 'fas fa-eye-slash text-white';
     }
   }
   

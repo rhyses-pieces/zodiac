@@ -11,8 +11,8 @@ export class UserService {
   private base_url:string;
 
   constructor(private http:HttpClient) {
-     this.base_url = "http://localhost:8080/Zodiac";
-    //this.base_url = "http://ec2-3-133-144-188.us-east-2.compute.amazonaws.com:8085/Zodiac";
+     //this.base_url = "http://localhost:8080/Zodiac";
+    this.base_url = "http://ec2-3-133-144-188.us-east-2.compute.amazonaws.com:8085/Zodiac";
 
   }
 

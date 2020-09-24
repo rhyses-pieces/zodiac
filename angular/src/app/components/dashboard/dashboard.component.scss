@@ -18,4 +18,14 @@ main{
         box-shadow: 0 15px 25px rgba(0,0,0, 0.2);
         box-sizing: border-box;
     }
+
+    img{
+        background-image: url("../../../assets/images/profile_picture.png");
+        width: 250px;
+        height: 250px;
+        object-fit: contain;
+        background-repeat: no-repeat;
+        background-size: 250px 250px;
+        text-indent:-9999px
+    }
 }

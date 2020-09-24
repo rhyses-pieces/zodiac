@@ -17,6 +17,8 @@ export class DashboardComponent implements OnInit {
   users: User[];
   user: User;
   id: number;
+  description:string;
+  postings:string[];
 
   zodiacs: Zodiac[]=[];
   bday:Date[]=[];
