@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
 
   zodiac: Zodiac = (JSON.parse(localStorage.getItem('zodiac')));
   profileImage:any = "assets/images/JaneDoe.png";
-  zodiacImage:any = `assets/images/${this.zodiac.name}.png`;
+  // zodiacImage:any = `assets/images/${this.zodiac.name}.png`;
   profileAlt = "Profile Image";
   visibility:boolean = true;
 

@@ -2,7 +2,7 @@
 <main class="container-fluid">
     <div class="p-5">
         <article id="profile">
-            <img [src]="profileImage" class=""  [alt]="profileAlt" width="200px" height="200px">
+            <img [src]="profileImage" class="" [alt]="profileAlt" width="200px" height="200px">
             <h3>{{firstName}} {{lastName}}</h3>
             <h4>{{zodiac.name}}</h4>
             <p>Sun sign: {{zodiac.element}} </p>
@@ -19,7 +19,7 @@
 
 <aside>
     <div id="zodiacInfo">
-        <img [src]="zodiacImage" alt="zodiac image" width="100%">
+        <!-- <img [src]="zodiacImage" alt="zodiac image" width="100%"> -->
         <h2>{{zodiac.name}}</h2>
         <p>{{zodiac.symbol}}</p>
         <p>{{zodiac.sun_dates[0]}} - {{zodiac.sun_dates[1]}}</p>

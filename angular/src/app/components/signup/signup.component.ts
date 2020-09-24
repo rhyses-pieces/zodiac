@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -10,7 +9,6 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  placement = 'top';
 
   user: User;
   userid: number;
@@ -27,7 +25,6 @@ export class SignupComponent implements OnInit {
   pass = 'fas fa-eye text-white';
 
   constructor(
-    private calendar: NgbCalendar,
     private registerService: UserService,
     private router: Router) {}
 
@@ -42,7 +39,7 @@ export class SignupComponent implements OnInit {
       this.pass = 'fas fa-eye text-white';
     }
   }
-  
+  // 
   register() {
     this.user = {
       userid: this.userid,
@@ -51,21 +48,30 @@ export class SignupComponent implements OnInit {
       firstName: this.firstName,
       lastName: this.lastName,
       dateOfBirth: new Date(this.date).toUTCString(),
-      zodiac: this.zodiac,
+      // zodiac: this.zodiac,
       description: this.description,
       gender: parseInt(this.gender)
     }
 
-    this.registerService.register(this.user).subscribe(
-      (response: User) => {
-        this.user = response;
-        localStorage.setItem('user', JSON.stringify(this.user));
-        localStorage.setItem('loggedin', 'true');
-        console.log(sessionStorage);
-        this.router.navigate(['/dashboard']);
-      }, error => {
-        console.log("what happened... it didn't work!");   
-      }
-    );
+    
+
+    if (this.username != '' || this.password != '' || this.firstName != '' || this.lastName != '' || this.date != '' || this.gender != '' && new Date(this.date).getFullYear() < 2020 || new Date(this.date).getFullYear() <= 2002) {
+      this.registerService.register(this.user).subscribe(
+        (response: User) => {
+          this.user = response;
+          localStorage.setItem('user', JSON.stringify(this.user));
+          localStorage.setItem('loggedin', 'true');
+          this.router.navigate(['/dashboard']);
+        }, error => {
+          document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Signup failed! Please check all fields to ensure information is correct.</p>";
+        }
+      );
+      
+    } else if (this.username === '' || this.password === '' || this.firstName === '' || this.lastName === '' || this.date === '' || this.gender === '') {
+      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>All fields must be filled out.</p>";
+    } else if (new Date(this.date).getFullYear() >= 2020 || new Date(this.date).getFullYear() > 2002) {
+      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Invalid date of birth. You must be 18 years or older to sign up.</p>";
+    } 
+    
 }
 }
