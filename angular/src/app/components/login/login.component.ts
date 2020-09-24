@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       firstName: '',
       lastName: '',
       dateOfBirth: '',
-      zodiac: '',
+      // zodiac: '',
       description: '',
       gender: 0
     }
