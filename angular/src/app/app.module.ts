@@ -14,7 +14,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ZodiacHomeComponent } from './components/zodiac-home/zodiac-home.component';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { EditComponent } from './components/edit/edit.component';
-
+import { PasscheckDirective } from './services/passcheck.directive';
+import { CheckUserDirective } from './services/check-user.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { EditComponent } from './components/edit/edit.component';
     ProfileComponent,
     ZodiacHomeComponent,
     MoreInfoComponent,
-    EditComponent
+    EditComponent,
+    PasscheckDirective,
+    CheckUserDirective
   ],
   imports: [
     BrowserModule,

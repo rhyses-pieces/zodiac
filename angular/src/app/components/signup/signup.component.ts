@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -10,7 +9,6 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  placement = 'top';
 
   user: User;
   userid: number;
@@ -27,7 +25,6 @@ export class SignupComponent implements OnInit {
   pass = 'fas fa-eye text-white';
 
   constructor(
-    private calendar: NgbCalendar,
     private registerService: UserService,
     private router: Router) {}
 
@@ -42,7 +39,7 @@ export class SignupComponent implements OnInit {
       this.pass = 'fas fa-eye text-white';
     }
   }
-  
+  // 
   register() {
     this.user = {
       userid: this.userid,
@@ -51,7 +48,7 @@ export class SignupComponent implements OnInit {
       firstName: this.firstName,
       lastName: this.lastName,
       dateOfBirth: new Date(this.date).toUTCString(),
-      zodiac: this.zodiac,
+      // zodiac: this.zodiac,
       description: this.description,
       gender: parseInt(this.gender)
     }
@@ -61,7 +58,6 @@ export class SignupComponent implements OnInit {
         this.user = response;
         localStorage.setItem('user', JSON.stringify(this.user));
         localStorage.setItem('loggedin', 'true');
-        console.log(sessionStorage);
         this.router.navigate(['/dashboard']);
       }, error => {
         console.log("what happened... it didn't work!");   

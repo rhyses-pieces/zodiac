@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Router} from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
@@ -9,6 +10,8 @@ import { Router} from '@angular/router';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
+  constructor(private editService: UserService, private router: Router) { }
+
   placement = 'top';
   user: User = (JSON.parse(localStorage.getItem('user')));
   zodiacs:string;
@@ -18,10 +21,8 @@ export class EditComponent implements OnInit {
   dob: string = new Date(this.user.dateOfBirth).toUTCString();
   gender:number = this.user.gender;
 
-  new_password:string;
-  rep_password:string;
-
-  constructor(private editService:UserService, private router: Router) { }
+  new_password:FormControl;
+  rep_password:FormControl;
 
   type ='password';
   pass = 'fas fa-eye text-white';
@@ -56,11 +57,11 @@ export class EditComponent implements OnInit {
       this.user = {
         userid: this.user.userid,
         username: this.username,
-        password: this.new_password,
+        password: this.new_password.value,
         firstName: this.firstName,
         lastName: this.lastName,
         dateOfBirth: this.dob,
-        zodiac: this.zodiacs,
+        // zodiac: this.zodiacs,
         description: this.user.description,
         gender: this.gender
       }
@@ -71,6 +72,8 @@ export class EditComponent implements OnInit {
           this.router.navigate(['/profile']);
         }, error => {console.log("what happened... it didn't work!")}
       );
-    } else{console.log(`new password doesn't work`)}
+    } else{
+       document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Passwords don't match!</p>";
+    }
   }
 }
