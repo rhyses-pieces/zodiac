@@ -1,8 +1,8 @@
 <app-nav></app-nav>
-<main> <!--event.toElement.innerText  event.target.children[0].innerText-->
+<main>
     <section class="row container-fluid py-5">
         <div class="p-3 w-25" *ngFor="let z of zodiacs">
-            <article class="cards" id="zodiacName">
+            <article class="cards" id="zodiacName" data-toggle="modal" data-target="#zModal" (click)="zodiacDetails(z.name)">
             <h1 id="zodiacTitle">{{z.name}}</h1>
             <p><span class="badge badge-info">{{ z.element }}</span></p>
             <p id="zodiacDate">Dates: {{z.sun_dates[0]}} - {{z.sun_dates[1]}}</p>
@@ -11,7 +11,6 @@
                     {{ i }}
                 </li>
             </ul>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#zModal" (click)="zodiacDetails($event)">{{z.name}}</button>
         </article>
         </div>
         <div class="modal fade" id="zModal" tabindex="-1" aria-labelledby="zodiacLabel" aria-hidden="true">

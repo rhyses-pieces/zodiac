@@ -5,11 +5,19 @@ main{
     background-size: cover;
     background-position-y: center;
     min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding-top: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 3em;
+}
+
+  #title{
+    position: absolute;
+    font-size: 120px;
+    top: 50px;
+    text-shadow: 3px 3px 15px #b95acc;
   }
 
 #signup{
@@ -18,6 +26,7 @@ main{
   border: 1px solid;
   border-radius: 6px;
   padding: 2em 4em;
+  margin: 8em 0 0;
   background: rgba(0,0,0,0.7);
   box-shadow: 0 15px 25px rgba(0,0,0, 0.2);
   box-sizing: border-box;
@@ -85,6 +94,8 @@ main{
         background-color: #310164;
     }
   }
+
+  a{ color:#989799;}
 }
 
 i{

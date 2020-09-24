@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { ZodiacService } from '../../services/zodiac.service';
 import { User } from '../../models/user';
 import { Zodiac } from '../../models/zodiac';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,155 +12,89 @@ import { Zodiac } from '../../models/zodiac';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private userService:UserService, private zodiacUser:ZodiacService) {}
-  following: User[];
-  followBy: User[];
+  constructor(private userService:UserService, private zodiacUser:ZodiacService, private router: Router) {}
+ 
+  users: User[];
+  user: User;
   id: number;
+  description:string;
+  postings:string[];
 
   zodiacs: Zodiac[]=[];
   bday:Date[]=[];
-  month: number[]=[];
+  month:number[]=[];
+  months:string[]=[];
   names: string[]=[];
   date: number[]=[];
 
-  user = {
-    month: this.month,
-    date: this.date,
-    name: this.names
-  }
+  following: User[];
+  followBy: User[];
+  notFollowing: User[];
+  notFollowedBy: User[];
 
   ngOnInit(): void {
     this.id = (JSON.parse(localStorage.getItem('user')).userid);
 
-    // this.userService.getFollowBy(this.id).subscribe(
-    //   (data)=>{
-    //     this.followBy = data;
+    this.userService.getUsers().subscribe(
+      (data)=>{
+        this.users = data.filter(not => not.userid !== this.id);
+        //People you are NOT following
+        this.notFollowing = this.users.filter(({ userid: id1 }) => !this.following.some(({ userid: id2 }) => id2 === id1));
+        //People who are NOT following YOU
+       // this.notFollowedBy = this.users.filter(({ userid: id1 }) => !this.followBy.some(({ userid: id2 }) => id2 === id1));
+      } 
+    );
 
-    //     for(let f of this.followBy){
-    //       this.month.push(new Date(JSON.parse(f.dateOfBirth)).getMonth()+1);
-    //       this.date.push(new Date(JSON.parse(f.dateOfBirth)).getDate());
-    //     }
-
-    //     console.log(this.user.month);console.log(this.user.date);
-    //     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    //         // for(let n of this.names){
-    //         //   if (m == 1 && d >=20 || m == 2 && d <=18) {n = 'Aquarius';}
-    //         //   if (m == 2 && d >=19 || m == 3 && d <=20){n = 'Pisces';}
-    //         //   if (m == 3 && d >=21 || m == 4 && d <=19){n = 'Aries';}
-    //         //   if (m == 4 && d >=20 || m == 5 && d <=20){n = 'Taurus';}
-    //         //   if (m == 5 && d >=21 || m == 6 && d <=21){n = 'Gemini';}
-    //         //   if (m == 6 && d >=22 || m == 7 && d <=22){n = 'Cancer';}
-    //         //   if (m == 7 && d >=23 || m == 8 && d <=22) {n = 'Leo';}
-    //         //   if (m == 8 && d >=23 || m == 9 && d <=22) {n = 'Virgo';}
-    //         //   if (m == 9 && d >=23 || m == 10 && d <=22){n = 'Libra';}
-    //         //   if (m == 10 && d >=23 || m == 11 && d <=21){n = 'Scorpio';}
-    //         //   if (m == 11 && d >=22 || m == 12 && d <=21){n = 'Sagittarius';}
-    //         //   if (m == 12 && d >=22 || m == 1 && d <=19){n = 'Capricorn';}
-             
-    //         // }
-    // }
-    // )
     this.userService.getFollowing(this.id).subscribe(
       (data) => {
         this.following = data;
-        // this.following.forEach(element => {
-        //   this.bdays.push(new Date(JSON.parse(element.dateOfBirth)).toUTCString());
-        // });
-        // this.bdays.forEach(element => {
-        //     this.bdayMonths.push(element.split(' ')[2]);
-        //     this.bdayDays.push(element.split(' ')[1]);  
-        // });
-       
-        // for (let i=0; i<this.bdayMonths.length; i++) {
-        //   if (this.bdayMonths[i]==='Mar') {
-        //     if (parseInt(this.bdayDays[i])>20) {
-        //       this.names.push('aires');
-        //     } else {
-        //       this.names.push('pisces');
-        //     }
-        //   }
-        //   if (this.bdayMonths[i]=='Apr') {
-        //     if (parseInt(this.bdayDays[i])>19) {
-        //       this.names.push('taurus');
-        //     } else {
-        //       this.names.push('aires');
-        //     }
-        //   }
-        //   if (this.bdayMonths[i]=='May') {
-        //     if (parseInt(this.bdayDays[i])>20) {
-        //       this.names.push('gemini');
-        //     } else {
-        //       this.names.push('taurus');
-        //     }
-        //   }
-        //   if (this.bdayMonths[i]=='Jun') {
-        //     if (parseInt(this.bdayDays[i])>20) {
-        //       this.names.push('cancer');
-        //     } else {
-        //       this.names.push('gemini');
-        //     }
-        //   }
-        //   if (this.bdayMonths[i]=='Jul') {
-        //     if (parseInt(this.bdayDays[i])>22) {
-        //       this.names.push('leo');
-        //     } else {
-        //       this.names.push('cancer');
-        //     }
-        //   }
-        //   if (this.bdayMonths[i]=='Aug') {
-        //     if (parseInt(this.bdayDays[i])>22) {
-        //       this.names.push('virgo');
-        //     console.log('names'+this.names)
-        //     } else {
-        //       this.names.push('leo');
-        //     }
-        //   }
-        //   if (this.bdayMonths[i]=='Sep') {
-        //     if (parseInt(this.bdayDays[i])>22) {
-        //       this.names.push('libra');
-        //     } else {
-        //       this.names.push('virgo');
-        //     }
-        //   }
 
-        //   if (this.bdayMonths[i]=='Oct') {
-        //     if (parseInt(this.bdayDays[i])>22) {
-        //       this.names.push('scorpio');
-        //     } else {
-        //       this.names.push('libra');
-        //     }
-        //   }
-        //   if (this.bdayMonths[i]=='Nov') {
-        //     if (parseInt(this.bdayDays[i])>22) {
-        //       this.names.push('sagittarius');
-        //     } else {
-        //       this.names.push('scorpio');
-        //     }
-        //   }
-        //   if (this.bdayMonths[i]=='Dec') {
-        //     if (parseInt(this.bdayDays[i])>21) {
-        //       this.names.push('capricorn');
-        //     } else {
-        //       this.names.push('sagittarius');
-        //     }
-        //   }
-        //   if (this.bdayMonths[i]=='Jan') {
-        //     if (parseInt(this.bdayDays[i])>19) {
-        //       this.names.push('aquarius');
-        //     } else {
-        //       this.names.push('capricorn');
-        //     }
-        //   }
-        //   if (this.bdayMonths[i]=='Feb') { 
-        //     if (parseInt(this.bdayDays[i])>21) {
-        //       this.names.push('pisces');
-        //     } else {
-        //       this.names.push('aquarius');
-        //     }
-        //   }
-        // }
+        for(let f of this.following){
+          this.month.push(new Date(JSON.parse(f.dateOfBirth)).getMonth());
+          this.date.push(new Date(JSON.parse(f.dateOfBirth)).getDate());
+        }
+
+        for(let i = 0; i < this.month.length; i++){
+          let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          this.months.push(months[this.month[i]]);
+
+          if (this.month[i] == 1 && this.date[i] >=20 || this.month[i] == 2 && this.date[i] <=18) {this.names[i] = 'Aquarius';}
+          if (this.month[i] == 2 && this.date[i] >=19 || this.month[i] == 3 && this.date[i] <=20){this.names[i] = 'Pisces';}
+          if (this.month[i] == 3 && this.date[i] >=21 || this.month[i] == 4 && this.date[i] <=19){this.names[i] = 'Aries';}
+          if (this.month[i] == 4 && this.date[i] >=20 || this.month[i] == 5 && this.date[i] <=20){this.names[i] = 'Taurus';}
+          if (this.month[i] == 5 && this.date[i] >=21 || this.month[i] == 6 && this.date[i] <=21){this.names[i] = 'Gemini';}
+          if (this.month[i] == 6 && this.date[i] >=22 || this.month[i] == 7 && this.date[i] <=22){this.names[i] = 'Cancer';}
+          if (this.month[i] == 7 && this.date[i] >=23 || this.month[i] == 8 && this.date[i] <=22) {this.names[i] = 'Leo';}
+          if (this.month[i] == 8 && this.date[i] >=23 || this.month[i] == 9 && this.date[i] <=22) {this.names[i] = 'Virgo';}
+          if (this.month[i] == 9 && this.date[i] >=23 || this.month[i] == 10 && this.date[i] <=22){this.names[i] = 'Libra';}
+          if (this.month[i] == 10 && this.date[i] >=23 || this.month[i] == 11 && this.date[i] <=21){this.names[i] = 'Scorpio';}
+          if (this.month[i] == 11 && this.date[i] >=22 || this.month[i] == 12 && this.date[i] <=21){this.names[i] = 'Sagittarius';}
+          if (this.month[i] == 12 && this.date[i] >=22 || this.month[i] == 1 && this.date[i] <=19){this.names[i] = 'Capricorn';}
+        }
       }
     )
+  }
+
+  follow(id:number){
+    this.userService.addFollowing(id).subscribe(
+      (response: User) => {
+        this.user = response;
+        this.router.navigate(['/profile']);
+      }, (error) => {
+        console.log(error+ " what happened... it did NOT work!");
+      }
+    );
+  }
+
+  unfollow(id:number) {
+    this.userService.removeFollowing(id).subscribe(
+      (response: User) => {
+        this.user = response;
+        this.router.navigate(['/profile']);
+      }, (error) => {
+        console.log(error+ " what happened... it did NOT work!");
+      }
+    );
   }
 }
 

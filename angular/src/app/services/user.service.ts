@@ -11,21 +11,29 @@ export class UserService {
   private base_url:string;
 
   constructor(private http:HttpClient) {
-     this.base_url = "http://localhost:8080/Zodiac";
-    //this.base_url = "http://ec2-3-133-144-188.us-east-2.compute.amazonaws.com:8085/Zodiac";
+     //this.base_url = "http://localhost:8080/Zodiac";
+    this.base_url = "http://ec2-3-133-144-188.us-east-2.compute.amazonaws.com:8085/Zodiac";
 
   }
 
   getUsers():Observable<User[]>{
-      return this.http.get(`${this.base_url}/user`) as Observable<User[]>;
+    return this.http.get(`${this.base_url}/user`) as Observable<User[]>;
   };
 
   getFollowing(id:number):Observable<User[]>{
-      return this.http.get(`${this.base_url}/follower/${id}`) as Observable<User[]>;
+    return this.http.get(`${this.base_url}/follower/${id}`) as Observable<User[]>;
   }
 
   getFollowBy(id:number):Observable<User[]>{
     return this.http.get(`${this.base_url}/followee/${id}`) as Observable<User[]>;
+  }
+  
+  addFollowing(id: number): Observable<User> {
+    return this.http.put(`${this.base_url}/follower/add/${(JSON.parse(localStorage.getItem('user')).userid)}`, {"id": id}) as Observable<User>;
+  }
+
+  removeFollowing(id: number): Observable<User> {
+    return this.http.put(`${this.base_url}/follower/remove/${(JSON.parse(localStorage.getItem('user')).userid)}`, {"id": id}) as Observable<User>;
   }
 
   login(user: User): Observable<User> {
@@ -39,13 +47,4 @@ export class UserService {
   update(user: User): Observable<User> {
     return this.http.put(`${this.base_url}/user`, user) as Observable<User>;
   }
-
-  addFollowing(id: number): Observable<User> {
-    return this.http.put(`${this.base_url}/follower/add/${(JSON.parse(sessionStorage.getItem('user')).userid)}`, {"id": id}) as Observable<User>;
-  }
-
-  removeFollowing(id: number): Observable<User> {
-    return this.http.put(`${this.base_url}/follower/remove/${(JSON.parse(sessionStorage.getItem('user')).userid)}`, {"id": id}) as Observable<User>;
-  }
-
 }
