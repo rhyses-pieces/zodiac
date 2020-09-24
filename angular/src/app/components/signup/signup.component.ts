@@ -53,15 +53,25 @@ export class SignupComponent implements OnInit {
       gender: parseInt(this.gender)
     }
 
-    this.registerService.register(this.user).subscribe(
-      (response: User) => {
-        this.user = response;
-        localStorage.setItem('user', JSON.stringify(this.user));
-        localStorage.setItem('loggedin', 'true');
-        this.router.navigate(['/dashboard']);
-      }, error => {
-        console.log("what happened... it didn't work!");   
-      }
-    );
+    
+
+    if (this.username != '' || this.password != '' || this.firstName != '' || this.lastName != '' || this.date != '' || this.gender != '' && new Date(this.date).getFullYear() < 2020 || new Date(this.date).getFullYear() <= 2002) {
+      this.registerService.register(this.user).subscribe(
+        (response: User) => {
+          this.user = response;
+          localStorage.setItem('user', JSON.stringify(this.user));
+          localStorage.setItem('loggedin', 'true');
+          this.router.navigate(['/dashboard']);
+        }, error => {
+          document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Signup failed! Please check all fields to ensure information is correct.</p>";
+        }
+      );
+      
+    } else if (this.username === '' || this.password === '' || this.firstName === '' || this.lastName === '' || this.date === '' || this.gender === '') {
+      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>All fields must be filled out.</p>";
+    } else if (new Date(this.date).getFullYear() >= 2020 || new Date(this.date).getFullYear() > 2002) {
+      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Invalid date of birth. You must be 18 years or older to sign up.</p>";
+    } 
+    
 }
 }

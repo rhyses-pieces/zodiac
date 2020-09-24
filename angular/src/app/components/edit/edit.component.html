@@ -5,7 +5,7 @@
         <form class="form" #editProfile="ngForm" [appPasscheck]="['new_password', 'rep_password']">
             <div class="form-group text-box">
                 <input type="text" [(ngModel)]="firstName" value="firstName" name="firstName" minlength="5" required> 
-                <label for="firstName">Username: </label>
+                <label for="firstName">First Name: </label>
             </div>
             <div class="form-group text-box">
                 <input type="text" [(ngModel)]="lastName" name="lastName" minlength="5" required> 
@@ -41,9 +41,6 @@
             <div class="form-group text-box">
                 <input [type]="type2" [(ngModel)]="rep_password" name="rep_password" minlength="5"><i [class]="pass2" (click)="rep_show()"></i>
                 <label for="password">Repeat Password </label>
-                <div *ngIf="rep_password.touched && rep_password.errors?.passwordMismatch">
-                    test
-                </div>
             </div>
             <div class="form-group text-box" id="error"></div>
             <div class="row d-flex flex-row justify-content-around">

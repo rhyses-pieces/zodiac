@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -14,46 +14,46 @@ export class EditComponent implements OnInit {
 
   placement = 'top';
   user: User = (JSON.parse(localStorage.getItem('user')));
-  zodiacs:string;
+  zodiacs: string;
   username: string = this.user.username;
-  firstName: string =  this.user.firstName;
+  firstName: string = this.user.firstName;
   lastName: string = this.user.lastName;
   dob: string = new Date(this.user.dateOfBirth).toUTCString();
-  gender:number = this.user.gender;
+  gender: number = this.user.gender;
 
-  new_password:FormControl;
-  rep_password:FormControl;
+  new_password: FormControl;
+  rep_password: FormControl;
 
-  type ='password';
+  type = 'password';
   pass = 'fas fa-eye text-white';
 
-  type2 ='password';
+  type2 = 'password';
   pass2 = 'fas fa-eye text-white';
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  new_show(){
-    if(this.type==='password'){
+  new_show() {
+    if (this.type === 'password') {
       this.type = 'text';
       this.pass = 'fas fa-eye-slash text-white';
-    } else{
+    } else {
       this.type = 'password';
       this.pass = 'fas fa-eye text-white';
     }
   }
 
-  rep_show(){
-    if(this.type2==='password'){
+  rep_show() {
+    if (this.type2 === 'password') {
       this.type2 = 'text';
       this.pass2 = 'fas fa-eye-slash text-white';
-    } else{
+    } else {
       this.type2 = 'password';
       this.pass2 = 'fas fa-eye text-white';
     }
   }
 
-   edit() {
-     if(this.new_password === this.rep_password){
+  edit() {
+    if (this.new_password === this.rep_password) {
       this.user = {
         userid: this.user.userid,
         username: this.username,
@@ -70,10 +70,12 @@ export class EditComponent implements OnInit {
         (response: User) => {
           this.user = response;
           this.router.navigate(['/profile']);
-        }, error => {console.log("what happened... it didn't work!")}
+        }, error => {
+          document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Failed to update profile.</p>";
+        }
       );
-    } else{
-       document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Passwords don't match!</p>";
+    } else {
+      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Passwords don't match!</p>";
     }
   }
 }
