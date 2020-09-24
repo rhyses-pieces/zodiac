@@ -13,7 +13,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ZodiacHomeComponent } from './components/zodiac-home/zodiac-home.component';
 import { EditComponent } from './components/edit/edit.component';
-
+import { PasscheckDirective } from './services/passcheck.directive';
+import { CheckUserDirective } from './services/check-user.directive';
 
 @NgModule({
   declarations: [

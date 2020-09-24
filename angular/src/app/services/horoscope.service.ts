@@ -11,7 +11,7 @@ export class HoroscopeService {
 
   private baseUrl: string;
 
-  constructor(private http: HttpClient) {this.baseUrl = "http://horoscope-api.herokuapp.com/";}
+  constructor(private http: HttpClient) {this.baseUrl = "http://horoscope-api.herokuapp.com";}
 
   getHoroscope(sunsign): Observable<Horoscope> {
     const headerDict = {
