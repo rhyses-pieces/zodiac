@@ -12,7 +12,7 @@ export class NavComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('loggedin') == 'true') {
+    if (localStorage.getItem('loggedin') == 'true') {
       this.hide = true;
     }
   }

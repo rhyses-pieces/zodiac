@@ -3,15 +3,17 @@
     <div class="p-5 w-75">
         <section class="d-flex flex-row w-100">
             <article id="profile" class="d-flex flex-row">
-                <img [src]="profileImage" alt="profileAlt">
+                <div id="image">
+                    <img [src]="profileImage" alt="profileAlt">
+                </div>
                 <div id="profileInfo" class="py-4 px-5">
                     <div>
                         <h1 style="font-size: 48px;">{{firstName}} {{lastName}}</h1>
                         <h1>{{ zodiac.name }}</h1>
-                        <h4>{{ user.description }} this is where description is</h4>
+                        <blockquote>{{ user.description }} this is where description is! It can be as long or short as you'd like it to be. What would you like to say to the world?</blockquote>
                     </div>
                     <div class="py-3">
-                        <a routerLink="edit"class="btn btn-primary btn-lg py-3">Edit Profile</a>
+                        <a routerLink="edit" class="btn btn-primary btn-lg py-3">Edit Profile</a>
                     </div>
                 </div>
             </article>
@@ -31,23 +33,25 @@
                     <h2>Followed By</h2>
                     <span class="tip" *ngFor="let f of followBy; index as i">
                         <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
-                        <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png" alt="assets/images/profile_picture.png" width="100px">
+                        <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png"
+                            alt="assets/images/profile_picture.png" width="100px">
                     </span>
                 </div>
                 <div class="users">
                     <h2>Following</h2>
                     <span class="tip" *ngFor="let f of following; index as i">
                         <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
-                        <img class="rounded-circle"  src="assets/images/image-{{f.userid}}.png" alt="assets/images/profile_picture.png" width="100px">
+                        <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png"
+                            alt="assets/images/profile_picture.png" width="100px">
                     </span>
                 </div>
             </div>
-           
+
         </section>
     </div>
     <aside>
         <div id="zodiacInfo">
-            <h1 class="text-center">{{zodiac.name}}  - <span id="symbol"> {{zodiac.symbol}}</span></h1>
+            <h1 class="text-center">{{zodiac.name}} - <span id="symbol"> {{zodiac.symbol}}</span></h1>
             <img [src]="zodiacImage" alt="zodiac image" width="100%" class="p-4 pb-5">
             <h3 class="text-center">{{zodiac.sun_dates[0]}} - {{zodiac.sun_dates[1]}}</h3>
             <div class="p-3">

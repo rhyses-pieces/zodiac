@@ -2,63 +2,64 @@
 <main>
     <section class="row container-fluid py-5">
         <div class="p-3 w-25" *ngFor="let z of zodiacs">
-            <article class="cards" id="zodiacName" data-toggle="modal" data-target="#zModal" (click)="zodiacDetails(z.name)">
-            <h1 id="zodiacTitle">{{z.name}}</h1>
-            <p><span class="badge badge-info">{{ z.element }}</span></p>
-            <p id="zodiacDate">Dates: {{z.sun_dates[0]}} - {{z.sun_dates[1]}}</p>
-            <ul class="text-white">
-                <li *ngFor="let i of z.compatibility">
-                    {{ i }}
-                </li>
-            </ul>
-        </article>
+            <article class="cards" id="zodiacName" data-toggle="modal" data-target="#zModal"
+                (click)="zodiacDetails(z.name)">
+                <h1 id="zodiacTitle">{{z.name}}</h1>
+                <p><span class="badge badge-info">{{ z.element }}</span></p>
+                <p id="zodiacDate">Dates: {{z.sun_dates[0]}} - {{z.sun_dates[1]}}</p>
+                <ul class="text-white">
+                    <li *ngFor="let i of z.compatibility">
+                        {{ i }}
+                    </li>
+                </ul>
+            </article>
         </div>
         <div class="modal fade" id="zModal" tabindex="-1" aria-labelledby="zodiacLabel" aria-hidden="true">
             <div class="modal-dialog">
-            <div class="modal-content zodiacModal">
-                <div class="modal-header text-center">
-                <h1 class="modal-title" id="zodiacLabel">{{name}}  - <span id="symbol"> {{symbol}}</span></h1>
-                <button type="button" class="close modalClose" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-                <div class="modal-body">
-                     <img [src]="zodiacImage" alt="zodiac image" width="100%">
-                     <h5>Element</h5>
-        <p>{{element}}</p>
-        <h5>Cardinality</h5>
-        <p>{{cardinality}}</p>
-        <h5>Compatibility</h5>
-        <p>{{compatibility}}</p>
-        <h5>Ruling Planet</h5>
-        <p>{{ruling_planet}}</p>
-        <h5>How to spot a {{name}}</h5>
-        <p>{{how_to_spot}}</p>
-        <h5>Secret Wish</h5>
-        <p>{{secret_wish}}</p>
-        <h5>Bad Traits</h5>
-        <p>{{bad_traits}}</p>
-        <h5>Good Traits</h5>
-        <p>{{good_traits}}</p>
-        <h5>Favorites</h5>
-        <p>{{favorites}}</p>
-        <h5>Keywords</h5>
-        <p>{{keywords}}</p>
-        <h5>Vibe</h5>
-        <p>{{vibe}}</p>
-        <h5>Body Parts</h5>
-        <p>{{body_parts}}</p>
-        <h5>Mental Traits</h5>
-        <p>{{mental_traits}}</p>
-        <h5>Physical Traits</h5>
-        <p>{{physical_traits}}</p>
-        <h5>Famous People</h5>
-        <p>{{famous_people}}</p>
+                <div class="modal-content zodiacModal">
+                    <div class="modal-header text-center">
+                        <h1 class="modal-title" id="zodiacLabel">{{name}} - <span id="symbol"> {{symbol}}</span></h1>
+                        <button type="button" class="close modalClose" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img [src]="zodiacImage" alt="zodiac image" width="100%">
+                        <h5>Element</h5>
+                        <p>{{element}}</p>
+                        <h5>Cardinality</h5>
+                        <p>{{cardinality}}</p>
+                        <h5>Compatibility</h5>
+                        <p>{{compatibility}}</p>
+                        <h5>Ruling Planet</h5>
+                        <p>{{ruling_planet}}</p>
+                        <h5>How to spot a {{name}}</h5>
+                        <p>{{how_to_spot}}</p>
+                        <h5>Secret Wish</h5>
+                        <p>{{secret_wish}}</p>
+                        <h5>Bad Traits</h5>
+                        <p>{{bad_traits}}</p>
+                        <h5>Good Traits</h5>
+                        <p>{{good_traits}}</p>
+                        <h5>Favorites</h5>
+                        <p>{{favorites}}</p>
+                        <h5>Keywords</h5>
+                        <p>{{keywords}}</p>
+                        <h5>Vibe</h5>
+                        <p>{{vibe}}</p>
+                        <h5>Body Parts</h5>
+                        <p>{{body_parts}}</p>
+                        <h5>Mental Traits</h5>
+                        <p>{{mental_traits}}</p>
+                        <h5>Physical Traits</h5>
+                        <p>{{physical_traits}}</p>
+                        <h5>Famous People</h5>
+                        <p>{{famous_people}}</p>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </section>
 
-    
+
 </main>
