@@ -13,7 +13,6 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ZodiacHomeComponent } from './components/zodiac-home/zodiac-home.component';
-import { FollowingComponent } from './components/following/following.component';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { EditComponent } from './components/edit/edit.component';
 
@@ -27,7 +26,6 @@ import { EditComponent } from './components/edit/edit.component';
     DashboardComponent,
     ProfileComponent,
     ZodiacHomeComponent,
-    FollowingComponent,
     MoreInfoComponent,
     EditComponent
   ],

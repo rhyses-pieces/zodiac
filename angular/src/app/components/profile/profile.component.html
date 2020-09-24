@@ -1,58 +1,87 @@
 <app-nav></app-nav>
 <main class="container-fluid">
-    <div class="p-5">
-        <article id="profile">
-            <img [src]="profileImage" class=""  [alt]="profileAlt" width="200px" height="200px">
-            <h3>{{firstName}} {{lastName}}</h3>
-            <h4>{{zodiac.name}}</h4>
-            <p>Sun sign: {{zodiac.element}} </p>
-            <p>Sun dates: {{zodiac.sun_dates[0]}} to {{zodiac.sun_dates[1]}} </p>
-            <button class="btn">Follow User <i class="far fa-heart"></i></button>
-            <a routerLink="edit"><button class="btn">Edit Profile</button></a>
-            <div class="clearfix"></div>
-        </article>
-        <article id="horoscope" class="p-4">
-            <h3 class="h3">Today's Date: {{ horo.date }}</h3>
-            <p>{{ horo.horoscope }}</p>
-        </article>
+    <div class="p-5 w-75">
+        <section class="d-flex flex-row w-100">
+            <article id="profile" class="d-flex flex-row">
+                <img [src]="profileImage" alt="profileAlt">
+                <div id="profileInfo" class="py-4 px-5">
+                    <div>
+                        <h1 style="font-size: 48px;">{{firstName}} {{lastName}}</h1>
+                        <h1>{{ zodiac.name }}</h1>
+                        <h4>{{ user.description }} this is where description is</h4>
+                    </div>
+                    <div class="py-3">
+                        <a routerLink="edit"class="btn btn-primary btn-lg py-3">Edit Profile</a>
+                    </div>
+                </div>
+            </article>
+            <article class="p-5" id="horoscope">
+                <h3>Today's Date: {{ horo.date }}</h3>
+                <p style="font-size: 20px; padding: 1em 0; overflow-y: auto;">{{ horo.horoscope }}</p>
+            </article>
+        </section>
+        <section class="d-flex flex-row w-100 mt-5">
+            <div id="quote">
+                <h2 class="pb-3">Inspiring Quote</h2>
+                <p style="font-size: 27px; line-height: 50px;">{{ quote.message }}</p>
+                <p style="font-size: 21px;">- {{ quote.author }}</p>
+            </div>
+            <div id="follow" class="d-flex flex-column align-content-between">
+                <div class="users">
+                    <h2>Followed By</h2>
+                    <span class="tip" *ngFor="let f of followBy; index as i">
+                        <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
+                        <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png" alt="placeholder" width="100px">
+                    </span>
+                </div>
+                <div class="users">
+                    <h2>Following</h2>
+                    <span class="tip" *ngFor="let f of following; index as i">
+                        <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
+                        <img class="rounded-circle"  src="assets/images/image-{{f.userid}}.png" alt="placeholder" width="100px">
+                    </span>
+                </div>
+            </div>
+           
+        </section>
     </div>
-
-<aside>
-    <div id="zodiacInfo">
-        <img [src]="zodiacImage" alt="zodiac image" width="100%">
-        <h2>{{zodiac.name}}</h2>
-        <p>{{zodiac.symbol}}</p>
-        <p>{{zodiac.sun_dates[0]}} - {{zodiac.sun_dates[1]}}</p>
-        <p>{{zodiac.element}}</p>
-        <h5>Cardinality</h5>
-        <p>{{zodiac.cardinality}}</p>
-        <h5>Compatibility</h5>
-        <p>{{zodiac.compatibility}}</p>
-        <h5>Ruling Planet</h5>
-        <p>{{zodiac.ruling_planet}}</p>
-        <h5>How to spot a {{zodiac.name}}</h5>
-        <p>{{zodiac.how_to_spot}}</p>
-        <h5>Secret Wish</h5>
-        <p>{{zodiac.secret_wish}}</p>
-        <h5>Bad Traits</h5>
-        <p>{{zodiac.bad_traits}}</p>
-        <h5>Good Traits</h5>
-        <p>{{zodiac.good_traits}}</p>
-        <h5>Favorites</h5>
-        <p>{{zodiac.favorites}}</p>
-        <h5>Keywords</h5>
-        <p>{{zodiac.keywords}}</p>
-        <h5>Vibe</h5>
-        <p>{{zodiac.vibe}}</p>
-        <h5>Body Parts</h5>
-        <p>{{zodiac.body_parts}}</p>
-        <h5>Mental Traits</h5>
-        <p>{{zodiac.mental_traits}}</p>
-        <h5>Physical Traits</h5>
-        <p>{{zodiac.physical_traits}}</p>
-        <h5>Famous People</h5>
-        <p>{{zodiac.famous_people}}</p>
-    </div>
-</aside>
-
+    <aside>
+        <div id="zodiacInfo">
+            <h1 class="text-center">{{zodiac.name}}  - <span id="symbol"> {{zodiac.symbol}}</span></h1>
+            <img [src]="zodiacImage" alt="zodiac image" width="100%" class="p-4 pb-5">
+            <h3 class="text-center">{{zodiac.sun_dates[0]}} - {{zodiac.sun_dates[1]}}</h3>
+            <div class="p-3">
+                <h5>Element</h5>
+                <p>{{zodiac.element}}</p>
+                <h5>Cardinality</h5>
+                <p>{{zodiac.cardinality}}</p>
+                <h5>Compatibility</h5>
+                <p>{{zodiac.compatibility}}</p>
+                <h5>Ruling Planet</h5>
+                <p>{{zodiac.ruling_planet}}</p>
+                <h5>How to spot a {{zodiac.name}}</h5>
+                <p>{{zodiac.how_to_spot}}</p>
+                <h5>Secret Wish</h5>
+                <p>{{zodiac.secret_wish}}</p>
+                <h5>Bad Traits</h5>
+                <p>{{zodiac.bad_traits}}</p>
+                <h5>Good Traits</h5>
+                <p>{{zodiac.good_traits}}</p>
+                <h5>Favorites</h5>
+                <p>{{zodiac.favorites}}</p>
+                <h5>Keywords</h5>
+                <p>{{zodiac.keywords}}</p>
+                <h5>Vibe</h5>
+                <p>{{zodiac.vibe}}</p>
+                <h5>Body Parts</h5>
+                <p>{{zodiac.body_parts}}</p>
+                <h5>Mental Traits</h5>
+                <p>{{zodiac.mental_traits}}</p>
+                <h5>Physical Traits</h5>
+                <p>{{zodiac.physical_traits}}</p>
+                <h5>Famous People</h5>
+                <p>{{zodiac.famous_people}}</p>
+            </div>
+        </div>
+    </aside>
 </main>

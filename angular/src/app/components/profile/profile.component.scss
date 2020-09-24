@@ -4,18 +4,20 @@ main{
     background-color: black;
     background-size: cover;
     background-position-y: center;
-    min-height: 100vh;
+    min-height: 98vh;
     position: relative;
 }
-#zodiacInfo, #profile, #horoscope{
-    max-width: 750px;
-    border: 1px solid;
+#zodiacInfo, #profile, #horoscope, #quote, .users{
     border-radius: 6px;
     padding:3em;
     background: rgba(0,0,0,0.7);
     box-shadow: 0 15px 25px rgba(0,0,0, 0.2);
     box-sizing: border-box;
 }
+
+#quote{width: 30%; margin-right: 2.5em;}
+#follow{width: 68%;}
+#horoscope{width: 30%; margin: 0; background-color: #2d036c;}
 
 #zodiacInfo{
     position: absolute;
@@ -25,14 +27,41 @@ main{
     overflow-y: scroll;
     scroll-behavior: smooth;
     width: 25%;
+    #symbol{
+        font-family: $font2;
+        font-size: 32px;
+    }
+       
+}
+.users, #quote{
+    span{
+        padding: 1.5em 2.5em 1em 0;
+    }
+}
+.users{
+    &:first-child{
+    margin-bottom: 1.75em;}
 }
 
 #profile{
-    margin: 0;
-    padding: 2em;
+    margin: 0; padding: 0;
+    width: 68%;
+    margin-right: 2.5em;
 
+    img{
+        border-radius: 6px;
+        width: 35%;
+    }
+
+    #profileInfo{
+        width: 65%;
+        a{
+            background-color: $color2;
+            border: none;
+        }
+    }
+    
     h1{
-        text-align: center;
         color: white;
     }
     .text-box{
@@ -88,17 +117,37 @@ main{
     p{
         padding-top: 1em;
         margin: 0;
-        text-align: center;
         color: white;
 
         a{
             color:$color2;
         }
     }
-
 }
 
-.profile img {
-    width: 150px;
-    height: auto;
+.tip {
+    position: relative;
+    display: inline-block;
+
+    .tiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    position: absolute;
+    top: -25px;
+    z-index: 1;
+    }
+    &:hover {
+        .tiptext{
+            visibility: visible;
+        }
+    } 
+    
 }
+  
+  

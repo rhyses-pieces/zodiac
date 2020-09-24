@@ -5,7 +5,19 @@ main{
     background-size: cover;
     background-position-y: center;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 3em;
 }
+#title{
+    position: relative;
+    font-size: 120px;
+    top: -150px;
+    text-shadow: 3px 3px 15px #b95acc;
+  }
 #login{
 
     width: 33%;

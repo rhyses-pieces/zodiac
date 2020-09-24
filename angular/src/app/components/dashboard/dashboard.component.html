@@ -2,26 +2,15 @@
 <main>
   <h2>Following</h2>
   <article *ngFor="let f of following" class="profile p-4 container w-100">
-    <img class="float-left mr-4 rounded" src="https://placekitten.com/g/250/250" alt="placeholder">
+    <img class="float-left mr-4 rounded" src="assets/images/image-{{f.userid}}.png" alt="placeholder">
     <h3 class="h3">{{f.firstName}} {{f.lastName}}</h3>
-    <button class="btn btn-primary" type="submit" (click)="unfollow(u.userid)">Unfollow </button> 
-  </article>
-
-  <h2>Followed By</h2>
-  <article *ngFor="let f of followBy; index as i" class="profile p-4 container w-100">
-    <img class="float-left mr-4 rounded" src="https://placekitten.com/g/250/250" alt="placeholder">
-    <h3 class="h3">{{f.firstName}} {{f.lastName}}</h3>
-    <div>
-    <h3>{{names[i]}}</h3>
-    <h3>{{months[i]}}</h3>
-    </div>
-    <button class="btn btn-primary" type="submit" (click)="follow(f.userid)">Follow </button>
+    <button class="btn btn-primary" type="submit" (click)="unfollow(f.userid)">Unfollow </button>                         
   </article>
 
   <h2>All Users</h2>
   <article *ngFor="let u of notFollowing; index as i" class="profile p-4 container w-100">
-    <img class="float-left mr-4 rounded" src="https://placekitten.com/g/250/250" alt="placeholder">
+    <img class="float-left mr-4 rounded" src="assets/images/image-{{u.userid}}.png" alt="placeholder">
     <h3 class="h3">{{u.firstName}} {{u.lastName}}</h3>
-    <button class="btn btn-primary" type="submit" (click)="unfollow(u.userid)">Unfollow </button> 
+    <button class="btn btn-primary" type="submit" (click)="follow(u.userid)"><i class="far fa-heart"></i>Follow </button> 
   </article>
 </main>
