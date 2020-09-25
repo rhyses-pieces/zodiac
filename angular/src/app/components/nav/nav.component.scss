@@ -1,15 +1,21 @@
 @import '../../../_variables';
-main{
-    background-color: $color2;
-    display: flex;
-    justify-content: center;
+
+main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: $color2;
+  display: flex;
+  justify-content: center;
 }
 
 .nav-link {
-    color: whitesmoke;
-    padding: 1em 2em;
+  color: $light;
+  padding: 1em 2em;
 }
 
 .nav-link:hover {
-    background-color: darken($color2, 15%);
+  background-color: darken($color2, 15%);
 }

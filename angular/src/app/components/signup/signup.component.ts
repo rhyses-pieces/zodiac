@@ -12,7 +12,6 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  placement = 'top';
   user: User;
   userid: number;
   username: string;
@@ -37,56 +36,50 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private registerService: UserService,
-    private zodiacUser:ZodiacService,
     private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  show(){
-    if(this.type==='password'){
+  show() {
+    if (this.type === 'password') {
       this.type = 'text';
       this.pass = 'fas fa-eye text-white';
-    } else{
+    } else {
       this.type = 'password';
       this.pass = 'fas fa-eye-slash text-white';
     }
   }
  
   register() {
-    console.log(this.newDate.year)
-    this.dob = new Date(this.newDate.year,this.newDate.month-1,this.newDate.day,0,0,0,0);
-    this.user = {      
-      userid: this.userid,
-      username: this.username,
-      password: this.password,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      dateOfBirth: this.dob.toUTCString(),
-      //zodiac: this.zodiac,
-      description: this.description,
-      gender: parseInt(this.gender)
-    }
+    if (new Date(this.date).getFullYear() < 2020 || new Date(this.date).getFullYear() <= 2002) {
+      this.user = {
+        userid: this.userid,
+        username: this.username,
+        password: this.password,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        dateOfBirth: new Date(this.date).toUTCString(),
+        description: this.description,
+        gender: parseInt(this.gender)
+      }
 
-    if (this.username != '' || this.password != '' || this.firstName != '' || this.lastName != '' || this.newDate != null || this.gender != '' && this.newDate.year > 1920 || this.newDate.year <= 2002) {
-      this.registerService.register(this.user).subscribe(
-        (response: User) => {
-          this.user = response;
-          localStorage.setItem('user', JSON.stringify(this.user));
-          localStorage.setItem('loggedin', 'true');
-          localStorage.setItem('psw', JSON.stringify(this.password));
-        this.zodiacInfo();
-          this.router.navigate(['/dashboard']);
-          
-        }, error => {
-          document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Signup failed! Please check all fields to ensure information is correct.</p>";
-        }
-      );
-      
-    } else if (this.username === '' || this.password === '' || this.firstName === '' || this.lastName === '' || this.newDate === null || this.gender === '') {
-      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>All fields must be filled out.</p>";console.log('sit2')
-    } else if (this.newDate.year >= 1920 || this.newDate.year > 2002) {
-      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Invalid date of birth. You must be 18 years or older to sign up.</p>";console.log('sit3')
-    } 
+      if (this.username != '' || this.password != '' || this.firstName != '' || this.lastName != '' || this.date != '' || this.gender != '' || new Date(this.date).getFullYear() < 2020 || new Date(this.date).getFullYear() <= 2002) {
+        this.registerService.register(this.user).subscribe(
+          (response: User) => {
+            this.user = response;
+            localStorage.setItem('user', JSON.stringify(this.user));
+            localStorage.setItem('loggedin', 'true');
+            this.router.navigate(['/dashboard']);
+          }, error => {
+            document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Signup failed! Please check all fields to ensure information is correct.</p>";
+          }
+        );
+      } else if (this.username === '' || this.password === '' || this.firstName === '' || this.lastName === '' || this.date === '' || this.gender === '') {
+        document.getElementById("error").innerHTML = "<p class='alert alert-danger'>All fields must be filled out.</p>";
+      }
+    } else {
+      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Invalid date of birth. You must be 18 years or older to sign up.</p>";
+    }
   }
 
   zodiacInfo(){
@@ -115,5 +108,4 @@ export class SignupComponent implements OnInit {
       }
     )
   };
-    
 }

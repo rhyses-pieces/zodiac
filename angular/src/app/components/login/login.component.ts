@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   name: string;
   date: number;
 
-  type ='password';
+  type = 'password';
   pass = 'fas fa-eye-slash text-white';
 
   ngOnInit(): void { }
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     if (this.type === 'password') {
       this.type = 'text';
       this.pass = 'fas fa-eye text-white';
-    } else{
+    } else {
       this.type = 'password';
       this.pass = 'fas fa-eye-slash text-white';
     }

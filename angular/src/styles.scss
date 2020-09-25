@@ -4,20 +4,43 @@
 // styling
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Oswald:wght@700&display=swap');
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Abril Fatface', cursive;
-  color: whitesmoke;
+  ::-webkit-scrollbar {
+    width: 20px;
+    height: 20px;
+    background-color: $dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 8px solid $dark;
+    border-radius: 20px;
+    background-color: $color4;
+  }
+
+body {
+  background-image: $body-bg-img, url('./assets/images/galaxy.jpg');
+  background-size: 100%, cover;
+  background-position: top center, center;
+  background-repeat: repeat-x, no-repeat;
+  background-blend-mode: multiply;
 }
 
-p{
-  font-family: 'Oswald', sans-serif;
-  color: whitesmoke;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Abril Fatface', cursive;
+  color: $light;
+}
+
+p {
+  color: $light;
 }
 
 article {
+  border: 1px solid;
+  border-radius: 6px;
   margin: 1rem 0;
-  border-radius: 10px;
-  background: $light;
+  padding: 3em;
+  background: rgba($color: $dark, $alpha: 0.7);
+  box-shadow: 0 15px 25px rgba($color: $dark, $alpha: 0.2);
+  box-sizing: border-box;
 }
 
 p:last-child {

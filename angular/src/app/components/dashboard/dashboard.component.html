@@ -1,27 +1,34 @@
 <app-nav></app-nav>
-<main class="py-4">
-  <h2>Dashboard</h2>
-  <article *ngFor="let f of following; index as i" class="p-4 container w-100">
-    <div class="follow-box">
-      <img class="float-left mr-4 rounded" src="assets/images/profile-image-{{f.userid}}.jpg">
+
+<main class="container">
+  
+  <section id="postings" *ngFor="let p of postings; index as i" class="profile p-4 container w-100">
+    <h1>{{description}}</h1>
+    <h3>{{p}}</h3>
+  </section>
+  <h2 class="h2 mt-5">Dashboard</h2>
+  <section class="row justify-content-center">
+    <div class="col-md-3" *ngFor="let f of following">
+      <article class="profile p-4 w-100">
+        <img class="float-left mr-4 rounded" src="assets/images/image-{{f.userid}}.png">
+        <h4 class="h4">{{f.firstName}} {{f.lastName}}</h4>
+        <button class="btn btn-danger" type="submit" (click)="unfollow(f.userid)">Unfollow</button>
+      </article>
     </div>
-    <div>
-      <h1>{{f.firstName}} {{f.lastName}}</h1>
-      <h3>{{months[i]}} {{date[i]}}</h3>
-      <h3>{{names[i]}}</h3>
-      <button class="btn btn-primary" type="submit" (click)="unfollow(f.userid)">Unfollow</button>
-    </div>                         
-  </article>
-  <h2>Browse</h2>
-  <article *ngFor="let u of notFollowing; index as i" class="p-4 container w-100">
-    <div class="follow-box">
-      <img class="float-left mr-4 rounded" src="assets/images/profile-image-{{u.userid}}.jpg">
+  </section>
+
+
+  <h2 class="h2 mt-4">Browse</h2>
+  <section class="row justify-content-center">
+    <div class="col-md-3" *ngFor="let u of notFollowing; index as i">
+      <article class="profile p-4 w-100">
+        <img class="float-left mr-4 rounded" src="assets/images/image-{{u.userid}}.png" onerror="this.style.opacity='0'">
+        <h4 class="h4">{{u.firstName}} {{u.lastName}}</h4>
+
+        <button class="btn btn-primary" type="submit" (click)="follow(u.userid)">Follow
+        </button>
+      </article>
     </div>
-    <div>
-      <h1>{{u.firstName}} {{u.lastName}}</h1>
-      <h3>{{months2[i]}} {{date2[i]}}</h3>
-      <h3>{{names2[i]}}</h3>
-      <button class="btn btn-primary" type="submit" (click)="follow(u.userid)"><i class="far fa-heart"></i>Follow </button> 
-   </div>
-  </article>
+  </section>
+
 </main>

@@ -12,19 +12,20 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private userService:UserService, private zodiacUser:ZodiacService, private router: Router) {}
- 
+  constructor(private userService: UserService, private zodiacUser: ZodiacService, private router: Router) { }
+
   users: User[];
   user: User;
   id: number;
-  description:string;
-  postings:string[]=[];
+  description: string;
+  postings: string[];
 
-  zodiacs: Zodiac[]=[];
-  month:number[]=[];
-  months:string[]=[];
-  names: string[]=[];
-  date: number[]=[];
+  zodiacs: Zodiac[] = [];
+  bday: Date[] = [];
+  month: number[] = [];
+  months: string[] = [];
+  names: string[] = [];
+  date: number[] = [];
 
   month2:number[]=[];
   months2:string[]=[];
@@ -50,13 +51,12 @@ export class DashboardComponent implements OnInit {
     this.id = (JSON.parse(localStorage.getItem('user')).userid);
 
     this.userService.getUsers().subscribe(
-      (data)=>{
+      (data) => {
         this.users = data.filter(not => not.userid !== this.id);
         //People you are NOT following
         
         this.notFollowing = this.users.filter(({ userid: id1 }) => !this.following.some(({ userid: id2 }) => id2 === id1));
         //People who are NOT following YOU
-       // this.notFollowedBy = this.users.filter(({ userid: id1 }) => !this.followBy.some(({ userid: id2 }) => id2 === id1));
 
           for(let f of this.notFollowing){
             this.month2.push(new Date(JSON.parse(f.dateOfBirth)).getMonth());
@@ -88,50 +88,50 @@ export class DashboardComponent implements OnInit {
       (data) => {
         this.following = data;
 
-        for(let f of this.following){
+        for (let f of this.following) {
           this.month.push(new Date(JSON.parse(f.dateOfBirth)).getMonth());
           this.date.push(new Date(JSON.parse(f.dateOfBirth)).getDate());
         }
 
-        for(let i = 0; i < this.month.length; i++){
+        for (let i = 0; i < this.month.length; i++) {
           let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
           this.months.push(months[this.month[i]]);
 
-          if (this.month[i] == 1 && this.date[i] >=20 || this.month[i] == 2 && this.date[i] <=18) {this.names[i] = 'Aquarius';}
-          if (this.month[i] == 2 && this.date[i] >=19 || this.month[i] == 3 && this.date[i] <=20){this.names[i] = 'Pisces';}
-          if (this.month[i] == 3 && this.date[i] >=21 || this.month[i] == 4 && this.date[i] <=19){this.names[i] = 'Aries';}
-          if (this.month[i] == 4 && this.date[i] >=20 || this.month[i] == 5 && this.date[i] <=20){this.names[i] = 'Taurus';}
-          if (this.month[i] == 5 && this.date[i] >=21 || this.month[i] == 6 && this.date[i] <=21){this.names[i] = 'Gemini';}
-          if (this.month[i] == 6 && this.date[i] >=22 || this.month[i] == 7 && this.date[i] <=22){this.names[i] = 'Cancer';}
-          if (this.month[i] == 7 && this.date[i] >=23 || this.month[i] == 8 && this.date[i] <=22) {this.names[i] = 'Leo';}
-          if (this.month[i] == 8 && this.date[i] >=23 || this.month[i] == 9 && this.date[i] <=22) {this.names[i] = 'Virgo';}
-          if (this.month[i] == 9 && this.date[i] >=23 || this.month[i] == 10 && this.date[i] <=22){this.names[i] = 'Libra';}
-          if (this.month[i] == 10 && this.date[i] >=23 || this.month[i] == 11 && this.date[i] <=21){this.names[i] = 'Scorpio';}
-          if (this.month[i] == 11 && this.date[i] >=22 || this.month[i] == 12 && this.date[i] <=21){this.names[i] = 'Sagittarius';}
-          if (this.month[i] == 12 && this.date[i] >=22 || this.month[i] == 1 && this.date[i] <=19){this.names[i] = 'Capricorn';}
+          if (this.month[i] == 1 && this.date[i] >= 20 || this.month[i] == 2 && this.date[i] <= 18) { this.names[i] = 'Aquarius'; }
+          if (this.month[i] == 2 && this.date[i] >= 19 || this.month[i] == 3 && this.date[i] <= 20) { this.names[i] = 'Pisces'; }
+          if (this.month[i] == 3 && this.date[i] >= 21 || this.month[i] == 4 && this.date[i] <= 19) { this.names[i] = 'Aries'; }
+          if (this.month[i] == 4 && this.date[i] >= 20 || this.month[i] == 5 && this.date[i] <= 20) { this.names[i] = 'Taurus'; }
+          if (this.month[i] == 5 && this.date[i] >= 21 || this.month[i] == 6 && this.date[i] <= 21) { this.names[i] = 'Gemini'; }
+          if (this.month[i] == 6 && this.date[i] >= 22 || this.month[i] == 7 && this.date[i] <= 22) { this.names[i] = 'Cancer'; }
+          if (this.month[i] == 7 && this.date[i] >= 23 || this.month[i] == 8 && this.date[i] <= 22) { this.names[i] = 'Leo'; }
+          if (this.month[i] == 8 && this.date[i] >= 23 || this.month[i] == 9 && this.date[i] <= 22) { this.names[i] = 'Virgo'; }
+          if (this.month[i] == 9 && this.date[i] >= 23 || this.month[i] == 10 && this.date[i] <= 22) { this.names[i] = 'Libra'; }
+          if (this.month[i] == 10 && this.date[i] >= 23 || this.month[i] == 11 && this.date[i] <= 21) { this.names[i] = 'Scorpio'; }
+          if (this.month[i] == 11 && this.date[i] >= 22 || this.month[i] == 12 && this.date[i] <= 21) { this.names[i] = 'Sagittarius'; }
+          if (this.month[i] == 12 && this.date[i] >= 22 || this.month[i] == 1 && this.date[i] <= 19) { this.names[i] = 'Capricorn'; }
         }
       }
     )
   }
 
-  follow(id:number){
+  follow(id: number) {
     this.userService.addFollowing(id).subscribe(
       (response: User) => {
         this.user = response;
         this.router.navigate(['/profile']);
       }, (error) => {
-        console.log(error+ " what happened... it did NOT work!");
+        console.log(error + " what happened... it did NOT work!");
       }
     );
   }
 
-  unfollow(id:number) {
+  unfollow(id: number) {
     this.userService.removeFollowing(id).subscribe(
       (response: User) => {
         this.user = response;
         this.router.navigate(['/profile']);
       }, (error) => {
-        console.log(error+ " what happened... it did NOT work!");
+        console.log(error + " what happened... it did NOT work!");
       }
     );
   }

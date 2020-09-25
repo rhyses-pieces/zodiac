@@ -1,49 +1,83 @@
 @import '../../../_variables';
-main{
-    background-image: url("../images/galaxy.jpg");
-    background-color: black;
-    background-size: cover;
-    background-position-y: center;
-    min-height: 98vh;
-    position: relative;
-}
-#zodiacInfo, #profile, #horoscope, #quote, .users{
-    border-radius: 6px;
-    padding:3em;
-    background: rgba(0,0,0,0.7);
-    box-shadow: 0 15px 25px rgba(0,0,0, 0.2);
-    box-sizing: border-box;
+
+main {
+  min-height: 98vh;
+  position: relative;
 }
 
-#horoscope{width: 30%; margin: 0; background-color: #2d036c;}
-#quote{width: 30%; margin-right: 2.5em;}
-#follow{width: 68%;}
+.blockquote {
+  font-size: 1.45rem;
+  line-height: 1.75;
+  color: $light;
+  border-left: 5px solid $color3;
+  padding-left: 2rem;
+  margin: 1.5rem 0 0;
 
+  .footer {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: darken($color: $light, $amount: 20%);
+    border-left: none;
+    padding-left: 0;
+    text-align: right;
+  }
 
-#zodiacInfo{
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    width: 25%;
-    #symbol{
-        font-family: $font2;
-        font-size: 32px;
-    }
-       
+  .footer::before {
+    font-style: unset;
+    content: "—";
+    margin-right: 0.5rem;
+  }
 }
-.users, #quote{
-    span{
-        padding: 1.5em 2.5em 1em 0;
-    }
-}
-.users{
-    &:first-child{
-    margin-bottom: 1.75em;}
 
-    .follow-box{
+#horoscope {
+  margin: 0;
+  background-color: darken($color: $color2, $amount: 5%);
+}
+
+#zodiacInfo {
+  position: fixed;
+  right: 0;
+  top: 55px;
+  max-height: calc(100% - 55px);
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  width: 25%;
+  border-radius: 6px;
+  padding: 3em;
+  background: rgba($color: $dark, $alpha: 0.7);
+  box-shadow: 0 15px 25px rgba($color: $dark, $alpha: 0.2);
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 6px solid transparent;
+    border-radius: 20px;
+    background-color: $color3;
+    background-clip: content-box;
+  }
+
+  #symbol {
+    font-family: $font2;
+    font-size: 1.5rem;
+  }
+}
+
+.users, #quote {
+  span {
+    padding: 1.5em 2.5em 1em 0;
+  }
+}
+
+.users {
+  &:first-child {
+    margin-bottom: 1.75em;
+  }
+  .follow-box{
         width: 100px;
         height: 100px;
         overflow: hidden;
@@ -53,114 +87,116 @@ main{
 
         img{width: 100%; height: 100%;object-fit: cover;}
     }
-
 }
 
-#profile{
+#profile {
+  margin: 0;
+  padding: 0;
+  margin-right: 2.5em;
+
+  #image {
+    margin-right: 2rem;
+    width: 35%;
+  }
+
+  img {
     border-radius: 6px;
-    margin: 0; 
-    padding: 0;
-    width: 68%;
-    margin-right: 2.5em;
-    max-height: 450px;
+    width: 100%;
+    height: auto;
+  }
 
-    .image{
-        width: 450px;
-        height: 100%;
-        background-image: url("../../../assets/images/profile_picture.png");
-        background-repeat: no-repeat;
-        background-size: cover;
+  #profileInfo {
+    width: 65%;
 
-        img{
-            border-radius: 6px;
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-            text-indent:-9999px;
-        }
+    a {
+      background-color: $color2;
+      border: none;
     }
 
-    #profileInfo{
-        width: 65%;
-        a{
-            background-color: $color2;
-            border: none;
-        }
+    blockquote {
+      font-family: $font1;
+      font-size: 1.35rem;
+      line-height: 2;
+      margin-top: 2rem;
+      color: $light;
     }
-    
-    h1{
-        color: white;
-    }
-    .text-box{
-        margin: 0;
-        overflow: hidden;
-        padding: 0.5em 0;
-        position: relative;
-        width: 100%;
+  }
 
-        input{
-            padding-bottom: 0.5em;
-            outline: none;
-            border: none;
-            background: transparent;
-            color: white;
-            border-bottom: 2px solid $color2;
-            width: 100%;
-            margin: 6px 0;
+  h1 {
+    color: $light;
+  }
 
-            &:valid ~ label, &:focus ~ label{
-                top: -20px;
-                left: 0;
-                color: $color2;
-                font-size: 10px;
-            }
-        }
+  .text-box {
+    margin: 0;
+    overflow: hidden;
+    padding: 0.5em 0;
+    position: relative;
+    width: 100%;
 
-        label{
-            padding-top: 20px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            color: white;
-            pointer-events: none;
-            transition: 0.5s;
-            font-family:'Oswald', sans-serif;
-        }
+    input {
+      padding-bottom: 0.5em;
+      outline: none;
+      border: none;
+      background: transparent;
+      color: $light;
+      border-bottom: 2px solid $color2;
+      width: 100%;
+      margin: 6px 0;
+
+      &:valid~label,
+      &:focus~label {
+        top: -20px;
+        left: 0;
+        color: $color2;
+        font-size: 10px;
+      }
     }
 
-    button{
-        background-color: $color2;
-        border:none;
-        border-radius: 3em;
-        color: white;
-        padding: 0.5em;
-        margin: 1em 0;
-        width: 100%;
-
-        &:hover{
-             background-color: #310164;
-        }
+    label {
+      padding-top: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: $light;
+      pointer-events: none;
+      transition: 0.5s;
     }
-    p{
-        padding-top: 1em;
-        margin: 0;
-        color: white;
+  }
 
-        a{
-            color:$color2;
-        }
+  button {
+    background-color: $color2;
+    border: none;
+    border-radius: 3em;
+    color: $light;
+    padding: 0.5em;
+    margin: 1em 0;
+    width: 100%;
+
+    &:hover {
+      background-color: darken($color: $color2, $amount: 15%);
     }
+  }
+
+  p {
+    padding-top: 1em;
+    margin: 0;
+    color: white;
+
+    a {
+      color: $color2;
+    }
+  }
 }
 
 .tip {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 
-    .tiptext {
+  .tiptext {
     visibility: hidden;
     width: 120px;
-    background-color: black;
-    color: #fff;
+    background-color: $dark;
+    color: $light;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
@@ -168,13 +204,12 @@ main{
     position: absolute;
     top: -25px;
     z-index: 1;
+  }
+
+  &:hover {
+    .tiptext {
+      visibility: visible;
     }
-    &:hover {
-        .tiptext{
-            visibility: visible;
-        }
-    } 
-    
+  }
+
 }
-  
-  
