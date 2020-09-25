@@ -41,6 +41,12 @@ export class DashboardComponent implements OnInit {
   nofollows:string;
 
   ngOnInit(): void {
+    
+    if(localStorage.getItem("loggedin") =='false'){
+      console.log(`Session is false`);
+      this.router.navigate(['']);
+    }
+
     this.id = (JSON.parse(localStorage.getItem('user')).userid);
 
     this.userService.getUsers().subscribe(

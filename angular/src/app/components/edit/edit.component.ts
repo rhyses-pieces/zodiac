@@ -32,8 +32,8 @@ export class EditComponent implements OnInit {
     day: new Date(this.user.dateOfBirth).getDate()
   }
 
-  new_password:string;
-  rep_password:string;
+  new_password: FormControl;
+  rep_password: FormControl;
   password:string =(JSON.parse(localStorage.getItem('psw')));
   
   zodiac: Zodiac;
@@ -51,7 +51,12 @@ export class EditComponent implements OnInit {
   pass2 = 'fas fa-eye-slash text-white';
 
   
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(localStorage.getItem("loggedin") =='false'){
+      console.log(`Session is false`);
+      this.router.navigate(['']);
+    }
+  }
 
   new_show() {
     if (this.type === 'password') {
@@ -78,7 +83,7 @@ export class EditComponent implements OnInit {
         this.user = {
           userid: this.user.userid,
           username: this.username,
-          password: this.new_password,
+          password: this.new_password.value,
           firstName: this.firstName,
           lastName: this.lastName,
           dateOfBirth: this.dob.toUTCString(),

@@ -12,7 +12,7 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
+  placement = 'top';
   user: User;
   userid: number;
   username: string;
@@ -53,7 +53,8 @@ export class SignupComponent implements OnInit {
   }
  
   register() {
-    this.dob = new Date(this.newDate.year,this.newDate.month,this.newDate.day,0,0,0,0);
+    console.log(this.newDate.year)
+    this.dob = new Date(this.newDate.year,this.newDate.month-1,this.newDate.day,0,0,0,0);
     this.user = {      
       userid: this.userid,
       username: this.username,
@@ -66,7 +67,7 @@ export class SignupComponent implements OnInit {
       gender: parseInt(this.gender)
     }
 
-    if (this.username != '' || this.password != '' || this.firstName != '' || this.lastName != '' || this.newDate != null || this.gender != '' && this.newDate.year < 2020 || this.newDate.year <= 2002) {
+    if (this.username != '' || this.password != '' || this.firstName != '' || this.lastName != '' || this.newDate != null || this.gender != '' && this.newDate.year > 1920 || this.newDate.year <= 2002) {
       this.registerService.register(this.user).subscribe(
         (response: User) => {
           this.user = response;
@@ -75,15 +76,16 @@ export class SignupComponent implements OnInit {
           localStorage.setItem('psw', JSON.stringify(this.password));
         this.zodiacInfo();
           this.router.navigate(['/dashboard']);
+          
         }, error => {
           document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Signup failed! Please check all fields to ensure information is correct.</p>";
         }
       );
       
     } else if (this.username === '' || this.password === '' || this.firstName === '' || this.lastName === '' || this.newDate === null || this.gender === '') {
-      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>All fields must be filled out.</p>";
-    } else if (this.newDate.year >= 2020 || this.newDate.year > 2002) {
-      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Invalid date of birth. You must be 18 years or older to sign up.</p>";
+      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>All fields must be filled out.</p>";console.log('sit2')
+    } else if (this.newDate.year >= 1920 || this.newDate.year > 2002) {
+      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Invalid date of birth. You must be 18 years or older to sign up.</p>";console.log('sit3')
     } 
   }
 
