@@ -42,7 +42,7 @@ export class EditComponent implements OnInit {
   name: string;
   date: number;
 
-  profileImage:any;
+  profileImage:any = `assets/images/profile-image-${this.user.userid}.jpg`;
 
   type ='password';
   pass = 'fas fa-eye-slash text-white';

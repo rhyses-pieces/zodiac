@@ -66,7 +66,7 @@ export class SignupComponent implements OnInit {
       gender: parseInt(this.gender)
     }
 
-    if (this.username != '' || this.password != '' || this.firstName != '' || this.lastName != '' || this.date != '' || this.gender != '' && new Date(this.date).getFullYear() < 2020 || new Date(this.date).getFullYear() <= 2002) {
+    if (this.username != '' || this.password != '' || this.firstName != '' || this.lastName != '' || this.newDate != null || this.gender != '' && this.newDate.year < 2020 || this.newDate.year <= 2002) {
       this.registerService.register(this.user).subscribe(
         (response: User) => {
           this.user = response;
@@ -80,9 +80,9 @@ export class SignupComponent implements OnInit {
         }
       );
       
-    } else if (this.username === '' || this.password === '' || this.firstName === '' || this.lastName === '' || this.date === '' || this.gender === '') {
+    } else if (this.username === '' || this.password === '' || this.firstName === '' || this.lastName === '' || this.newDate === null || this.gender === '') {
       document.getElementById("error").innerHTML = "<p class='alert alert-danger'>All fields must be filled out.</p>";
-    } else if (new Date(this.date).getFullYear() >= 2020 || new Date(this.date).getFullYear() > 2002) {
+    } else if (this.newDate.year >= 2020 || this.newDate.year > 2002) {
       document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Invalid date of birth. You must be 18 years or older to sign up.</p>";
     } 
   }
