@@ -5,6 +5,7 @@ import { Zodiac } from '../../models/zodiac';
 import { ZodiacService } from '../../services/zodiac.service';
 import { Router } from '@angular/router';
 import { NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
@@ -12,11 +13,14 @@ import { NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
+
+  constructor(private editService:UserService, private zodiacUser:ZodiacService, private router: Router) {}
+
   placement = 'top';
   user: User = (JSON.parse(localStorage.getItem('user')));
-  zodiacs:string;
+  zodiacs: string;
   username: string = this.user.username;
-  firstName: string =  this.user.firstName;
+  firstName: string = this.user.firstName;
   lastName: string = this.user.lastName;
   gender:number = this.user.gender;
   description:string = this.user.description;
@@ -40,8 +44,6 @@ export class EditComponent implements OnInit {
 
   profileImage:any;
 
-  constructor(private editService:UserService, private zodiacUser:ZodiacService, private router: Router) {}
-
   type ='password';
   pass = 'fas fa-eye-slash text-white';
 
@@ -51,8 +53,8 @@ export class EditComponent implements OnInit {
   
   ngOnInit(): void {}
 
-  new_show(){
-    if(this.type==='password'){
+  new_show() {
+    if (this.type === 'password') {
       this.type = 'text';
       this.pass = 'fas fa-eye text-white';
     } else{
@@ -61,8 +63,8 @@ export class EditComponent implements OnInit {
     }
   }
 
-  rep_show(){
-    if(this.type2==='password'){
+  rep_show() {
+    if (this.type2 === 'password') {
       this.type2 = 'text';
       this.pass2 = 'fas fa-eye text-white';
     } else{
@@ -104,7 +106,9 @@ export class EditComponent implements OnInit {
           localStorage.setItem('user', JSON.stringify(this.user));
           this.zodiacInfo();
           this.router.navigate(['/profile']);
-        }, error => {console.log("what happened... it didn't work!")}
+        }, error => {
+          document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Failed to update profile.</p>";
+        }
       );
     }
     zodiacInfo(){

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Zodiac } from '../../models/zodiac';
 import { ZodiacService } from '../../services/zodiac.service';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -12,7 +12,6 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  placement = 'top';
 
   user: User;
   userid: number;
@@ -67,19 +66,25 @@ export class SignupComponent implements OnInit {
       gender: parseInt(this.gender)
     }
 
-    this.registerService.register(this.user).subscribe(
-      (response: User) => {
-        this.user = response;
-        localStorage.setItem('user', JSON.stringify(this.user));
-        localStorage.setItem('loggedin', 'true');
-        localStorage.setItem('psw', JSON.stringify(this.password));
+    if (this.username != '' || this.password != '' || this.firstName != '' || this.lastName != '' || this.date != '' || this.gender != '' && new Date(this.date).getFullYear() < 2020 || new Date(this.date).getFullYear() <= 2002) {
+      this.registerService.register(this.user).subscribe(
+        (response: User) => {
+          this.user = response;
+          localStorage.setItem('user', JSON.stringify(this.user));
+          localStorage.setItem('loggedin', 'true');
+          localStorage.setItem('psw', JSON.stringify(this.password));
         this.zodiacInfo();
-        this.router.navigate(['/dashboard']);
-        
-      }, error => {
-        console.log("what happened... it didn't work!");   
-      }
-    );
+          this.router.navigate(['/dashboard']);
+        }, error => {
+          document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Signup failed! Please check all fields to ensure information is correct.</p>";
+        }
+      );
+      
+    } else if (this.username === '' || this.password === '' || this.firstName === '' || this.lastName === '' || this.date === '' || this.gender === '') {
+      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>All fields must be filled out.</p>";
+    } else if (new Date(this.date).getFullYear() >= 2020 || new Date(this.date).getFullYear() > 2002) {
+      document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Invalid date of birth. You must be 18 years or older to sign up.</p>";
+    } 
   }
 
   zodiacInfo(){
@@ -108,4 +113,5 @@ export class SignupComponent implements OnInit {
       }
     )
   };
+    
 }

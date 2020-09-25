@@ -2,7 +2,7 @@
 <main>
     <div class="col" id="edit">
         <h3 class="h3 text-center py-4">Edit Account</h3>
-        <form>
+        <form class="form" #editProfile="ngForm" [appPasscheck]="['new_password', 'rep_password']">
             <div class="form-group text-box d-flex flex-row py-2">
                 <div class="image">
                     <img [src]="profileImage">
@@ -34,11 +34,8 @@
                 </div>
                 <div class="col d-flex flex-column pl-3">
                     <label for="dob">Date of Birth: </label>
-                    <div class="input-group">
-                        <input class="form-control" type="date" name="dob" [(ngModel)]="dob" ngbDatepicker
-                            #d="ngbDatepicker" [minDate]="{year: 1930, month: 1, day: 1}"
-                            [maxDate]="{year: 2020, month: 12, day: 31}" [placement]="placement"
-                            aria-describedby="dateHelp">
+                    <div class="form-group input-group">
+                        <input class="form-control" type="date" name="dob" [(ngModel)]="dob">
                     </div>
                 </div>  
             </div>
@@ -54,6 +51,7 @@
                 <input [type]="type2" [(ngModel)]="rep_password" name="rep_password" minlength="5"><i [class]="pass2" (click)="rep_show()"></i>
                 <label for="password">Repeat Password </label>
             </div>
+            <div class="form-group text-box" id="error"></div>
             <div class="row d-flex flex-row justify-content-around">
                 <div class="w-25">
                 <button class="btn btn-primary btn-lg w-100" type="submit" (click)="edit()">Edit</button></div>
