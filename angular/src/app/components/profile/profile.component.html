@@ -3,12 +3,15 @@
     <div class="p-5 w-75">
         <section class="d-flex flex-row w-100">
             <article id="profile" class="d-flex flex-row">
-                <img [src]="profileImage" alt="profileAlt">
+                <div class="image">
+                    <img [src]="profileImage" onerror="this.style.display='none'">
+                </div>
                 <div id="profileInfo" class="py-4 px-5">
                     <div>
-                        <h1 style="font-size: 48px;">{{firstName}} {{lastName}}</h1>
+                        <h1 style="font-size: 48px;">{{user.firstName}} {{user.lastName}}</h1>
                         <h1>{{ zodiac.name }}</h1>
-                        <h4>{{ user.description }} this is where description is</h4>
+                        <h1>{{ profileMonth }} {{ profileDate }}</h1>
+                        <p class="py-2" style="font-size: 24px;">{{ user.description }}</p>
                     </div>
                     <div class="py-3">
                         <a routerLink="edit"class="btn btn-primary btn-lg py-3">Edit Profile</a>
@@ -16,29 +19,33 @@
                 </div>
             </article>
             <article class="p-5" id="horoscope">
-                <h3>Today's Date: {{ horo.date }}</h3>
-                <p style="font-size: 20px; padding: 1em 0; overflow-y: auto;">{{ horo.horoscope }}</p>
+                <h3>Today's Date: {{ horodate }}</h3>
+                <p style="font-size: 20px; padding: 1em 0; overflow-y: auto;">{{ horoscope }}</p>
             </article>
         </section>
         <section class="d-flex flex-row w-100 mt-5">
             <div id="quote">
                 <h2 class="pb-3">Inspiring Quote</h2>
-                <p style="font-size: 27px; line-height: 50px;">{{ quote.message }}</p>
-                <p style="font-size: 21px;">- {{ quote.author }}</p>
+                <p style="font-size: 27px; line-height: 50px;">{{ message }}</p>
+                <p style="font-size: 21px;">- {{ author }}</p>
             </div>
             <div id="follow" class="d-flex flex-column align-content-between">
                 <div class="users">
                     <h2>Followed By</h2>
                     <span class="tip" *ngFor="let f of followBy; index as i">
                         <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
-                        <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png" alt="assets/images/profile_picture.png" width="100px">
+                        <div class="rounded-circle follow-box">
+                        <img src="assets/images/profile-image-{{f.userid}}.jpg" onerror="this.style.display='none'">
+                    </div>
                     </span>
                 </div>
                 <div class="users">
                     <h2>Following</h2>
                     <span class="tip" *ngFor="let f of following; index as i">
                         <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
-                        <img class="rounded-circle"  src="assets/images/image-{{f.userid}}.png" alt="assets/images/profile_picture.png" width="100px">
+                        <div class="rounded-circle follow-box">
+                            <img src="assets/images/profile-image-{{f.userid}}.jpg" onerror="this.style.display='none'">
+                        </div>
                     </span>
                 </div>
             </div>

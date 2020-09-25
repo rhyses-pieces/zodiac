@@ -18,19 +18,27 @@ export class DashboardComponent implements OnInit {
   user: User;
   id: number;
   description:string;
-  postings:string[];
+  postings:string[]=[];
 
   zodiacs: Zodiac[]=[];
-  bday:Date[]=[];
   month:number[]=[];
   months:string[]=[];
   names: string[]=[];
   date: number[]=[];
 
+  month2:number[]=[];
+  months2:string[]=[];
+  names2: string[]=[];
+  date2: number[]=[];
+
   following: User[];
   followBy: User[];
   notFollowing: User[];
   notFollowedBy: User[];
+  zodiacFollow: User[];
+
+  sign:string;
+  nofollows:string;
 
   ngOnInit(): void {
     this.id = (JSON.parse(localStorage.getItem('user')).userid);
@@ -39,9 +47,34 @@ export class DashboardComponent implements OnInit {
       (data)=>{
         this.users = data.filter(not => not.userid !== this.id);
         //People you are NOT following
+        
         this.notFollowing = this.users.filter(({ userid: id1 }) => !this.following.some(({ userid: id2 }) => id2 === id1));
         //People who are NOT following YOU
        // this.notFollowedBy = this.users.filter(({ userid: id1 }) => !this.followBy.some(({ userid: id2 }) => id2 === id1));
+
+          for(let f of this.notFollowing){
+            this.month2.push(new Date(JSON.parse(f.dateOfBirth)).getMonth());
+            this.date2.push(new Date(JSON.parse(f.dateOfBirth)).getDate());
+          }
+
+          for(let i = 0; i < this.month2.length; i++){
+            let months2 = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            this.months2.push(months2[this.month2[i]]);
+
+            if (this.month2[i] == 1 && this.date2[i] >=20 || this.month2[i] == 2 && this.date2[i] <=18) {this.names2[i] = 'Aquarius';}
+            if (this.month2[i] == 2 && this.date2[i] >=19 || this.month2[i] == 3 && this.date2[i] <=20){this.names2[i] = 'Pisces';}
+            if (this.month2[i] == 3 && this.date2[i] >=21 || this.month2[i] == 4 && this.date2[i] <=19){this.names2[i] = 'Aries';}
+            if (this.month2[i] == 4 && this.date2[i] >=20 || this.month2[i] == 5 && this.date2[i] <=20){this.names2[i] = 'Taurus';}
+            if (this.month2[i] == 5 && this.date2[i] >=21 || this.month2[i] == 6 && this.date2[i] <=21){this.names2[i] = 'Gemini';}
+            if (this.month2[i] == 6 && this.date2[i] >=22 || this.month2[i] == 7 && this.date2[i] <=22){this.names2[i] = 'Cancer';}
+            if (this.month2[i] == 7 && this.date2[i] >=23 || this.month2[i] == 8 && this.date2[i] <=22) {this.names2[i] = 'Leo';}
+            if (this.month2[i] == 8 && this.date2[i] >=23 || this.month2[i] == 9 && this.date2[i] <=22) {this.names2[i] = 'Virgo';}
+            if (this.month2[i] == 9 && this.date2[i] >=23 || this.month2[i] == 10 && this.date2[i] <=22){this.names2[i] = 'Libra';}
+            if (this.month2[i] == 10 && this.date2[i] >=23 || this.month2[i] == 11 && this.date2[i] <=21){this.names2[i] = 'Scorpio';}
+            if (this.month2[i] == 11 && this.date2[i] >=22 || this.month2[i] == 12 && this.date2[i] <=21){this.names2[i] = 'Sagittarius';}
+            if (this.month2[i] == 12 && this.date2[i] >=22 || this.month2[i] == 1 && this.date2[i] <=19){this.names2[i] = 'Capricorn';}
+          }
+        
       } 
     );
 
@@ -96,6 +129,7 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
 }
 
 

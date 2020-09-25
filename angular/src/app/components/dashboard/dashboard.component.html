@@ -1,21 +1,27 @@
 <app-nav></app-nav>
-<main>
-  <section id="postings" *ngFor="let p of postings; index as i" class="profile p-4 container w-100">
-    <h1>{{description}}</h1>
-    <h3>{{p}}</h3>
-  </section>
+<main class="py-4">
   <h2>Dashboard</h2>
-  <article *ngFor="let f of following" class="profile p-4 container w-100">
-    <img class="float-left mr-4 rounded" src="assets/images/image-{{f.userid}}.png">
-    <h3 class="h3">{{f.firstName}} {{f.lastName}}</h3>
-    <button class="btn btn-primary" type="submit" (click)="unfollow(f.userid)">Unfollow </button>                         
+  <article *ngFor="let f of following; index as i" class="p-4 container w-100">
+    <div class="follow-box">
+      <img class="float-left mr-4 rounded" src="assets/images/profile-image-{{f.userid}}.jpg">
+    </div>
+    <div>
+      <h1>{{f.firstName}} {{f.lastName}}</h1>
+      <h3>{{months[i]}} {{date[i]}}</h3>
+      <h3>{{names[i]}}</h3>
+      <button class="btn btn-primary" type="submit" (click)="unfollow(f.userid)">Unfollow</button>
+    </div>                         
   </article>
-
   <h2>Browse</h2>
-  <article *ngFor="let u of notFollowing; index as i" class="profile p-4 container w-100">
-    <img class="float-left mr-4 rounded" src="assets/images/image-{{u.userid}}.png" onerror="this.style.opacity='0'">
-    <h3 class="h3">{{u.firstName}} {{u.lastName}}</h3>
-  
-    <button class="btn btn-primary" type="submit" (click)="follow(u.userid)"><i class="far fa-heart"></i>Follow </button> 
+  <article *ngFor="let u of notFollowing; index as i" class="p-4 container w-100">
+    <div class="follow-box">
+      <img class="float-left mr-4 rounded" src="assets/images/profile-image-{{u.userid}}.jpg">
+    </div>
+    <div>
+      <h1>{{u.firstName}} {{u.lastName}}</h1>
+      <h3>{{months2[i]}} {{date2[i]}}</h3>
+      <h3>{{names2[i]}}</h3>
+      <button class="btn btn-primary" type="submit" (click)="follow(u.userid)"><i class="far fa-heart"></i>Follow </button> 
+   </div>
   </article>
 </main>
