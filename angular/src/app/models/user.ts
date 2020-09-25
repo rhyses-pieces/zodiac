@@ -6,10 +6,9 @@ export class User {
     firstName:string;
     lastName:string;
     dateOfBirth:string;
-    // zodiac: string;
+    //zodiac: string;
     description: string;
     gender:number;
-    //picture:number[];
 
     constructor(
         userid: number,
@@ -18,7 +17,7 @@ export class User {
         firstName:string,
         lastName:string,
         dateOfBirth:string,
-        // zodiac: string,
+        //zodiac: string,
         description: string,
         gender:number
     ) {
@@ -28,7 +27,7 @@ export class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        // this.zodiac = zodiac;
+        //this.zodiac = zodiac;
         this.description = description;
         this.gender = gender;
     }

@@ -11,16 +11,11 @@ export class NavComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    if (localStorage.getItem('loggedin') == 'true') {
-      this.hide = true;
-    }
-  }
+  ngOnInit(): void {}
 
   logout() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('loggedin');
-    localStorage.removeItem('zodiac');
+    localStorage.clear();
+    localStorage.setItem("loggedin", "false");
   }
 
 }

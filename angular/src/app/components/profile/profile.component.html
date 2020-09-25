@@ -4,13 +4,15 @@
         <section class="row">
             <div class="d-flex col-md-7 col-sm-12">
                 <article id="profile" class="d-flex p-5">
-                    <div id="image">
-                        <img [src]="profileImage" alt="profileAlt">
+                <div class="image">
+                    <img [src]="profileImage" onerror="this.style.display='none'">
+                </div>
                     </div>
                     <div id="profileInfo">
                         <div>
                             <h1 style="font-size: 48px;">{{firstName}} {{lastName}}</h1>
                             <h1>{{ zodiac.name }}</h1>
+                            <h1>{{ profileMonth }} {{ profileDate }}</h1>
                             <blockquote>{{ user.description }} this is where description is! It can be as long or short
                                 as you'd like it
                                 to be.</blockquote>
@@ -50,16 +52,18 @@
                         <h2>Followed By</h2>
                         <span class="tip" *ngFor="let f of followBy; index as i">
                             <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
-                            <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png"
-                                alt="assets/images/profile_picture.png" width="100px">
+                            <div class="rounded-circle follow-box">
+                        <img src="assets/images/profile-image-{{f.userid}}.jpg" onerror="this.style.display='none'">
+                    </div>
                         </span>
                     </article>
                     <article class="users">
                         <h2>Following</h2>
                         <span class="tip" *ngFor="let f of following; index as i">
                             <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
-                            <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png"
-                                alt="assets/images/profile_picture.png" width="100px">
+                            <div class="rounded-circle follow-box">
+                            <img src="assets/images/profile-image-{{f.userid}}.jpg" onerror="this.style.display='none'">
+                        </div>
                         </span>
                     </article>
                 </div>

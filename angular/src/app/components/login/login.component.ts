@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
         this.user = response;
         localStorage.setItem('user', JSON.stringify(this.user));
         localStorage.setItem('loggedin', 'true');
+        localStorage.setItem('psw', JSON.stringify(this.password));
 
         this.zodiacInfo();
         this.router.navigate(['/dashboard']);
@@ -73,7 +74,7 @@ export class LoginComponent implements OnInit {
 
   zodiacInfo() {
     this.bday = new Date(JSON.parse(localStorage.getItem('user')).dateOfBirth);
-    this.month = this.bday.getMonth() + 1;
+    this.month = this.bday.getMonth();
     this.date = this.bday.getDate();
     if (this.month == 1 && this.date >= 20 || this.month == 2 && this.date <= 18) { this.name = 'Aquarius'; }
     if (this.month == 2 && this.date >= 19 || this.month == 3 && this.date <= 20) { this.name = 'Pisces'; }

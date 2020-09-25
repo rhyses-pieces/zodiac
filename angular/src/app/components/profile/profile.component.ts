@@ -28,13 +28,19 @@ export class ProfileComponent implements OnInit {
   visibility:boolean = true;
 
   horo: Horoscope;
+  horodate:string;
+  horoscope:string;
+  message: string;
+  author:string;
   quote: Quote;
 
   id: number;
   user: User = (JSON.parse(localStorage.getItem('user')));
-  profileImage:any = `assets/images/image-${this.user.userid}.png`;
+  profileImage:any = `assets/images/profile-image-${this.user.userid}.jpg`;
   firstName:string = this.user.firstName;
   lastName:string = this.user.lastName;
+  profileMonth: string;
+  profileDate: number = new Date(this.user.dateOfBirth).getDate();
 
   month:number[]=[];
   months:string[]=[];
@@ -54,19 +60,24 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['']);
     }
     this.id = (JSON.parse(localStorage.getItem('user')).userid);
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    this.profileMonth = months[new Date(this.user.dateOfBirth).getMonth()-1];
 
     this.horoService.getHoroscope(this.zodiac.name).subscribe(
       (data) => {
         this.horo = data;
+        this.horodate = this.horo.date;
+        this.horoscope = this.horo.horoscope;
       }, () => {
         console.log('did not work!')
       }
     )
 
-   
     this.quoteService.getQuote().subscribe(
       (data) => {
         this.quote = data;
+        this.message = this.quote.message;
+        this.author = this.quote.author;
       }, () => {console.log('did not work')}
     )
 
@@ -77,12 +88,10 @@ export class ProfileComponent implements OnInit {
         for(let f of this.followBy){
           this.month.push(new Date(JSON.parse(f.dateOfBirth)).getMonth());
           this.date.push(new Date(JSON.parse(f.dateOfBirth)).getDate());
-          
-       
         }
 
         for(let i = 0; i < this.month.length; i++){
-          this.followedByImage =`assets/images/image-${this.followBy[i].userid}.png`;
+          this.followedByImage =`assets/images/profile-image-${this.followBy[i].userid}.jpg`;
           let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
           this.months.push(months[this.month[i]]);
 
@@ -98,10 +107,11 @@ export class ProfileComponent implements OnInit {
           if (this.month[i] == 10 && this.date[i] >=23 || this.month[i] == 11 && this.date[i] <=21){this.names[i] = 'Scorpio';}
           if (this.month[i] == 11 && this.date[i] >=22 || this.month[i] == 12 && this.date[i] <=21){this.names[i] = 'Sagittarius';}
           if (this.month[i] == 12 && this.date[i] >=22 || this.month[i] == 1 && this.date[i] <=19){this.names[i] = 'Capricorn';}
+         
+          
         }
       }
     );
-
     this.userService.getFollowing(this.id).subscribe(
       (data) => {
         this.following = data;
@@ -134,5 +144,4 @@ export class ProfileComponent implements OnInit {
     )
   
   }
-    
 }

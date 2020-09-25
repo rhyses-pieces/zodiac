@@ -1,8 +1,17 @@
 <app-nav></app-nav>
 <main>
     <div class="col" id="edit">
-        <h3 class="h3 text-center">Edit Account</h3>
+        <h3 class="h3 text-center py-4">Edit Account</h3>
         <form class="form" #editProfile="ngForm">
+            <div class="form-group text-box d-flex flex-row py-2">
+                <div class="image">
+                    <img [src]="profileImage">
+                </div>
+                <div id="desc" class="pl-4">
+                    <p style="font-size: 16px;">Description: </p>
+                    <textarea name="description" [(ngModel)]="description" minlength="250" cols="45" rows="6">{{description}}</textarea>
+                </div>
+            </div>
             <div class="form-group text-box">
                 <input type="text" [(ngModel)]="firstName" value="firstName" name="firstName" minlength="5" required>
                 <label for="firstName">First Name: </label>
@@ -11,7 +20,7 @@
                 <input type="text" [(ngModel)]="lastName" name="lastName" minlength="5" required>
                 <label for="lastName">Last Name: </label>
             </div>
-            <div class="form-row" id="gender-date">
+            <div class="form-row pb-2" id="gender-date">
                 <div class="col d-flex flex-column pr-3">
                     <label for="gender">Gender</label>
                     <div class="input-group">
