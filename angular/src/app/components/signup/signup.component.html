@@ -38,7 +38,10 @@
                 <div class="col d-flex flex-column pl-3">
                     <label for="dob">Date of Birth: </label>
                     <div class="input-group">
-                        <input class="form-control" type="date" name="dob" [(ngModel)]="date" aria-describedby="dateHelp" required>
+                        <input class="form-control" type="date" name="newDate" [(ngModel)]="newDate" ngbDatepicker
+                            #d="ngbDatepicker" [minDate]="{year: 1930, month: 1, day: 1}"
+                            [maxDate]="{year: 2020, month: 12, day: 31}" [placement]="placement"
+                            aria-describedby="dateHelp"/>
                     </div>
                 </div>  
             </div>
