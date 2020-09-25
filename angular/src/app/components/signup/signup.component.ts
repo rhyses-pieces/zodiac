@@ -49,7 +49,6 @@ export class SignupComponent implements OnInit {
         firstName: this.firstName,
         lastName: this.lastName,
         dateOfBirth: new Date(this.date).toUTCString(),
-        // zodiac: this.zodiac,
         description: this.description,
         gender: parseInt(this.gender)
       }

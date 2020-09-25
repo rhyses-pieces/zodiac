@@ -1,52 +1,69 @@
 <app-nav></app-nav>
 <main class="container-fluid">
     <div class="p-5 w-75">
-        <section class="d-flex flex-row w-100">
-            <article id="profile" class="d-flex flex-row">
-                <div id="image">
-                    <img [src]="profileImage" alt="profileAlt">
-                </div>
-                <div id="profileInfo" class="py-4 px-5">
-                    <div>
-                        <h1 style="font-size: 48px;">{{firstName}} {{lastName}}</h1>
-                        <h1>{{ zodiac.name }}</h1>
-                        <blockquote>{{ user.description }} this is where description is! It can be as long or short as you'd like it to be. What would you like to say to the world?</blockquote>
+        <section class="row">
+            <div class="d-flex col-md-7 col-sm-12">
+                <article id="profile" class="d-flex p-5">
+                    <div id="image">
+                        <img [src]="profileImage" alt="profileAlt">
                     </div>
-                    <div class="py-3">
-                        <a routerLink="edit" class="btn btn-primary btn-lg py-3">Edit Profile</a>
+                    <div id="profileInfo">
+                        <div>
+                            <h1 style="font-size: 48px;">{{firstName}} {{lastName}}</h1>
+                            <h1>{{ zodiac.name }}</h1>
+                            <blockquote>{{ user.description }} this is where description is! It can be as long or short
+                                as you'd like it
+                                to be.</blockquote>
+                        </div>
+                        <div class="py-3">
+                            <a routerLink="edit" class="btn btn-primary btn-lg py-3">Edit Profile</a>
+                        </div>
                     </div>
-                </div>
-            </article>
-            <article class="p-5" id="horoscope">
-                <h3>Today's Date: {{ horo.date }}</h3>
-                <p style="font-size: 20px; padding: 1em 0; overflow-y: auto;">{{ horo.horoscope }}</p>
-            </article>
-        </section>
-        <section class="d-flex flex-row w-100 mt-5">
-            <div id="quote">
-                <h2 class="pb-3">Inspiring Quote</h2>
-                <p style="font-size: 27px; line-height: 50px;">{{ quote.message }}</p>
-                <p style="font-size: 21px;">- {{ quote.author }}</p>
+                </article>
             </div>
-            <div id="follow" class="d-flex flex-column align-content-between">
-                <div class="users">
-                    <h2>Followed By</h2>
-                    <span class="tip" *ngFor="let f of followBy; index as i">
-                        <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
-                        <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png"
-                            alt="assets/images/profile_picture.png" width="100px">
-                    </span>
-                </div>
-                <div class="users">
-                    <h2>Following</h2>
-                    <span class="tip" *ngFor="let f of following; index as i">
-                        <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
-                        <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png"
-                            alt="assets/images/profile_picture.png" width="100px">
-                    </span>
-                </div>
+            <div class="col-md-5 col-sm-12">
+                <article class="p-5 " id="horoscope">
+                    <h3>Today's Horoscope</h3>
+                    <blockquote class="blockquote">
+                        {{ horo.horoscope }}
+                        <footer class="blockquote footer">{{ horo.date }}</footer>
+                    </blockquote>
+                </article>
+            </div>
+        </section>
+        <section class="row mt-5">
+            <div class="col-md-5">
+                <article id="quote">
+                    <h2 class="pb-3">Inspiring Quote</h2>
+                    <blockquote class="blockquote">
+                        {{ quote.message }}
+                        <footer class="blockquote footer">{{ quote.author }}</footer>
+                    </blockquote>
+                    
+                    
+                </article>
             </div>
 
+            <div class="col-md-7">
+                <div id="follow" class="d-flex flex-column align-content-between">
+                    <article class="users">
+                        <h2>Followed By</h2>
+                        <span class="tip" *ngFor="let f of followBy; index as i">
+                            <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
+                            <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png"
+                                alt="assets/images/profile_picture.png" width="100px">
+                        </span>
+                    </article>
+                    <article class="users">
+                        <h2>Following</h2>
+                        <span class="tip" *ngFor="let f of following; index as i">
+                            <p class="tiptext">{{f.firstName}} {{f.lastName}}</p>
+                            <img class="rounded-circle" src="assets/images/image-{{f.userid}}.png"
+                                alt="assets/images/profile_picture.png" width="100px">
+                        </span>
+                    </article>
+                </div>
+            </div>
         </section>
     </div>
     <aside>

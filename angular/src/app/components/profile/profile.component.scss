@@ -1,59 +1,69 @@
 @import '../../../_variables';
 
 main {
-  background-image: url("../images/galaxy.jpg");
-  background-color: black;
-  background-size: cover;
-  background-position-y: center;
   min-height: 98vh;
   position: relative;
 }
 
-#zodiacInfo,
-#profile,
-#horoscope,
-#quote,
-.users {
-  border-radius: 6px;
-  padding: 3em;
-  background: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-}
+.blockquote {
+  font-size: 1.45rem;
+  line-height: 1.75;
+  color: $light;
+  border-left: 5px solid $color3;
+  padding-left: 2rem;
+  margin: 1.5rem 0 0;
 
-#quote {
-  width: 30%;
-  margin-right: 2.5em;
-}
+  .footer {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: darken($color: $light, $amount: 20%);
+    border-left: none;
+    padding-left: 0;
+    text-align: right;
+  }
 
-#follow {
-  width: 68%;
+  .footer::before {
+    font-style: unset;
+    content: "—";
+    margin-right: 0.5rem;
+  }
 }
 
 #horoscope {
-  width: 30%;
   margin: 0;
-  background-color: #2d036c;
+  background-color: darken($color: $color2, $amount: 5%);
 }
 
 #zodiacInfo {
-  position: absolute;
+  position: fixed;
   right: 0;
-  top: 0;
-  height: 100%;
+  top: 55px;
+  max-height: calc(100% - 55px);
   overflow-y: scroll;
   scroll-behavior: smooth;
   width: 25%;
+  border-radius: 6px;
+  padding: 3em;
+  background: rgba($color: $dark, $alpha: 0.7);
+  box-shadow: 0 15px 25px rgba($color: $dark, $alpha: 0.2);
+  box-sizing: border-box;
 
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+  &::-webkit-scrollbar {
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 6px solid transparent;
+    border-radius: 20px;
     background-color: $color3;
+    background-clip: content-box;
   }
 
   #symbol {
     font-family: $font2;
-    font-size: 32px;
+    font-size: 1.5rem;
   }
 }
 
@@ -72,11 +82,10 @@ main {
 #profile {
   margin: 0;
   padding: 0;
-  width: 68%;
   margin-right: 2.5em;
 
   #image {
-    margin: 2rem 0 2rem 2.5rem;
+    margin-right: 2rem;
     width: 35%;
   }
 
@@ -99,12 +108,12 @@ main {
       font-size: 1.35rem;
       line-height: 2;
       margin-top: 2rem;
-      color: white;
+      color: $light;
     }
   }
 
   h1 {
-    color: white;
+    color: $light;
   }
 
   .text-box {
@@ -119,7 +128,7 @@ main {
       outline: none;
       border: none;
       background: transparent;
-      color: white;
+      color: $light;
       border-bottom: 2px solid $color2;
       width: 100%;
       margin: 6px 0;
@@ -138,10 +147,9 @@ main {
       position: absolute;
       top: 0;
       left: 0;
-      color: white;
+      color: $light;
       pointer-events: none;
       transition: 0.5s;
-      font-family: 'Oswald', sans-serif;
     }
   }
 
@@ -149,13 +157,13 @@ main {
     background-color: $color2;
     border: none;
     border-radius: 3em;
-    color: white;
+    color: $light;
     padding: 0.5em;
     margin: 1em 0;
     width: 100%;
 
     &:hover {
-      background-color: #310164;
+      background-color: darken($color: $color2, $amount: 15%);
     }
   }
 
@@ -177,8 +185,8 @@ main {
   .tiptext {
     visibility: hidden;
     width: 120px;
-    background-color: black;
-    color: #fff;
+    background-color: $dark;
+    color: $light;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
