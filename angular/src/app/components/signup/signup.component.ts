@@ -36,6 +36,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private registerService: UserService,
+    private zodiacUser:ZodiacService,
     private router: Router) {}
 
   ngOnInit(): void { }
