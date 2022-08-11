@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
         gender: parseInt(this.gender)
       }
 
-      if (this.username != '' || this.password != '' || this.firstName != '' || this.lastName != '' || this.date != '' || this.gender != '' || new Date(this.date).getFullYear() < 2020 || new Date(this.date).getFullYear() <= 2002) {
+      if (this.username != '' | this.password != '' | this.firstName != '' | this.lastName != '' | this.date != '' | this.gender != '' | new Date(this.date).getFullYear() < 2020 | new Date(this.date).getFullYear() <= 2002) {
         this.registerService.register(this.user).subscribe(
           (response: User) => {
             this.user = response;
@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit {
             document.getElementById("error").innerHTML = "<p class='alert alert-danger'>Signup failed! Please check all fields to ensure information is correct.</p>";
           }
         );
-      } else if (this.username === '' || this.password === '' || this.firstName === '' || this.lastName === '' || this.date === '' || this.gender === '') {
+      } else if (this.username === '' | this.password === '' | this.firstName === '' | this.lastName === '' | this.date === '' | this.gender === '') {
         document.getElementById("error").innerHTML = "<p class='alert alert-danger'>All fields must be filled out.</p>";
       }
     } else {
